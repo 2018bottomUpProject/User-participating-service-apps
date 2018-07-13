@@ -17,6 +17,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--구글 지도 사용을 위한 API key-->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCMgPxlntGMhIQf-oJBY_nc5xKw5S3PxbA"/>
     </application>
 
 </manifest>
