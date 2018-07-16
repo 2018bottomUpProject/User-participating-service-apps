@@ -1,11 +1,14 @@
 package com.project.bottomup.upsa;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -158,6 +161,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         if (manager.isProviderEnabled(LocationManager.GPS_PROVIDER)) {
             manager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 1000, 10, listener);
         }
+
+        //현재 WIFI위치(또는 GPS)가 켜져있지 않은 경우
+        if((!manager.isProviderEnabled(LocationManager.NETWORK_PROVIDER))||(!manager.isProviderEnabled(LocationManager.GPS_PROVIDER))){
+            Toast.makeText(this,"GPS(또는 WIFI위치)사용이 설정되어 있지 않습니다.",Toast.LENGTH_LONG).show();
+        }
+    }
+
+    //네트워크 연결상태인지 확인하는 메서드
+    public boolean isConnected() {
+        ConnectivityManager connectivityManager=(ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork=connectivityManager.getActiveNetworkInfo();
+        boolean connected = false;
+        if(activeNetwork!=null && activeNetwork.isConnectedOrConnecting()){
+            connected = true;
+        }
+        return connected;
     }
 
     // GPS Listener
@@ -229,12 +248,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         int id = item.getItemId();
         switch(id){
             case R.id.menu1 :           // 현재 위치
+
                 getMyLocation();
                 break;
             case R.id.menu2 :           // 카테고리 검색
-                showCategoryList();
+                //네트워크 연결되지 않은 경우
+                if(isConnected()==false){
+                    Toast.makeText(this, "네트워크가 연결되지 않았습니다.", Toast.LENGTH_LONG).show();
+                }
+                //네트워크가 연결된 경우
+                else {
+                    showCategoryList();
+                }
                 break;
-
         }
         return super.onOptionsItemSelected(item);
     }
