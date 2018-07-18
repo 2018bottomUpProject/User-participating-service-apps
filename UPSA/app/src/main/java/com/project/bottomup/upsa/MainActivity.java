@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Log.d("시작", "onCreate");
+        Log.d("MainActivity", "onCreate()");
 
         //지도 불러오기
         FragmentManager fragmentManager = getSupportFragmentManager();
