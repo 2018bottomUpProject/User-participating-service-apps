@@ -53,7 +53,11 @@
         <service
             android:name=".BackgroundService"
             android:enabled="true"
-            android:exported="true"></service>
+            android:exported="true">
+            <intent-filter>
+                <action android:name= "android.intent.action.BACKGROUND"/>
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
