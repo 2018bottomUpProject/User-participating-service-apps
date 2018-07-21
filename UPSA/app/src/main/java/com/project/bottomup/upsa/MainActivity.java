@@ -3,6 +3,7 @@ package com.project.bottomup.upsa;
 import android.Manifest;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -75,8 +76,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Log.d("MainActivity", "onCreate()");
 
-        Log.d("시작", "onCreate");
+        //서비스 실행
+        this.startService(new Intent(this,BackgroundService.class));
+        Log.d("MainActivity","startService");
 
         //지도 불러오기
         FragmentManager fragmentManager = getSupportFragmentManager();
