@@ -1,1 +1,11 @@
+###############
+# 개발 환경 관련 #
+###############
+# intellij idea 관련 파일 #
+**/.idea
+
+#########
+# nodejs #
+#########
+# node_modules (의존 모듈 파일) #
 UPSA_Server/node_modules/*

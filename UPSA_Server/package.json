@@ -1,0 +1,22 @@
+{
+  "name": "upsa_server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Main.js",
+  "scripts": {
+    "test": "nodejs ./Main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/2018bottomUpProject/User-participating-service-apps.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/2018bottomUpProject/User-participating-service-apps/issues"
+  },
+  "homepage": "https://github.com/2018bottomUpProject/User-participating-service-apps#readme",
+  "dependencies": {
+    "mongodb": "^3.1.1"
+  }
+}
