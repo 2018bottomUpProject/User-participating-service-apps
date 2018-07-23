@@ -1,1 +1,17 @@
+###########################################
+# associated with development environment #
+###########################################
+
+# intellij idea #
+**/.idea
+
+# jupyter notebook #
+**/.ipynb_checkpoints
+UPSA_Server/.ipynb_checkpoints
+
+##########
+# nodejs #
+##########
+
+# node_modules (dependency) #
 UPSA_Server/node_modules/*
