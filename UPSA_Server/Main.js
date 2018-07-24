@@ -1,8 +1,20 @@
-let DB = require("./DBConnector.js");
-process.on("SIGINT", function () {
+let http = require('http');
+let https = require('https');
 
+let DB = require("./DBConnector.js");
+let Dummyapp = require('./Dummyapp');
+let app;
+
+let PORT_HTTP = 80;
+
+DB.init();
+process.on("SIGINT", async function () {
+    await DB.close();
     process.exit();
 });
-setInterval(function(){
-    console.log("asdf");
-},1000);
+
+/* Dummy HTTP server open
+*  if do not want, just set it with annotation*/
+
+Dummyapp.set('port', PORT_HTTP);
+let server = http.createServer(Dummyapp);
