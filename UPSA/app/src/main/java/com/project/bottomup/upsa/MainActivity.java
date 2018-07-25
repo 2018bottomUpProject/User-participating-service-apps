@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -17,11 +18,14 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -72,11 +76,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected GoogleMap map;
     LatLng position = new LatLng(37.56, 126.97); //초기설정(서울)37.56, 126.97
 
+    //툴바 생성
+    Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Log.d("MainActivity", "onCreate()");
+
+        toolbar = (Toolbar) findViewById(R.id.main_toolbar);
+        setSupportActionBar(toolbar);
 
         //서비스 실행
         this.startService(new Intent(this,BackgroundService.class));
@@ -95,6 +105,16 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         markers_list=new ArrayList<>();
 
         checkPermission();
+
+        Button b1=findViewById(R.id.addButton);
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "정보 등록", Toast.LENGTH_SHORT).show();
+                Intent intent=new Intent(MainActivity.this,AddActivity.class);
+                startActivity(intent);
+            }
+            });
     }
 
     @Override
