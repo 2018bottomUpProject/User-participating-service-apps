@@ -109,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         int chk2 = ContextCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION);
         if (chk1 == PackageManager.PERMISSION_GRANTED && chk2 == PackageManager.PERMISSION_GRANTED) {
             myLocation = manager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-            showMyLocation();
         }
         // 새롭게 위치를 측정한다.
         GpsListener listener = new GpsListener();
