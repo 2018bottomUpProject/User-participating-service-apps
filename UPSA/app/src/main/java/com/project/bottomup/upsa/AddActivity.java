@@ -1,16 +1,24 @@
 package com.project.bottomup.upsa;
 
-import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
-public class AddActivity extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
+public class AddActivity extends AppCompatActivity implements OnMapReadyCallback{
     //툴바 생성
     Toolbar toolbar;
+    //지도 관리
+    protected GoogleMap map;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +34,19 @@ public class AddActivity extends AppCompatActivity {
                  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                  getSupportActionBar().setDisplayShowHomeEnabled(true);
               }
-        }
+
+          //지도 불러오기
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
+            mapFragment.getMapAsync(this);
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(37.56, 126.97))); //서울로 초기위치 설정
+        map.animateCamera(CameraUpdateFactory.zoomTo(15));
+    }
 
     // 메뉴에 대한 메서드
     @Override

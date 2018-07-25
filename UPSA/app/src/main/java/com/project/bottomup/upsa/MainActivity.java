@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -110,7 +109,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         b1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "정보 등록", Toast.LENGTH_SHORT).show();
                 Intent intent=new Intent(MainActivity.this,AddActivity.class);
                 startActivity(intent);
             }

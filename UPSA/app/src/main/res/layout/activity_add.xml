@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -15,4 +15,47 @@
         android:elevation="4dp"
         app:theme="@style/ThemeOverlay.AppCompat.Dark"/>
 
-</LinearLayout>
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/addmap"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:layout_width="260dp"
+        android:layout_height="50dp"
+        android:id="@+id/locationput"
+        android:layout_centerHorizontal="true"
+        android:hint="장소 위치를 입력해주세요"
+        android:layout_alignLeft="@+id/nameput"
+        android:layout_below="@+id/addmap"/>
+
+    <Button
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:id="@+id/gpsbutton"
+        android:text="gps"
+        android:layout_alignBottom="@+id/locationput"
+        android:layout_toRightOf="@+id/locationput" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/nameput"
+        android:layout_centerHorizontal="true"
+        android:hint="장소 이름을 입력해주세요"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/locationput" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:id="@+id/telput"
+        android:layout_centerHorizontal="true"
+        android:hint="전화번호를 입력해주세요"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/nameput"/>
+
+</RelativeLayout>
