@@ -37,10 +37,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!-- IntroActivity만 액션바 삭제 -->
         <activity
-            android:name=".IntroActivity"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:name=".IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -48,6 +46,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".MainActivity" />
+        <activity android:name=".AddActivity" />
 
         <!-- 구글 지도 사용을 위한 API key -->
         <meta-data
