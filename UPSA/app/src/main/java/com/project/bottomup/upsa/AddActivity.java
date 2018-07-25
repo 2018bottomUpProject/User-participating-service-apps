@@ -16,6 +16,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 public class AddActivity extends AppCompatActivity implements OnMapReadyCallback{
     //툴바 생성
@@ -79,6 +80,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         map = googleMap;
+        map.addMarker(new MarkerOptions().position(new LatLng(currentlat, currentlng))).showInfoWindow();
         map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(currentlat, currentlng)));
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
     }

@@ -24,29 +24,12 @@
         android:layout_centerHorizontal="true"/>
 
     <EditText
-        android:layout_width="260dp"
-        android:layout_height="50dp"
-        android:id="@+id/locationput"
-        android:layout_centerHorizontal="true"
-        android:hint="장소 위치를 입력해주세요"
-        android:layout_alignLeft="@+id/nameput"
-        android:layout_below="@+id/addmap"/>
-
-    <Button
-        android:layout_width="60dp"
-        android:layout_height="50dp"
-        android:id="@+id/gpsbutton"
-        android:text="gps"
-        android:layout_alignBottom="@+id/locationput"
-        android:layout_toRightOf="@+id/locationput" />
-
-    <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:id="@+id/nameput"
         android:layout_centerHorizontal="true"
         android:hint="장소 이름을 입력해주세요"
-        android:layout_below="@+id/locationput" />
+        android:layout_below="@+id/addmap" />
 
     <EditText
         android:layout_width="300dp"

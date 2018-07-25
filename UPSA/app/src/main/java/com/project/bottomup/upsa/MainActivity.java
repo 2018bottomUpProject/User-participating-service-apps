@@ -1,10 +1,12 @@
 package com.project.bottomup.upsa;
 
 import android.Manifest;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -47,7 +49,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener{
     // 구글 서버로 부터 받아온 데이터를 저장할 리스트
     ArrayList<Double> lat_list; //위도
     ArrayList<Double> lng_list; //경도
@@ -74,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     // 지도 관리
     protected GoogleMap map;
     LatLng position = new LatLng(37.56, 126.97); //초기설정(서울)37.56, 126.97
+    LatLng Clickgps;
 
     //툴바 생성
     Toolbar toolbar;
@@ -105,16 +108,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         checkPermission();
 
-        Button b1=findViewById(R.id.addButton);
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent=new Intent(MainActivity.this,AddActivity.class);
-                intent.putExtra("현재lat",myLocation.getLatitude());
-                intent.putExtra("현재lng",myLocation.getLongitude());
-                startActivity(intent);
-            }
-            });
     }
 
     @Override
@@ -122,6 +115,46 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map = googleMap;
         map.moveCamera(CameraUpdateFactory.newLatLng(position)); //서울로 초기위치 설정
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
+
+        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+            @Override
+            public void onMapLongClick(LatLng latLng) {
+                Point screenPt = map.getProjection().toScreenLocation(latLng);
+                Clickgps = map.getProjection().fromScreenLocation(screenPt);
+
+                MarkerOptions markerOptions = new MarkerOptions();
+                //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.)); //아이콘 변경
+                markerOptions.position(latLng); //마커위치설정
+                markerOptions.title("장소를 등록해주세요");
+                map.clear(); //맵 초기화
+                map.animateCamera(CameraUpdateFactory.newLatLng(latLng));   // 마커생성위치로 이동
+                map.addMarker(markerOptions); //마커 생성
+                show();
+            }
+        });
+    }
+
+    void show()
+    {
+        DialogFragment newFragment = new AddDialogFragment();
+        newFragment.show(getFragmentManager(), "dialog"); //"dialog"라는 태그를 갖는 프래그먼트를 보여준다.
+    }
+
+    @Override
+    public void onInputedData(String admit) {
+        //DialogFragment에서 OK했을 때
+        if(admit == "OK") {
+            Toast.makeText(this, admit, Toast.LENGTH_LONG).show();
+            Intent intent = new Intent(MainActivity.this, AddActivity.class);
+            intent.putExtra("현재lat", Clickgps.latitude);
+            intent.putExtra("현재lng", Clickgps.longitude);
+            startActivity(intent);
+        }
+        //DialogFragment에서 NO했을 때
+        else if(admit == "NO"){
+            Toast.makeText(this, admit, Toast.LENGTH_LONG).show();
+        }
+        map.clear();
     }
 
     public final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
