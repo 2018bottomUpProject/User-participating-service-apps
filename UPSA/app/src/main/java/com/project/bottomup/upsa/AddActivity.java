@@ -1,16 +1,30 @@
 package com.project.bottomup.upsa;
 
-import android.graphics.Color;
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 
-public class AddActivity extends AppCompatActivity {
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+public class AddActivity extends AppCompatActivity implements OnMapReadyCallback{
     //툴바 생성
     Toolbar toolbar;
+    //지도 관리
+    protected GoogleMap map;
+    double currentlat;
+    double currentlng;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +40,50 @@ public class AddActivity extends AppCompatActivity {
                  getSupportActionBar().setDisplayHomeAsUpEnabled(true);
                  getSupportActionBar().setDisplayShowHomeEnabled(true);
               }
-        }
+
+            Intent intent=getIntent();
+            currentlat=intent.getDoubleExtra("현재lat",37.56);
+            currentlng=intent.getDoubleExtra("현재lng",126.97);
+
+            //지도 불러오기
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
+            mapFragment.getMapAsync(this);
+
+            Button button1 = findViewById(R.id.button1);
+            Button button2 = findViewById(R.id.button2);
+            Button button3 = findViewById(R.id.button3);
+
+            button1.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //프래그먼트 교체
+                    getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddInfoFragment()).commit();
+                }
+            });
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //프래그먼트 교체
+                getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddCategoryFragment()).commit();
+            }
+        });
+        button3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //프래그먼트 교체
+                getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddReviewFragment()).commit();
+            }
+        });
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+        map = googleMap;
+        map.addMarker(new MarkerOptions().position(new LatLng(currentlat, currentlng))).showInfoWindow();
+        map.moveCamera(CameraUpdateFactory.newLatLng(new LatLng(currentlat, currentlng)));
+        map.animateCamera(CameraUpdateFactory.zoomTo(15));
+    }
 
     // 메뉴에 대한 메서드
     @Override
@@ -35,6 +92,7 @@ public class AddActivity extends AppCompatActivity {
         inflater.inflate(R.menu.menu_add, menu);
         return true;
     }
+
     // 메뉴 항목을 터치하면 호출되는 메서드
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
