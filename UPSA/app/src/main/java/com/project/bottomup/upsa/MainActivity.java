@@ -127,7 +127,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 markerOptions.position(latLng); //마커위치설정
                 markerOptions.title("장소를 등록해주세요");
                 map.clear(); //맵 초기화
-                map.animateCamera(CameraUpdateFactory.newLatLng(latLng));   // 마커생성위치로 이동
                 map.addMarker(markerOptions); //마커 생성
                 show();
             }
