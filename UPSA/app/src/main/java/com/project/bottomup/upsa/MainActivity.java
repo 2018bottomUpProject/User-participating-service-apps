@@ -110,6 +110,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             @Override
             public void onClick(View view) {
                 Intent intent=new Intent(MainActivity.this,AddActivity.class);
+                intent.putExtra("현재lat",myLocation.getLatitude());
+                intent.putExtra("현재lng",myLocation.getLongitude());
                 startActivity(intent);
             }
             });
@@ -251,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             return;
         }
         map.setMyLocationEnabled(true);
+        map.animateCamera(CameraUpdateFactory.zoomTo(15));
         // 지도 모드 변경
         map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
         }
