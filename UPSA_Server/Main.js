@@ -12,10 +12,11 @@ let startDummyServer = true;
 let port = 8080;
 
 DB.init();
-process.on("SIGINT", async function () {
+let sigint_func = async function() {
     await DB.close();
     process.exit();
-});
+};
+process.on("SIGINT", sigint_func);
 
 let server;
 if(startDummyServer) {
