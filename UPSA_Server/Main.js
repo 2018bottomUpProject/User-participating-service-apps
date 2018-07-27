@@ -2,7 +2,8 @@
 let http = require('http');
 let https = require('https');
 
-let DB = require("./DBConnector.js");
+
+//let DB = require("./DBConnector.js");
 let Dummyapp = require('./Dummyapp');
 let app;
 
@@ -10,14 +11,6 @@ let app;
 let startDummyServer = true;
 
 let port = 8080;
-
-DB.init();
-let sigint_func = async function() {
-    await DB.close();
-    process.exit();
-};
-process.on("SIGINT", sigint_func);
-
 let server;
 if(startDummyServer) {
     /* Dummy HTTP server open                      *
@@ -29,7 +22,14 @@ if(startDummyServer) {
     server.on('error', onError);
     server.on('listening', onListening);
 }
-else{
+else{    
+    DB.init();
+    let sigint_func = function() {
+        DB.close();
+        process.exit();
+    };
+    process.on("SIGINT", sigint_func);
+
 
 }
 
@@ -61,7 +61,7 @@ function onError(error) {
 /**
  * Event listener for HTTP server "listening" event.
  */
-
+let debug = require('debug');
 function onListening() {
     let addr = server.address();
     let bind = typeof addr === 'string'

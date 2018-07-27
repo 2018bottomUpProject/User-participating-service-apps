@@ -1,6 +1,8 @@
 "use strict";
 let express = require("express");
 let app = express();
+let hbs = require("express-hbs");
+let path = require('path');
 
 let document_router = require("./Dummyapp/router/PLACE/Document");
 let location_router = require("./Dummyapp/router/PLACE/Location");
@@ -9,6 +11,9 @@ let review_router = require("./Dummyapp/router/PLACE/Review");
 
 let permission_router = require("./Dummyapp/router/USER/Permission");
 let user_router = require("./Dummyapp/router/USER/User");
+
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
 
 app.use('/document', document_router);
 app.use('/location', location_router);
