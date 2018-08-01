@@ -50,31 +50,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
             mapFragment.getMapAsync(this);
 
-            Button button1 = findViewById(R.id.button1);
-            Button button2 = findViewById(R.id.button2);
-            Button button3 = findViewById(R.id.button3);
-
-            button1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    //프래그먼트 교체
-                    getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddInfoFragment()).commit();
-                }
-            });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //프래그먼트 교체
-                getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddCategoryFragment()).commit();
-            }
-        });
-        button3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //프래그먼트 교체
-                getSupportFragmentManager().beginTransaction().replace(R.id.childfragment, new AddReviewFragment()).commit();
-            }
-        });
     }
 
     @Override

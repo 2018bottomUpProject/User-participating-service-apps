@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 
 public class AddInfoFragment extends Fragment {
@@ -16,6 +17,16 @@ public class AddInfoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_add_info, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_add_info, container, false);
+
+        Button button2 = (Button) rootView.findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //프래그먼트 교체
+                getFragmentManager().beginTransaction().replace(R.id.childfragment, new AddReviewFragment()).commit();
+            }
+        });
+        return rootView;
     }
 }
