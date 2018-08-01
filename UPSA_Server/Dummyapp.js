@@ -18,7 +18,7 @@ app.set('view engine', 'hbs');
 app.use('/document', document_router);
 app.use('/location', location_router);
 app.use('/log', log_router);
-app.use('review', review_router);
+app.use('/review', review_router);
 
 app.use('/permission', permission_router);
 app.use('/user', user_router);
