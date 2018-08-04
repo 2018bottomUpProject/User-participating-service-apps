@@ -2,14 +2,14 @@ package com.project.bottomup.upsa;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -18,13 +18,18 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class AddActivity extends AppCompatActivity implements OnMapReadyCallback{
+public class AddActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable{
     //툴바 생성
     Toolbar toolbar;
     //지도 관리
     protected GoogleMap map;
     double currentlat;
     double currentlng;
+
+    //프래그먼트 관리
+    private Fragment categoryFragment;
+    private Fragment infoFragment;
+    private Fragment reviewFragment;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -50,6 +55,10 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
             mapFragment.getMapAsync(this);
 
+            categoryFragment = new AddCategoryFragment();
+            infoFragment = new AddInfoFragment();
+            reviewFragment = new AddReviewFragment();
+            setDefaultFragment();
     }
 
     @Override
@@ -82,6 +91,30 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                 break;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    //초기 프래그먼트 설정하는 메서드
+    public void setDefaultFragment() {
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        //첫번째로 보여지는 fragment는 categoryFragment로 설정
+        transaction.add(R.id.childfragment, categoryFragment);
+        transaction.commit();
+    }
+
+    //프래그먼트 변경하는 메서드
+    @Override
+    public void replaceFragment(int fragmentId){
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        if( fragmentId == 2 ) {
+            transaction.replace(R.id.childfragment, infoFragment);
+        }
+        else if( fragmentId == 3 ) {
+            transaction.replace(R.id.childfragment, reviewFragment);
+        }
+        //Back 버튼 클릭 시 이전 프래그먼트로 이동
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 
 }

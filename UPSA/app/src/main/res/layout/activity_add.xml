@@ -53,7 +53,7 @@
             android:paddingRight="5px" >
 
             <fragment
-                android:name="com.project.bottomup.upsa.AddCategoryFragment"
+                android:name="com.project.bottomup.upsa.InitFragment"
                 android:layout_width="match_parent"
                 android:layout_height="300dip"
                 android:id="@+id/childfragment"
