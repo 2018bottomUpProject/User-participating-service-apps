@@ -26,11 +26,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     double currentlat;
     double currentlng;
 
-    //프래그먼트 관리
-    private Fragment categoryFragment;
-    private Fragment infoFragment;
-    private Fragment reviewFragment;
-
     @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -54,10 +49,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             FragmentManager fragmentManager = getSupportFragmentManager();
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
             mapFragment.getMapAsync(this);
-
-            categoryFragment = new AddCategoryFragment();
-            infoFragment = new AddInfoFragment();
-            reviewFragment = new AddReviewFragment();
             setDefaultFragment();
     }
 
@@ -97,19 +88,22 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     public void setDefaultFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         //첫번째로 보여지는 fragment는 categoryFragment로 설정
-        transaction.add(R.id.childfragment, categoryFragment);
+        transaction.add(R.id.childfragment, new AddCategoryFragment());
         transaction.commit();
     }
 
     //프래그먼트 변경하는 메서드
     @Override
-    public void replaceFragment(int fragmentId){
+    public void replaceFragment(String fragmentId){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if( fragmentId == 2 ) {
-            transaction.replace(R.id.childfragment, infoFragment);
+        if( fragmentId == "review" ) {
+            transaction.replace(R.id.childfragment, new AddReviewFragment());
         }
-        else if( fragmentId == 3 ) {
-            transaction.replace(R.id.childfragment, reviewFragment);
+        else if( fragmentId == "cafe" ) {
+            transaction.replace(R.id.childfragment, new AddCafeFragment());
+        }
+        if( fragmentId == "park" ) {
+            transaction.replace(R.id.childfragment, new AddParkFragment());
         }
         //Back 버튼 클릭 시 이전 프래그먼트로 이동
         transaction.addToBackStack(null);
