@@ -18,7 +18,7 @@ router.get('/', function(req, res, next) {
     });
 });
 router.post('/', function(req, res, next){
-    res.render('API/PLACE/review', {
+    res.render('API/PLACE/review', {  
         data: "OK"
     });
 });

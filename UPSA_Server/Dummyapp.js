@@ -5,7 +5,8 @@ let hbs = require("express-hbs");
 let path = require('path');
 
 let document_router = require("./Dummyapp/router/PLACE/Document");
-let location_router = require("./Dummyapp/router/PLACE/Location");
+let locationfg_router = require("./Dummyapp/router/PLACE/LocationFG");
+let locationbg_router = require("./Dummyapp/router/PLACE/LocationBG");
 let log_router = require("./Dummyapp/router/PLACE/Log");
 let review_router = require("./Dummyapp/router/PLACE/Review");
 
@@ -16,7 +17,8 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use('/document', document_router);
-app.use('/location', location_router);
+app.use('/locationfg', locationfg_router);
+app.use('/locationbg', locationbg_router);
 app.use('/log', log_router);
 app.use('/review', review_router);
 
