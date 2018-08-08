@@ -14,4 +14,5 @@ UPSA_Server/.ipynb_checkpoints
 ##########
 
 # node_modules (dependency) #
-UPSA_Server/node_modules/*
+UPSA_Server/node_modules
+node_modules
