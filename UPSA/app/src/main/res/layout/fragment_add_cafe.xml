@@ -84,7 +84,7 @@
 
         <EditText
             android:layout_width="350dp"
-            android:layout_height="150dp"
+            android:layout_height="500dp"
             android:id="@+id/editText"
             android:hint="휴무일, 블로그URL 등의 부가정보를 입력해주세요. 정확한 정보를 알려주시면 등록에 도움이 됩니다."
             android:textSize="15dp"
@@ -96,12 +96,16 @@
             android:cursorVisible="true"
             android:background="@drawable/back"
             />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_below="@+id/editText"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/editText"
+            android:layout_alignEnd="@+id/editText"
+            android:text="리뷰등록"/>
     </RelativeLayout>
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:text="리뷰등록"/>
 </FrameLayout>
