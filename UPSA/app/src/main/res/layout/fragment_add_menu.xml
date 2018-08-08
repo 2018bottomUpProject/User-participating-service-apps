@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp" >
+
+    <TextView
+        android:id="@+id/menuName_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이름"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/menuNameText"
+        android:cursorVisible="true"
+        android:layout_toRightOf="@+id/menuName_textview"/>
+
+    <TextView
+        android:id="@+id/menuPrice_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/menuNameText"
+        android:layout_marginTop="20dp"
+        android:text="가격"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:id="@+id/menuPriceText"
+        android:cursorVisible="true"
+        android:layout_below="@+id/menuNameText"
+        android:layout_toRightOf="@+id/menuPrice_textview"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/MenuPriceText"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+    </LinearLayout>
+</RelativeLayout>
