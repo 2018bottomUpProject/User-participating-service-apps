@@ -55,6 +55,7 @@ public class AddMenuFragment extends DialogFragment {
                                     }
                                 }catch(Exception e){
                                     Log.i("AddMenu","inputError");
+                                    e.printStackTrace();
                                     Toast.makeText(getActivity(),"이름(또는 가격)을 입력하지 않으셨습니다.",Toast.LENGTH_LONG).show();
                                 }
                             }
