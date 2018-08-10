@@ -1,16 +1,21 @@
 package com.project.bottomup.upsa;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class AddCafeFragment extends Fragment{
     private CheckBox cb1; //화장실
@@ -19,6 +24,11 @@ public class AddCafeFragment extends Fragment{
 
     private CheckBox cb2; //주차 공간
     private CheckBox cb2_1; //유료? 무료?
+
+    //메뉴 정보 관리
+    ArrayList<MenuInfo> menuInfo = new ArrayList<>();
+    ArrayList<TextView> menuText = new ArrayList<>();
+    private LinearLayout textContainer;
 
     @Nullable
     @Override
@@ -71,6 +81,8 @@ public class AddCafeFragment extends Fragment{
         });
 
         //메뉴 추가 버튼 클릭했을 때 이벤트
+        textContainer = (LinearLayout) rootView.findViewById(R.id.printContainer);
+
         Button button_c1 = (Button) rootView.findViewById(R.id.cafe_btn1);
         button_c1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,11 +91,32 @@ public class AddCafeFragment extends Fragment{
                 Log.i("AddCafe","addmenu_click");
                 AddMenuFragment dialog = AddMenuFragment.newInstance(new AddMenuFragment.MenuInputListener() {
                     @Override
-                    public void onMenuInputComplete(String name, String price) {
-                        if(name!=null){
-                            Log.i("AddCafe","addmenu_click_success");
-                            Toast.makeText(getActivity(),"name은"+name+", price는"+price,Toast.LENGTH_LONG).show();
+                    public void onMenuInputComplete(String name, int price) {
+                        Log.i("AddCafe","name은"+name+", price는"+price);
+                        menuInfo.add(new MenuInfo(name,price));
+                        Log.i("AddCafe","size="+menuInfo.size());
+
+                        //입력된 메뉴 array에 담기
+                        for(int i=0;i<menuInfo.size();i++){
+                            //TextView 생성
+                            TextView temp  = new TextView(getActivity());
+                            temp.setText("이름- "+menuInfo.get(i).getName()+"     가격- "+menuInfo.get(i).getPrice()+"\n");
+                            temp.setTextSize(10);
+                            temp.setTextColor(Color.BLACK);
+
+                            //layout_width, layout_height, gravity 설정
+                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                            lp.gravity = Gravity.CENTER;
+                            temp.setLayoutParams(lp);
+
+                            menuText.add(temp);
+                            Log.i("AddCafe","size="+menuText.size());
                         }
+                        //부모 뷰에 추가
+                        for(int i=0;i<menuText.size();i++) {
+                            textContainer.addView(menuText.get(i));
+                        }
+
                     }
                 });
                 dialog.show(getFragmentManager(), "menu");

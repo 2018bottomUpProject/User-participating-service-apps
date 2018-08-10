@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 
 public class AddMenuFragment extends DialogFragment {
@@ -27,7 +29,7 @@ public class AddMenuFragment extends DialogFragment {
 
     public interface MenuInputListener
     {
-        void onMenuInputComplete(String name, String price);
+        void onMenuInputComplete(String name, int price);
     }
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState)
@@ -44,9 +46,19 @@ public class AddMenuFragment extends DialogFragment {
                             @Override
                             public void onClick(DialogInterface dialog, int id)
                             {
-                                listener.onMenuInputComplete(menuName
-                                        .getText().toString(), menuPrice.getText().toString());
+                                try{
+                                    if(menuName.getText().length()>0 && menuPrice.getText().length()>0) {
+                                        listener.onMenuInputComplete(menuName
+                                                .getText().toString(), Integer.parseInt(menuPrice.getText().toString()));
+                                    }else{
+                                        throw new Exception();
+                                    }
+                                }catch(Exception e){
+                                    Log.i("AddMenu","inputError");
+                                    Toast.makeText(getActivity(),"이름(또는 가격)을 입력하지 않으셨습니다.",Toast.LENGTH_LONG).show();
+                                }
                             }
+
                         }).setNegativeButton("취소", null);
         return builder.create();
     }

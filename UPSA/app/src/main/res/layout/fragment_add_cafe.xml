@@ -82,6 +82,14 @@
                 <!--android:text="사진 첨부"/>-->
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/printContainer"
+            android:layout_below="@+id/cafe_layout"
+            android:orientation="horizontal" >
+        </LinearLayout>
+
         <EditText
             android:layout_width="350dp"
             android:layout_height="500dp"
@@ -92,7 +100,7 @@
             android:ems="10"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true"
-            android:layout_below="@+id/cafe_layout"
+            android:layout_below="@+id/printContainer"
             android:cursorVisible="true"
             android:background="@drawable/back"
             />

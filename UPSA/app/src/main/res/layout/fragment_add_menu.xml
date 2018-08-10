@@ -33,7 +33,10 @@
         android:layout_height="50dp"
         android:id="@+id/menuPriceText"
         android:cursorVisible="true"
+        android:inputType="number"
+        android:digits="0123456789"
         android:layout_below="@+id/menuNameText"
+        android:layout_marginTop="5dp"
         android:layout_toRightOf="@+id/menuPrice_textview"/>
 
     <LinearLayout
