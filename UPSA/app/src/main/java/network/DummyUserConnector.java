@@ -9,27 +9,35 @@ import org.json.JSONObject;
  */
 
 public class DummyUserConnector implements NetworkUserInterface {
+    public static final String DEVICEID = "deviceid";
+    public static final String PLACEID = "placeid";
     @Override
-    public int getPermission(String id, String placeId) {
+    public int getPermission(String deviceId, String placeId) {
         /*
         placeId는 fyco2qyqweiuc923이어야 하며,
         id의 길이에 따라 퍼미션이 나옴(예 : asdf->퍼미션 4)
          */
-        if(id.length()>5)
-            return 1;
-        if(placeId.equals("fyco2qyqweiuc923")){
-            return id.length();
+        if(placeId.equals(PLACEID)){
+            return deviceId.length();
         }
         return 1;
     }
 
     @Override
-    public JSONObject getUser(String deviceId) {
-        return null;
+    public boolean getUser(String deviceId) {
+        if(DEVICEID.equals(deviceId)){
+            return true;
+        }
+        return false;
     }
 
     @Override
-    public JSONObject newUser(String deviceId) {
-        return null;
+    public boolean newUser(String deviceId) {
+        return true;
+    }
+
+    @Override
+    public boolean deleteUser(String deviceId){
+        return true;
     }
 }

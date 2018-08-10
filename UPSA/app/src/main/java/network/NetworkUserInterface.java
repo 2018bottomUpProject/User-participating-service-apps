@@ -7,8 +7,9 @@ import org.json.JSONObject;
  */
 
 public interface NetworkUserInterface {
-    public int getPermission(String id, String placeId);//유저 권한 받아오기
+    public int getPermission(String deviceId, String placeId);//유저 권한 받아오기
 
-    public JSONObject getUser(String deviceId);//유저 로그인
-    public JSONObject newUser(String deviceId);//새로운 유저 생성
+    public boolean getUser(String deviceId);//유저 로그인
+    public boolean newUser(String deviceId);//새로운 유저 생성
+    public boolean deleteUser(String deviceId);
 }
