@@ -6,10 +6,20 @@
     android:background="#FFFFFF"
     tools:context=".AddReviewFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="장소리뷰등록 프래그먼트" />
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="500dp"
+        android:id="@+id/editText"
+        android:hint="해당 장소에 대한 리뷰를 입력해주세요."
+        android:textSize="15dp"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:ems="10"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:cursorVisible="true"
+        android:background="@drawable/back"
+        />
 
 </FrameLayout>

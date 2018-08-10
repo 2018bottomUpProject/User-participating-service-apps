@@ -1,19 +1,20 @@
 package com.project.bottomup.upsa;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.Gravity;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -26,10 +27,8 @@ public class AddCafeFragment extends Fragment{
     private CheckBox cb2_1; //유료? 무료?
 
     //메뉴 정보 관리
-    ArrayList<MenuInfo> menuInfo = new ArrayList<>();
-    ArrayList<TextView> menuText = new ArrayList<>();
-    private LinearLayout textContainer;
-
+    final ArrayList<MenuInfo> menuInfo = new ArrayList<>();
+    final ArrayList<String> menuPrint = new ArrayList<>();
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -80,46 +79,76 @@ public class AddCafeFragment extends Fragment{
             }
         });
 
-        //메뉴 추가 버튼 클릭했을 때 이벤트
-        textContainer = (LinearLayout) rootView.findViewById(R.id.printContainer);
+        // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
+        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_multiple_choice,menuPrint);
 
+        // listView 생성 및 adapter 지정
+        final ListView listview = (ListView)rootView.findViewById(R.id.printContainer) ;
+        listview.setAdapter(adapter);
+        listview.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+
+        listview.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View view, MotionEvent motionEvent) {
+                listview.requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+
+        //메뉴 추가 버튼 클릭했을 때 이벤트
         Button button_c1 = (Button) rootView.findViewById(R.id.cafe_btn1);
         button_c1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //다이어로그
+                //다이얼로그
                 Log.i("AddCafe","addmenu_click");
+
                 AddMenuFragment dialog = AddMenuFragment.newInstance(new AddMenuFragment.MenuInputListener() {
                     @Override
                     public void onMenuInputComplete(String name, int price) {
                         Log.i("AddCafe","name은"+name+", price는"+price);
-                        menuInfo.add(new MenuInfo(name,price));
-                        Log.i("AddCafe","size="+menuInfo.size());
 
-                        //입력된 메뉴 array에 담기
-                        for(int i=0;i<menuInfo.size();i++){
-                            //TextView 생성
-                            TextView temp  = new TextView(getActivity());
-                            temp.setText("이름- "+menuInfo.get(i).getName()+"     가격- "+menuInfo.get(i).getPrice()+"\n");
-                            temp.setTextSize(10);
-                            temp.setTextColor(Color.BLACK);
+                        MenuInfo temp1 = new MenuInfo(name,price);
+                        menuInfo.add(temp1);
+                        menuPrint.add(name+"     :     "+price);
+                        Log.i("AddCafe","add_menuSize="+menuInfo.size());
+                        Log.i("AddCafe","add_printSize="+menuPrint.size());
 
-                            //layout_width, layout_height, gravity 설정
-                            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-                            lp.gravity = Gravity.CENTER;
-                            temp.setLayoutParams(lp);
-
-                            menuText.add(temp);
-                            Log.i("AddCafe","size="+menuText.size());
-                        }
-                        //부모 뷰에 추가
-                        for(int i=0;i<menuText.size();i++) {
-                            textContainer.addView(menuText.get(i));
-                        }
-
+                        // listview 갱신
+                        adapter.notifyDataSetChanged();
                     }
                 });
                 dialog.show(getFragmentManager(), "menu");
+            }
+        });
+
+        //메뉴 삭제 버튼을 클릭했을 때 이벤트
+        Button button_c2 = (Button) rootView.findViewById(R.id.cafe_btn2);
+        button_c2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
+                int count = adapter.getCount();
+
+                try {
+                    for (int i = count - 1; i >= 0; i--) {
+                        if (checkedItems.get(i)) {
+                            menuInfo.remove(i);
+                            menuPrint.remove(i);
+                        }
+                    }
+                    Log.i("AddCafe","delete_menuSize="+menuInfo.size());
+                    Log.i("AddCafe","delete_printSize="+menuPrint.size());
+                    // 모든 선택 상태 초기화.
+                    listview.clearChoices();
+                    // listview 갱신
+                    adapter.notifyDataSetChanged();
+
+                }catch(Exception e){
+                    Log.i("AddCafe","deleteError");
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(),"삭제할 메뉴가 없습니다.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 

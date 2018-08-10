@@ -1,17 +1,13 @@
 package com.project.bottomup.upsa;
 
 import android.app.Dialog;
-import android.content.Context;
 import android.content.DialogInterface;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -55,6 +51,7 @@ public class AddMenuFragment extends DialogFragment {
                                     }
                                 }catch(Exception e){
                                     Log.i("AddMenu","inputError");
+                                    e.printStackTrace();
                                     Toast.makeText(getActivity(),"이름(또는 가격)을 입력하지 않으셨습니다.",Toast.LENGTH_LONG).show();
                                 }
                             }
