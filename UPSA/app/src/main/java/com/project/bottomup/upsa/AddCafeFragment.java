@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
+import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.widget.LinearLayout;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -114,26 +116,44 @@ public class AddCafeFragment extends Fragment{
                         MenuInfo temp1 = new MenuInfo(name,price);
                         menuInfo.add(temp1);
                         menuPrint.add(name+"     :     "+price);
-                        Log.i("AddCafe","menuSize="+menuInfo.size());
-                        Log.i("AddCafe","printSize="+menuPrint.size());
+                        Log.i("AddCafe","add_menuSize="+menuInfo.size());
+                        Log.i("AddCafe","add_printSize="+menuPrint.size());
 
                         // listview 갱신
                         adapter.notifyDataSetChanged();
-
-//                        //입력된 메뉴 array에 담기
-//                        //TextView 생성
-//                        TextView temp2  = new TextView(getActivity());
-//                        temp2.setText("이름- "+temp1.getName()+",     가격- "+temp1.getPrice()+"\n");
-//                        temp2.setTextSize(20);
-//                        temp2.setTextColor(Color.BLACK);
-//
-//                        //layout_width, layout_height 설정
-//                        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//                        temp2.setLayoutParams(lp);
-
                     }
                 });
                 dialog.show(getFragmentManager(), "menu");
+            }
+        });
+
+        //메뉴 삭제 버튼을 클릭했을 때 이벤트
+        Button button_c2 = (Button) rootView.findViewById(R.id.cafe_btn2);
+        button_c2.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                SparseBooleanArray checkedItems = listview.getCheckedItemPositions();
+                int count = adapter.getCount();
+
+                try {
+                    for (int i = count - 1; i >= 0; i--) {
+                        if (checkedItems.get(i)) {
+                            menuInfo.remove(i);
+                            menuPrint.remove(i);
+                        }
+                    }
+                    Log.i("AddCafe","delete_menuSize="+menuInfo.size());
+                    Log.i("AddCafe","delete_printSize="+menuPrint.size());
+                    // 모든 선택 상태 초기화.
+                    listview.clearChoices();
+                    // listview 갱신
+                    adapter.notifyDataSetChanged();
+
+                }catch(Exception e){
+                    Log.i("AddCafe","deleteError");
+                    e.printStackTrace();
+                    Toast.makeText(getActivity(),"삭제할 메뉴가 없습니다.",Toast.LENGTH_LONG).show();
+                }
             }
         });
 
