@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="300dp"
         android:layout_height="500dp"
-        android:id="@+id/editText"
+        android:id="@+id/ReEditText"
         android:hint="해당 장소에 대한 리뷰를 입력해주세요."
         android:textSize="15dp"
         android:inputType="textMultiLine|textNoSuggestions"

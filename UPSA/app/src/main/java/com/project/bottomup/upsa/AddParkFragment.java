@@ -1,8 +1,11 @@
 package com.project.bottomup.upsa;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +13,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 
 public class AddParkFragment extends Fragment {
     private CheckBox cb1; //화장실
@@ -18,6 +22,23 @@ public class AddParkFragment extends Fragment {
 
     private CheckBox cb2; //주차 공간
     private CheckBox cb2_1; //유료? 무료?
+
+    private OnApplySelectedListener onApplySelectedListener;
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(context instanceof OnApplySelectedListener){
+            onApplySelectedListener = (OnApplySelectedListener) context;
+        }else{
+            throw new RuntimeException(context.toString()+"must implement OnApplySelectedListener");
+        }
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        onApplySelectedListener=null;
+    }
 
     @Nullable
     @Override
@@ -36,6 +57,7 @@ public class AddParkFragment extends Fragment {
 
         final CheckBox[] toilet = {cb1,cb1_1,cb1_2};
         final CheckBox[] parking = {cb2,cb2_1};
+        onApplySelectedListener.postPlaceCheck(toilet,parking);
 
         //화장실에 대한 세부 정보 체크
         cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -50,6 +72,7 @@ public class AddParkFragment extends Fragment {
                         toilet[i].setVisibility(View.GONE);
                     }
                 }
+                onApplySelectedListener.postPlaceCheck(toilet,parking);
             }
         });
 
@@ -65,6 +88,31 @@ public class AddParkFragment extends Fragment {
                         parking[i].setChecked(false);
                         parking[i].setVisibility(View.GONE);
                     }
+                }
+                onApplySelectedListener.postPlaceCheck(toilet,parking);
+            }
+        });
+
+        //editText 내용 가져오기
+        EditText editText = (EditText) rootView.getRootView().findViewById(R.id.ParkEditText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //입력하기 전에
+                //장소 정보 보내기
+                onApplySelectedListener.postPlaceInfo("initial");
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //입력되는 텍스트에 변화가 있을 때
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //입력이 끝났을 때
+                String extraContent=editable.toString();
+                if(extraContent.length()>0){
+                    //장소 정보 보내기
+                    onApplySelectedListener.postPlaceInfo(extraContent);
                 }
             }
         });

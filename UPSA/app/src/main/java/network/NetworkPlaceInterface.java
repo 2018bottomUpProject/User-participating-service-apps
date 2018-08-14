@@ -19,7 +19,7 @@ public interface NetworkPlaceInterface {
 
     public JSONObject getDocument(String placeId);// 문서 받아오기
     public boolean editDocument(String placeId, String userId);//문서 수정하기
-    public boolean newDocument(String placeId, String userId);//새 문서 만들기
+    public boolean newDocument(String placeId, String userId, JSONObject info);//새 문서 만들기
     public boolean delDocument(String placeId, String userId);//문서 삭제 요청하기
 
     public JSONArray getReview(String placeId, int page);//리뷰 받아오기

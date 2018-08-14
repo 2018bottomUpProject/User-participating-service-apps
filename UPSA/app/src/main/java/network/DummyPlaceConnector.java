@@ -76,7 +76,7 @@ public class DummyPlaceConnector implements NetworkPlaceInterface {
     }
 
     @Override
-    public boolean newDocument(String placeId, String userId) {
+    public boolean newDocument(String placeId, String userId, JSONObject info) {
         return true;
     }
 
