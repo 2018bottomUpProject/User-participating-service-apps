@@ -15,7 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/cafe_ch1"
-            android:layout_alignLeft="@+id/editText">
+            android:layout_alignLeft="@+id/CafeEditText">
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
             android:id="@+id/cafe_ch2"
             android:layout_marginTop="15dp"
             android:layout_below="@+id/cafe_ch1"
-            android:layout_alignLeft="@+id/editText">
+            android:layout_alignLeft="@+id/CafeEditText">
             <CheckBox
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -117,7 +117,7 @@
         <EditText
             android:layout_width="350dp"
             android:layout_height="500dp"
-            android:id="@+id/editText"
+            android:id="@+id/CafeEditText"
             android:hint="휴무일, 블로그URL 등의 부가정보를 입력해주세요. 정확한 정보를 알려주시면 등록에 도움이 됩니다."
             android:textSize="15dp"
             android:inputType="textMultiLine|textNoSuggestions"
@@ -131,12 +131,12 @@
 
         <Button
             android:id="@+id/button2"
-            android:layout_below="@+id/editText"
+            android:layout_below="@+id/CafeEditText"
             android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignRight="@+id/editText"
-            android:layout_alignEnd="@+id/editText"
+            android:layout_alignRight="@+id/CafeEditText"
+            android:layout_alignEnd="@+id/CafeEditText"
             android:text="리뷰등록"/>
 
     </RelativeLayout>

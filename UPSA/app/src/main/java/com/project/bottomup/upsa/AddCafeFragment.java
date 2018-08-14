@@ -1,10 +1,11 @@
 package com.project.bottomup.upsa;
 
-import android.graphics.Color;
-import android.icu.util.MeasureUnit;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseBooleanArray;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -31,6 +33,24 @@ public class AddCafeFragment extends Fragment{
     //메뉴 정보 관리
     final ArrayList<MenuInfo> menuInfo = new ArrayList<>();
     final ArrayList<String> menuPrint = new ArrayList<>();
+
+    private OnApplySelectedListener onApplySelectedListener;
+    @Override
+    public void onAttach(Context context){
+        super.onAttach(context);
+        if(context instanceof OnApplySelectedListener){
+            onApplySelectedListener = (OnApplySelectedListener) context;
+        }else{
+            throw new RuntimeException(context.toString()+"must implement OnApplySelectedListener");
+        }
+    }
+
+    @Override
+    public void onDetach(){
+        super.onDetach();
+        onApplySelectedListener=null;
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
@@ -48,6 +68,7 @@ public class AddCafeFragment extends Fragment{
 
         final CheckBox[] toilet = {cb1,cb1_1,cb1_2};
         final CheckBox[] parking = {cb2,cb2_1};
+        onApplySelectedListener.postPlaceCheck(toilet,parking);
 
         //화장실에 대한 세부 정보 체크
         cb1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -62,6 +83,7 @@ public class AddCafeFragment extends Fragment{
                         toilet[i].setVisibility(View.GONE);
                     }
                 }
+                onApplySelectedListener.postPlaceCheck(toilet,parking);
             }
         });
 
@@ -78,6 +100,7 @@ public class AddCafeFragment extends Fragment{
                         parking[i].setVisibility(View.GONE);
                     }
                 }
+                onApplySelectedListener.postPlaceCheck(toilet,parking);
             }
         });
 
@@ -121,6 +144,9 @@ public class AddCafeFragment extends Fragment{
                     }
                 });
                 dialog.show(getFragmentManager(), "menu");
+
+                //바뀐 메뉴 array 전송
+                onApplySelectedListener.postMenuInfo(menuInfo);
             }
         });
 
@@ -146,10 +172,36 @@ public class AddCafeFragment extends Fragment{
                     // listview 갱신
                     adapter.notifyDataSetChanged();
 
+                    //바뀐 메뉴 array 전송
+                    onApplySelectedListener.postMenuInfo(menuInfo);
                 }catch(Exception e){
                     Log.i("AddCafe","deleteError");
                     e.printStackTrace();
                     Toast.makeText(getActivity(),"삭제할 메뉴가 없습니다.",Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        //editText 내용 가져오기
+        EditText editText = (EditText) rootView.getRootView().findViewById(R.id.CafeEditText);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //입력하기 전에
+                //장소 정보 보내기
+                onApplySelectedListener.postPlaceInfo("initial");
+            }
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+                //입력되는 텍스트에 변화가 있을 때
+            }
+            @Override
+            public void afterTextChanged(Editable editable) {
+                //입력이 끝났을 때
+                String extraContent=editable.toString();
+                if(extraContent.length()>0){
+                    //장소 정보 보내기
+                    onApplySelectedListener.postPlaceInfo(extraContent);
                 }
             }
         });
@@ -164,6 +216,7 @@ public class AddCafeFragment extends Fragment{
                 ((FragmentReplacable) getActivity()).replaceFragment("review");
             }
         });
+
         return rootView;
     }
 }
