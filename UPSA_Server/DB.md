@@ -57,4 +57,7 @@ CONSTRAINT fk_userid FOREIGN KEY ( user_id ) REFERENCES User ( _id ) ON DELETE C
 place_id INT NOT NULL,
 CONSTRAINT fk_placeid FOREIGN KEY ( place_id ) REFERENCES Location ( _id ) ON DELETE CASCADE ON UPDATE CASCADE
 stay_time INT,
-
+visited INT,
+permission INT
+)ENGINE=INNODB DEFAULT CHARSET=utf8;
+```
