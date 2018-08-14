@@ -9,7 +9,7 @@ _id INT PRIMARY KEY AUTO_INCREMENT,
 location POINT NOT NULL,
 wifi_list VARCHAR(5000),
 building_name VARCHAR(100),
-place_type CHAR(40),
+place_type CHAR(40)
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
 
@@ -24,7 +24,7 @@ _id INT PRIMARY KEY AUTO_INCREMENT,
 place_id INT NOT NULL,
 CONSTRAINT fk_placeid FOREIGN KEY ( place_id ) REFERENCES Location ( _id ) ON DELETE CASCADE ON UPDATE CASCADE,
 article_id VARCHAR(1000),
-timestamp DATETIME,
+timestamp DATETIME
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
 참고 : [외래키 설정하기](http://kb.globalsoft.co.kr/web/web_view.php?notice_no=315)
@@ -42,7 +42,7 @@ waiting_time INT NOT NULL
 { UserId:(int), UserName:(string)(DeviceId), Password:(OPTION)(string) }
 ```sql
 create table User(
-_id VARCHAR(50) PRIMARY KEY AUTO_INCREMENT,
+_id VARCHAR(50) PRIMARY KEY,
 Password CHAR(130)
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
