@@ -42,20 +42,21 @@ waiting_time INT NOT NULL
 { UserId:(int), UserName:(string)(DeviceId), Password:(OPTION)(string) }
 ```sql
 create table User(
-_id VARCHAR(50) PRIMARY KEY,
+_id CHAR(50) PRIMARY KEY,
 Password CHAR(130)
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
 패스워드 : SHA512 암호화 사용
 
-### H. Table : Permission
+### E. Table : Permission
 { UserId:(int), PlaceId:(int), StayedTime:(int), VisitedTimes:(int), Permission:(int) }
 ```sql
 create table Permission(
-user_id VARCHAR(50) NOT NULL,
+_id INT PRIMARY KEY,
+user_id CHAR(50) NOT NULL,
 CONSTRAINT fk_userid FOREIGN KEY ( user_id ) REFERENCES User ( _id ) ON DELETE CASCADE ON UPDATE CASCADE,
 place_id INT NOT NULL,
-CONSTRAINT fk_placeid FOREIGN KEY ( place_id ) REFERENCES Location ( _id ) ON DELETE CASCADE ON UPDATE CASCADE
+CONSTRAINT fk_placeid FOREIGN KEY ( place_id ) REFERENCES Location ( _id ) ON DELETE CASCADE ON UPDATE CASCADE,
 stay_time INT,
 visited INT,
 permission INT
