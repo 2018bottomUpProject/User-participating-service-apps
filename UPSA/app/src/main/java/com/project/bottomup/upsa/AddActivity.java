@@ -21,6 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
@@ -39,6 +40,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private double currentlat;
     private double currentlng;
     private String placeName;
+    private String placeBuilding;
     private String placeTel;
     private String placeCategory;
     private CheckBox[] placeToilet;
@@ -101,62 +103,87 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
 
             case R.id.menu3 :  // 정보등록
                 try{
-                    //장소 이름, 전화번호 가져오기
+                    //장소 이름, 전화번호, 빌딩이름 가져오기
                     EditText namePut = (EditText)findViewById(R.id.nameput);
                     EditText telPut = (EditText)findViewById(R.id.telput);
+                    EditText buildingPut = (EditText)findViewById(R.id.buildingput);
+
                     if(namePut.getText().length()>0){
                         placeName=namePut.getText().toString();
-                        infoObject.put("이름",placeName);
+                        infoObject.put("PlaceName",placeName);
                     }else{
                         Toast.makeText(this,"이름을 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw new Exception();
                     }
                     if(telPut.getText().length()>0){
                         placeTel=telPut.getText().toString();
-                        infoObject.put("전화번호",placeTel);
+                        infoObject.put("tel",placeTel);
                     }else{
                         Toast.makeText(this,"전화번호를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw new Exception();
                     }
+                    //필수사항 아님
+                    if(buildingPut.getText().length()>0){
+                        placeBuilding=buildingPut.getText().toString();
+                        infoObject.put("building",placeBuilding);
+                    }
 
-                    infoObject.put("위도",currentlat);
-                    infoObject.put("경도",currentlng);
+                    infoObject.put("lat",currentlat);
+                    infoObject.put("lng",currentlng);
 
                     if(placeCategory !=null){
-                        infoObject.put("카테고리",placeCategory);
+                        infoObject.put("PlaceType",placeCategory);
                     }else{
                         Toast.makeText(this,"카테고리를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
                     if(placeMenu!=null && placeMenu.size()>0){
-                        infoObject.put("메뉴정보",placeMenu);
+                        JSONArray postMenu = new JSONArray();
+                        for(int i=0; i<placeMenu.size(); i++){
+                            JSONObject temp = new JSONObject();
+                            temp.put("name",placeMenu.get(i).getName());
+                            temp.put("price",placeMenu.get(i).getPrice());
+                            postMenu.put(i,temp);
+                        }
+                        infoObject.put("menu",postMenu);
                     }else{
                         Toast.makeText(this,"메뉴를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
                     if(placeInfo!="initial" && placeInfo!=null) {
-                        infoObject.put("세부정보", placeInfo);
+                        infoObject.put("info", placeInfo);
                     }else{
                         Toast.makeText(this,"세부 정보를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
                     if(placeToilet!=null && placeParking!=null){
-                        infoObject.put("화장실정보",placeToilet);
-                        infoObject.put("주차정보",placeParking);
+                        for(int i=0; i<placeToilet.length; i++) {
+                            infoObject.put(placeToilet[i].getText().toString(), placeToilet[i].isChecked());
+                        }
+                        for(int i=0; i<placeParking.length; i++) {
+                            infoObject.put(placeParking[i].getText().toString(), placeParking[i].isChecked());
+                        }
                     }else{
                         Toast.makeText(this,"checkBox error",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
 
                     //필수사항 아님
-                    infoObject.put("리뷰",placeReview);
-
+                    if(placeReview!=null && placeReview.length()>0) {
+                        infoObject.put("Article", placeReview);
+                    }
                     Log.i("AddActivity","카테고리 push "+placeCategory);
                     Log.i("AddActivity","이름 push "+placeName);
+                    Log.i("AddActivity","빌딩 push "+placeBuilding);
                     Log.i("AddActivity","전화번호 push "+placeTel);
                     Log.i("AddActivity","위도,경도 push "+currentlat+"/"+currentlng);
                     Log.i("AddActivity","세부정보 push "+placeInfo);
                     Log.i("AddActivity","리뷰 push "+placeReview);
+                    for(int i=0; i<placeToilet.length; i++){
+                        Log.i("AddActivity","화장실"+i+" push "+placeToilet[i].getText().toString()+"/"+placeToilet[i].isChecked());
+                    }for(int i=0; i<placeParking.length; i++){
+                        Log.i("AddActivity","주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
+                    }
 
                     postInfo();
                     finish();
