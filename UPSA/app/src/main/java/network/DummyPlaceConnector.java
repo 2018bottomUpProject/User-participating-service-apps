@@ -45,12 +45,12 @@ public class DummyPlaceConnector implements NetworkPlaceInterface {
     }
 
     @Override
-    public boolean postLocationBG(String placeId) {
+    public boolean postLocationBG(String deviceId, String placeId) {
         return true;
     }
 
     @Override
-    public boolean postLocationBG(double lat, double lon, Map<String, Integer> wifi) {
+    public boolean postLocationBG(String deviceId, double lat, double lon, Map<String, Integer> wifi) {
         return true;
     }
 
@@ -76,7 +76,7 @@ public class DummyPlaceConnector implements NetworkPlaceInterface {
     }
 
     @Override
-    public boolean newDocument(String placeId, String userId) {
+    public boolean newDocument(String placeId, String userId, JSONObject info) {
         return true;
     }
 

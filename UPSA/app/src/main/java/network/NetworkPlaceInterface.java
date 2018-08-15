@@ -14,12 +14,12 @@ public interface NetworkPlaceInterface {
     public JSONObject getLocationFG(double lat, double lon, Map<String, Integer> wifi);//앱 전용, 위치 정보 받기. 위치가 존재하지 않으면 null 반환
 
     public JSONObject getLocationBG(double lat, double lon, Map<String, Integer> wifi);//서비스 전용, 위치 정보 받기. 위치가 존재하지 않으면 null 반환
-    public boolean postLocationBG(String placeId);//서비스 전용, 기준 시간보다 오래 머물렀을 경우, DB에 존재하는 장소일 때
-    public boolean postLocationBG(double lat, double lon, Map<String, Integer> wifi);//서비스 전용, 기준 시간보다 오래 머물렀을 경우, DB에 존재하지 않는 장소일 때
+    public boolean postLocationBG(String deviceId, String placeId);//서비스 전용, 기준 시간보다 오래 머물렀을 경우, DB에 존재하는 장소일 때
+    public boolean postLocationBG(String deviceId, double lat, double lon, Map<String, Integer> wifi);//서비스 전용, 기준 시간보다 오래 머물렀을 경우, DB에 존재하지 않는 장소일 때
 
     public JSONObject getDocument(String placeId);// 문서 받아오기
     public boolean editDocument(String placeId, String userId);//문서 수정하기
-    public boolean newDocument(String placeId, String userId);//새 문서 만들기
+    public boolean newDocument(String placeId, String userId, JSONObject info);//새 문서 만들기
     public boolean delDocument(String placeId, String userId);//문서 삭제 요청하기
 
     public JSONArray getReview(String placeId, int page);//리뷰 받아오기

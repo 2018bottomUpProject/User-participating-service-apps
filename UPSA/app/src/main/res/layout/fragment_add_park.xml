@@ -5,10 +5,85 @@
     android:layout_height="match_parent"
     android:background="#FFFFFF"
     tools:context=".AddParkFragment">
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right|bottom"
-        android:text="리뷰등록"/>
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/park_ch1"
+            android:layout_alignLeft="@+id/ParkEditText">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="화장실"
+                android:id="@+id/park_1" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴지 유무"
+                android:id="@+id/park1_1"
+                android:visibility="gone"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/park_1" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남녀공용"
+                android:id="@+id/park1_2"
+                android:visibility="gone"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/park1_1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/park_ch2"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/park_ch1"
+            android:layout_alignLeft="@+id/ParkEditText">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주차 공간"
+                android:id="@+id/park_2"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유료"
+                android:id="@+id/park2_1"
+                android:visibility="gone"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/park_2"/>
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            android:id="@+id/ParkEditText"
+            android:hint="휴무일, 블로그URL 등의 부가정보를 입력해주세요. 정확한 정보를 알려주시면 등록에 도움이 됩니다."
+            android:textSize="15dp"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/park_ch2"
+            android:cursorVisible="true"
+            android:background="@drawable/back"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_below="@+id/ParkEditText"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/ParkEditText"
+            android:layout_alignEnd="@+id/ParkEditText"
+            android:text="리뷰등록"/>
+    </RelativeLayout>
 </FrameLayout>
