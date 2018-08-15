@@ -10,6 +10,7 @@ public class IntroActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_layout); //xml , java 소스 연결
+        MyThread.init(); //thread 시작
         Handler handler = new Handler();
         handler.postDelayed(new Runnable(){
             @Override
