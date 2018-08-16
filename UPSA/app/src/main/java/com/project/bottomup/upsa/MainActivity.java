@@ -77,6 +77,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
     //마커에 띄울 장소 이름 배열
     ArrayList<String> markerClick;
+    //notification 받았을 때 현재 사용자 위치
+    Double notifiLat;
+    Double notifiLng;
 
     //툴바 생성
     Toolbar toolbar;
@@ -115,6 +118,20 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         checkPermission();
 
+        //background에서 넘어온 lat,lng 저장
+        Intent intent = getIntent();
+        try{
+            if(intent == null){
+                throw new Exception();
+            }
+            notifiLat = intent.getDoubleExtra("lat",0);
+            notifiLng = intent.getDoubleExtra("lng",0);
+            Log.i("MainActivity", "getIntent lat : " + notifiLat);
+            Log.i("MainActivity", "getIntent lng : " + notifiLng);
+        }catch (Exception e){
+            Toast.makeText(getApplicationContext(), "notification 오류", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
     }
 
     @Override

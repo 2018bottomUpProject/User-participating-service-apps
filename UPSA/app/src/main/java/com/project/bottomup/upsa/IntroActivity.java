@@ -14,14 +14,13 @@ public class IntroActivity extends Activity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intro_layout); //xml , java 소스 연결
-        MyThread.init(); //thread 시작
 
         //setContentView(R.layout.activity_main);
         ImageView iv=(ImageView)findViewById(R.id.iv);
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(iv);
         Glide.with(this).load(R.raw.fireeee).into(imageViewTarget);
 
-        MyThread.init();
+        MyThread.init(); //thread 시작
         Handler handler = new Handler();
         handler.postDelayed(new Runnable(){
             @Override
