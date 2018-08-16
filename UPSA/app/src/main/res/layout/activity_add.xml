@@ -34,10 +34,18 @@
     <EditText
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:id="@+id/buildingput"
+        android:layout_centerHorizontal="true"
+        android:hint="빌딩 이름을 입력해주세요(선택 사항)"
+        android:layout_below="@+id/nameput" />
+
+    <EditText
+        android:layout_width="300dp"
+        android:layout_height="50dp"
         android:id="@+id/telput"
         android:layout_centerHorizontal="true"
         android:hint="전화번호를 입력해주세요"
-        android:layout_below="@+id/nameput"/>
+        android:layout_below="@+id/buildingput"/>
 
     <ScrollView
         android:layout_width="match_parent"

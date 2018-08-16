@@ -101,6 +101,9 @@ public class BackgroundService extends Service {
          이전 상위 3개와 비교해서 3개 모두 변경되었다면
          위치가 변경되었다고 인식한다
          */
+        if(mScanResult.size()==0){//WiFi 결과가 없다면
+            return;
+        }
         ScanResult max=null;
         if(mScanResult.get(0)!=null){
             max=mScanResult.get(0);// max를 찾아 저장할 변수

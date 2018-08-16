@@ -2,6 +2,7 @@ package com.project.bottomup.upsa;
 
 import android.Manifest;
 import android.app.DialogFragment;
+import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -31,8 +32,6 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -47,7 +46,7 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener{
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener, GoogleMap.OnMarkerClickListener{
     // 구글 서버로 부터 받아온 데이터를 저장할 리스트
     ArrayList<Double> lat_list; //위도
     ArrayList<Double> lng_list; //경도
@@ -75,6 +74,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected GoogleMap map;
     LatLng position = new LatLng(37.56, 126.97); //초기설정(서울)37.56, 126.97
     LatLng Clickgps;
+
+    //마커에 띄울 장소 이름 배열
+    ArrayList<String> markerClick;
 
     //툴바 생성
     Toolbar toolbar;
@@ -104,6 +106,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         vicinity_list=new ArrayList<>();
         markers_list=new ArrayList<>();
 
+        markerClick=new ArrayList<>();
+        //임의로 장소 이름 설정 // test용
+        markerClick.add("에이플러스");
+        markerClick.add("새빨간 죠스 찜닭");
+        markerClick.add("국민야시장");
+        //임의로 장소 이름 설정 // test용
+
         checkPermission();
 
     }
@@ -129,6 +138,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 show();
             }
         });
+
+        //마커 클릭에 대한 리스너
+        map.setOnMarkerClickListener(this);
     }
 
     void show()
@@ -137,11 +149,29 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         newFragment.show(getFragmentManager(), "dialog"); //"dialog"라는 태그를 갖는 프래그먼트를 보여준다.
     }
 
+    //마커 클릭했을 때 이벤트
+    @Override
+    public boolean onMarkerClick(Marker marker){
+        try{
+            if(markerClick.size()<=0){
+                throw new Exception();
+            }
+            DialogFragment newFragment = new MarkerFragment();
+            Bundle bundle = new Bundle();
+            bundle.putStringArrayList("markerClick",markerClick);
+            newFragment.setArguments(bundle);
+            newFragment.show(getFragmentManager(), "marker"); //"marker"라는 태그를 갖는 프래그먼트를 보여준다.
+        } catch(Exception e){
+            Toast.makeText(this, "등록된 장소(시설)가 없습니다.", Toast.LENGTH_SHORT).show();
+            e.printStackTrace();
+        }
+        return true;
+    }
+
     @Override
     public void onInputedData(String admit) {
         //DialogFragment에서 OK했을 때
         if(admit == "OK") {
-            Toast.makeText(this, admit, Toast.LENGTH_LONG).show();
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
             intent.putExtra("현재lat", Clickgps.latitude);
             intent.putExtra("현재lng", Clickgps.longitude);
@@ -149,7 +179,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         }
         //DialogFragment에서 NO했을 때
         else if(admit == "NO"){
-            Toast.makeText(this, admit, Toast.LENGTH_LONG).show();
         }
         map.clear();
     }
