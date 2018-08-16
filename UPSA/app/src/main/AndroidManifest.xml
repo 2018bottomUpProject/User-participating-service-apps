@@ -27,6 +27,8 @@
     <!-- WiFi 접근 및 변경 허용 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!--안드로이드 폰에서 디바이스 ID 가져오기-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
