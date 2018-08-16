@@ -217,6 +217,11 @@ public class BackgroundService extends Service {
                 .setContentTitle("정보 등록 가능")
                 .setContentText("1분 동안 위치 변경X -> 정보등록 가능합니다");
         Intent resultIntent=new Intent(getApplicationContext(),MainActivity.class);
+        //MainActivity에 경도,위도 전송
+        resultIntent.putExtra("lat",gpsListener.latitude);
+        resultIntent.putExtra("lng",gpsListener.longitude);
+        Log.i(TAG,"put lat / lng :"+gpsListener.latitude+"/"+gpsListener.longitude);
+
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(this);
         stackBuilder.addParentStack(MainActivity.class);
         stackBuilder.addNextIntent(resultIntent);
