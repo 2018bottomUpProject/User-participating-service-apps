@@ -1,5 +1,7 @@
 package com.project.bottomup.upsa;
 
+import android.app.Activity;
+import android.app.DialogFragment;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
@@ -211,6 +213,7 @@ public class BackgroundService extends Service {
 
     // 상단바에 알림 띄우는 메소드
     public void setNotifi(){
+        Log.i(TAG,"setNotifi()");
         NotificationCompat.Builder mBuilder=
                 new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.intro) // 아이콘 임의로 아무거나 설정>>수정

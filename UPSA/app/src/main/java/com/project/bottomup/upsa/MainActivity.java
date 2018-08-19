@@ -128,6 +128,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             notifiLng = intent.getDoubleExtra("lng",0);
             Log.i("MainActivity", "getIntent lat : " + notifiLat);
             Log.i("MainActivity", "getIntent lng : " + notifiLng);
+            // gps 값 넘겨주면 다이얼로그 띄우기
+            if(notifiLat!=0&&notifiLng!=0){
+                show();
+            }
         }catch (Exception e){
             Toast.makeText(getApplicationContext(), "notification 오류", Toast.LENGTH_SHORT).show();
             e.printStackTrace();
