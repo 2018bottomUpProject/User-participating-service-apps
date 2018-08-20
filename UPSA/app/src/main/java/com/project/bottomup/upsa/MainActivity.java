@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     // 지도 관리
     protected GoogleMap map;
     LatLng position = new LatLng(37.56, 126.97); //초기설정(서울)37.56, 126.97
-    LatLng Clickgps;
+    //LatLng Clickgps; //지도를 long click했을 때 위치 값
 
     //마커에 띄울 장소 이름 배열
     ArrayList<String> markerClick;
@@ -128,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             notifiLng = intent.getDoubleExtra("lng",0);
             Log.i("MainActivity", "getIntent lat : " + notifiLat);
             Log.i("MainActivity", "getIntent lng : " + notifiLng);
+
             // gps 값 넘겨주면 다이얼로그 띄우기
             if(notifiLat!=0&&notifiLng!=0){
                 show();
@@ -144,21 +145,22 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.moveCamera(CameraUpdateFactory.newLatLng(position)); //서울로 초기위치 설정
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
-            @Override
-            public void onMapLongClick(LatLng latLng) {
-                Point screenPt = map.getProjection().toScreenLocation(latLng);
-                Clickgps = map.getProjection().fromScreenLocation(screenPt);
-
-                MarkerOptions markerOptions = new MarkerOptions();
-                //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.)); //아이콘 변경
-                markerOptions.position(latLng); //마커위치설정
-                markerOptions.title("장소를 등록해주세요");
-                map.clear(); //맵 초기화
-                map.addMarker(markerOptions); //마커 생성
-                show();
-            }
-        });
+//        //지도를 long click했을 때 이벤트
+//        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
+//            @Override
+//            public void onMapLongClick(LatLng latLng) {
+//                Point screenPt = map.getProjection().toScreenLocation(latLng);
+//                Clickgps = map.getProjection().fromScreenLocation(screenPt);
+//
+//                MarkerOptions markerOptions = new MarkerOptions();
+//                //markerOptions.icon(BitmapDescriptorFactory.fromResource(R.)); //아이콘 변경
+//                markerOptions.position(latLng); //마커위치설정
+//                markerOptions.title("장소를 등록해주세요");
+//                map.clear(); //맵 초기화
+//                map.addMarker(markerOptions); //마커 생성
+//                show();
+//            }
+//        });
 
         //마커 클릭에 대한 리스너
         map.setOnMarkerClickListener(this);
@@ -194,8 +196,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         //DialogFragment에서 OK했을 때
         if(admit == "OK") {
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
-            intent.putExtra("현재lat", Clickgps.latitude);
-            intent.putExtra("현재lng", Clickgps.longitude);
+            intent.putExtra("현재lat", notifiLat);
+            intent.putExtra("현재lng", notifiLng);
             startActivity(intent);
         }
         //DialogFragment에서 NO했을 때
