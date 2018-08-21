@@ -1,5 +1,11 @@
 # DB 구조
 mariadb 사용
+## 0. DB init
+```sql
+create user UPSA@'%' identified by 'newscrap123';
+create database UPSA;
+grant all privileges on UPSA.* to UPSA@'%' identified by 'newscrap123';
+```
 ## 1. DB : UPSA
 ### A. Table : Location
 { lat:(double), lng:(double), WiFiList:(string), BuildingName:(string), PlaceType:(string), PlaceName:(string), PlaceId:(int, \_\_id)(문서,후기를 찾을 때 필요)(index) }
