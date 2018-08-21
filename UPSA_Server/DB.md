@@ -11,14 +11,12 @@ grant all privileges on UPSA.* to UPSA@'%' identified by 'newscrap123';
 { lat:(double), lng:(double), WiFiList:(string), BuildingName:(string), PlaceType:(string), PlaceName:(string), PlaceId:(int, \_\_id)(문서,후기를 찾을 때 필요)(index) }
 ```sql
 create table Location(
-_id INT NOT NULL AUTO_INCREMENT,
+_id INT PRIMARY KEY AUTO_INCREMENT,
 location POINT NOT NULL,
 wifi_list VARCHAR(5000),
 building_name VARCHAR(100),
 place_name VARCHAR(80),
 place_type CHAR(40),
-
-PRIMARY KEY(_id)
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
 
