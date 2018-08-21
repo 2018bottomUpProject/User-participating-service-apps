@@ -29,7 +29,7 @@ WiFiList : json array 방식으로 저장. 크기 관리 필요.
 create table Review(
 _id INT PRIMARY KEY AUTO_INCREMENT,
 place_id INT NOT NULL,
-article_id VARCHAR(1000),
+article VARCHAR(1000),
 timestamp DATETIME,
 
 CONSTRAINT fk_placeid FOREIGN KEY ( place_id ) REFERENCES Location ( _id ) ON DELETE CASCADE ON UPDATE CASCADE
