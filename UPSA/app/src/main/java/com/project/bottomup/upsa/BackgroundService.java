@@ -24,6 +24,7 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -37,7 +38,9 @@ public class BackgroundService extends Service {
     private int scanCount = 0;// 스캔 횟수 저장 변수
     String text = "";
     private List<ScanResult> mScanResult; // 스캔 결과 저장할 리스트
-    ScanResult bResult1 = null, bResult2 = null, bResult3 = null;// wifi 상위 3개 저장할 변수들
+    //ScanResult bResult1 = null, bResult2 = null, bResult3 = null;// wifi 상위 3개 저장할 변수들
+    private ArrayList<String> currentResultList;
+    private ArrayList<String> prevResultList;
     private Location prev = null;// 이전 위치를 저장할 변수
     HashMap<String, Integer> map;
     private DummyPlaceConnector dummyPlaceConnector;
@@ -57,6 +60,9 @@ public class BackgroundService extends Service {
         Context mContext=getApplicationContext();
         deviceID  = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.i(TAG,"deviceID: "+deviceID);
+
+        currentResultList = new ArrayList<String>();
+        prevResultList = new ArrayList<String>();
 
         //최초 백그라운드 실행시 현재 위치의 WiFi 정보 받아오기
         //initWIFIScan();
@@ -105,74 +111,74 @@ public class BackgroundService extends Service {
     };
 
     public void getWIFIScanResult() {
-        mScanResult = wifimanager.getScanResults(); // ScanResult
-        Log.i(TAG, "scanning size : " + mScanResult.size());
-        postWiFiInfo(mScanResult); // 서버에 보내줄 정보 맵에 넣기
+        try{
+            mScanResult = wifimanager.getScanResults(); // ScanResult
+            postWiFiInfo(mScanResult); // 서버에 보내줄 정보 맵에 넣기
         /*
          스캔 결과 중 세기가 좋은 상위 3개를 찾고
          이전 상위 3개와 비교해서 3개 모두 변경되었다면
          위치가 변경되었다고 인식한다
          */
+            if(mScanResult.size()==0){//WiFi 결과가 없다면
+                return;
+            }
 
-        int check=0;
-        if(mScanResult.size()==0){//WiFi 결과가 없다면
-            return;
-        }
-        ScanResult max=null;
-        if(mScanResult.get(0)!=null){
-            max=mScanResult.get(0);// max를 찾아 저장할 변수
-        }
-        if(bResult1==null&&bResult2==null&&bResult3==null){//WiFI리스트를 처음 읽는 것이라면
-            check++;
-        }
+            ScanResult max=null;
+            boolean first=false; // 처음 WiFi리스트를 읽는 것인지 판단
+            int count=0; // 상위 3개의 wifi가 모두 바꼈는지 판단
+            currentResultList.clear(); //현재 ResultList 비우기
 
-        int count=0;//bResult들이 모두 변경되었는지 알아보기 위한 변수
-        for(int i=0;i<3;i++){//3개의 상위 wifi를 찾을 때 까지 반복
-            for(int j=0;j<mScanResult.size();j++){//mScanResult 돌면서 상위 값 찾기
-                if(max.level<mScanResult.get(j).level){
-                    max=mScanResult.get(j);
-                }
-            }//max에 제일 큰 값이 들어감
-            //현재 bResult를 찾아서 max 저장
-            if(i==0){
-                if(bResult1==null||!bResult1.SSID.equals(max.SSID)){//처음 WiFi를 찾거나 || 과거 bResult1과 현재 max가 같지 않다면
-                    bResult1=max;//위치가 변경되었을 수 있음
-                    count++;
-                    Log.i(TAG,"bResult1:"+bResult1.SSID);
-                }
+            if(mScanResult.get(0)!=null){
+                max=mScanResult.get(0);// max를 찾아 저장할 변수
             }
-            else if(i==1){
-                if(bResult2==null||!bResult2.SSID.equals(max.SSID)){
-                    bResult2=max;
-                    count++;
-                    Log.i(TAG,"bResult2:"+bResult2.SSID);
-                }
+            if(prevResultList.size()!=3){//WiFI리스트를 처음 읽는 것이라면
+                first=true;
             }
-            else if(i==2){
-                if(bResult3==null||!bResult3.SSID.equals(max.SSID)){
-                    bResult3=max;
-                    count++;
-                    Log.i(TAG,"bResult3:"+bResult3.SSID);
-                    //0,1,2에서 값이 모두 변경되었다면 위치가 변경되었음을 알려준다
-                    if(count==3) {
-                        Log.i(TAG, "WiFi 현재 위치 변경됨");
+
+            boolean check = true;//Result들이 모두 변경되었는지 알아보기 위한 변수
+            for(int i=0;i<3;i++) {//3개의 상위 wifi를 찾을 때 까지 반복
+                for (int j = 0; j < mScanResult.size(); j++) {//mScanResult 돌면서 상위 값 찾기
+                    if (max.level < mScanResult.get(j).level) {
+                        max = mScanResult.get(j); //max에 제일 큰 값이 들어감
                     }
-                    else{
-                        Log.i(TAG,"WiFi 현재 같은 위치 변경X");
-                        if(check==0){
-                            setNotifi(); // 알림바띄우기
-                            pushInfo();// 1분동안 같은 위치에 머물렀으므로 정보 등록 기능 획득
-                        }
-                        if(check==1){// 리스트를 처음 읽었다면 아직 1분이 안된 경우이므로 한 번 쉰다
-                            check=0;
-                        }
-                    }
-                    unregisterReceiver(mReceiver);//WiFi 스캔 종료
                 }
+                if(first==true) {
+                    prevResultList.add(max.SSID);
+                }else{
+                    check = prevResultList.contains(max.SSID); //직전 ResultList에 max가 존재하는지 판단
+                    if(check==false){ //없다면
+                        count++;
+                        check=true;
+                        Log.i(TAG,"max = "+max);
+                        Log.i(TAG,"prevResult:"+prevResultList.get(0)+"/ "+prevResultList.get(1)+"/ "+prevResultList.get(2));
+                    }
+                    currentResultList.add(max.SSID); //현재 ResultList에 max값 넣어주기
+                }
+                mScanResult.remove(max);// max로 찾은 값은 list에서 지워주기
+                max=mScanResult.get(0); //max 초기화
             }
-            count=0;//다시 초기화
-            mScanResult.remove(max);// max로 찾은 값은 list에서 지워주기
-            max=mScanResult.get(0);//max도 다시 초기화
+
+            unregisterReceiver(mReceiver);//WiFi 스캔 종료
+
+            if(check==true && count<3){
+                if(first==false){ //리스트가 처음이 아닐때
+                    Log.i(TAG,"WiFi 현재 같은 위치 변경X");
+                    Log.i(TAG,"prevResult:"+prevResultList.get(0)+"/ "+prevResultList.get(1)+"/ "+prevResultList.get(2));
+                    Log.i(TAG,"currentResult:"+currentResultList.get(0)+"/ "+currentResultList.get(1)+"/ "+currentResultList.get(2));
+                    setNotifi(); // 알림바띄우기
+                    pushInfo();// 1분동안 같은 위치에 머물렀으므로 정보 등록 기능 획득
+                    prevResultList.clear();
+                    prevResultList.addAll(currentResultList);
+                } else {// 리스트를 처음 읽었다면 아직 1분이 안된 경우이므로 한 번 쉰다
+                    Log.i(TAG,"FIRST_READ LIST");
+                    Log.i(TAG,"prevResult:"+prevResultList.get(0)+"/ "+prevResultList.get(1)+"/ "+prevResultList.get(2));
+                }
+            }else if(check==false && count==3){
+                Log.i(TAG, "WiFi 현재 위치 변경됨 -> prevList 리셋(초기화)");
+                prevResultList.clear();
+            }
+        }catch(Exception e){
+            e.printStackTrace();
         }
     }
 
@@ -264,7 +270,6 @@ public class BackgroundService extends Service {
         //locationmanager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 0, 0, firstListener);
         //locationmanager.removeUpdates(firstListener);
         // 5분마다 GPS 정보 가져오기<<<<<지금은 테스트를 위해 1분으로 설정
-        locationmanager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 0, gpsListener);
         locationmanager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 60000,0, gpsListener);
     }
 
