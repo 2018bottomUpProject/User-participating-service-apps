@@ -69,3 +69,5 @@ permission INT,
 CONSTRAINT fk_userid FOREIGN KEY ( user_id ) REFERENCES User ( _id ) ON DELETE CASCADE ON UPDATE CASCADE
 )ENGINE=INNODB DEFAULT CHARSET=utf8;
 ```
+
+### F. Table : Temp_Location
