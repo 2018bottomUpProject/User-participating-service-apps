@@ -16,7 +16,7 @@ location POINT NOT NULL,
 wifi_list VARCHAR(5000),
 building_name VARCHAR(100),
 place_name VARCHAR(80),
-place_type CHAR(40),
+place_type CHAR(40)
 )ENGINE=INNODB DEFAULT CHARSET=utf8; 
 ```
 
