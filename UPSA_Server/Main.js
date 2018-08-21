@@ -3,7 +3,6 @@ let http = require('http');
 let https = require('https');
 
 
-//let DB = require("./DBConnector.js");
 let Dummyapp = require('./Dummyapp');
 let app;
 
