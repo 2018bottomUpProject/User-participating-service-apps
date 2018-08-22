@@ -1,5 +1,6 @@
 let pool = require('./db_connect');
 let query_function = function(sql, callback){
+    console.log(sql);
     pool.getConnection(function(err, con){
         if(err){
             console.log(err);
@@ -16,8 +17,11 @@ let testselect = function(callback){
     let  sql = 'select * from test where ST_DISTANCE(location,POINT(2,2))<= 1';
     query_function(sql,callback);
 };
-let getLocation = function(X, Y,callback){
-    let sql = "select * from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<=1";
+let getLocation = function(X, Y, category, radius, callback){
+    let sql = "select * from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<="+radius;
+    if(category !== "\"ALL\""){
+        sql = sql + " AND place_type=" + category;
+    }
     query_function(sql,callback);
 };
 let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType){//자료 처리가 필요함.
@@ -29,8 +33,8 @@ let getDocument = function(article){//파일 관련
 let delDocument = function(article){//파일 관련
 
 };
-let getReview = function(place_id, callback){
-    let sql = "select * from Review where place_id=="+place_id;//n개의 리뷰만을 가져오도록 수정해야 함.
+let getReview = function(place_id, index_start, index_end, callback){
+    let sql = "select * from Review where place_id=="+place_id+" ORDER BY timestamp DESK";//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let newReview = function(place_id, article, callback){

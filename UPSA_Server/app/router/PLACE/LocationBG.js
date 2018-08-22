@@ -1,7 +1,7 @@
 "use strict";
 let express = require('express');
 let router = express.Router();
-let sql = require('../../../mariaDB/db_sql');
+let sql = require('../../../mariaDB/db_sql')();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이상 머물렀을 경우
@@ -14,7 +14,6 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
     });
 });
 router.post('/', function(req, res, next){//해당 위치를 임시 등록(글 등록은 안함.)
-
     res.send('test(post)');
 });
 router.delete('/', function(req, res, next){//해당 위치를 임시 등록(글 등록은 안함.)

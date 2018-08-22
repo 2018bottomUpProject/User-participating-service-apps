@@ -9,6 +9,7 @@ let locationfg_router = require("./app/router/PLACE/LocationFG");
 let locationbg_router = require("./app/router/PLACE/LocationBG");
 let log_router = require("./app/router/PLACE/Log");
 let review_router = require("./app/router/PLACE/Review");
+let category_router = require("./app/router/PLACE/Category");
 
 let permission_router = require("./app/router/USER/Permission");
 let user_router = require("./app/router/USER/User");
@@ -21,6 +22,7 @@ app.use('/locationfg', locationfg_router);
 app.use('/locationbg', locationbg_router);
 app.use('/log', log_router);
 app.use('/review', review_router);
+app.use('/category', category_router);
 
 app.use('/permission', permission_router);
 app.use('/user', user_router);
