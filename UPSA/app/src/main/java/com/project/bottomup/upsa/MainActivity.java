@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentManager;
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     //LatLng Clickgps; //지도를 long click했을 때 위치 값
 
     //마커에 띄울 장소 이름 배열
-    ArrayList<String> markerClick;
+    ArrayList<DocumentInfo> markerClick;
     //notification 받았을 때 현재 사용자 위치
     Double notifiLat;
     Double notifiLng;
@@ -113,11 +114,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         markers_list=new ArrayList<>();
 
         markerClick=new ArrayList<>();
-        //임의로 장소 이름 설정 // test용
-        markerClick.add("에이플러스");
-        markerClick.add("새빨간 죠스 찜닭");
-        markerClick.add("국민야시장");
-        //임의로 장소 이름 설정 // test용
 
         checkPermission();
 
@@ -190,12 +186,26 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     @Override
     public boolean onMarkerClick(Marker marker){
         try{
-            if(markerClick.size()<=0){
+            if(markerClick==null){
                 throw new Exception();
             }
+
+            markerClick.clear();
             DialogFragment newFragment = new MarkerFragment();
             Bundle bundle = new Bundle();
-            bundle.putStringArrayList("markerClick",markerClick);
+            //마커 위도,경도 가져오기
+            Double lat = marker.getPosition().latitude;
+            Double lng = marker.getPosition().longitude;
+            //만약 장소 정보가 있다면
+            if(lat_list.contains(lat) && lng_list.contains(lng)){
+                int index = lat_list.indexOf(lat);
+                DocumentInfo documentInfo = new DocumentInfo(id_list.get(index), name_list.get(index));
+                markerClick.add(documentInfo);
+            }else{
+                throw  new Exception();
+            }
+
+            bundle.putParcelableArrayList("markerClick",(ArrayList<? extends Parcelable>) markerClick);
             newFragment.setArguments(bundle);
             newFragment.show(getFragmentManager(), "marker"); //"marker"라는 태그를 갖는 프래그먼트를 보여준다.
         } catch(Exception e){
