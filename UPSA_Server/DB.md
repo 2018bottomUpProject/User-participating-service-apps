@@ -71,3 +71,14 @@ CONSTRAINT fk_userid FOREIGN KEY ( user_id ) REFERENCES User ( _id ) ON DELETE C
 ```
 
 ### F. Table : Temp_Location
+```mysql
+create table Temp_Location(
+_id INT PRIMARY KEY AUTO_INCREMENT,
+location POINT NOT NULL,
+wifi_list VARCHAR(5000),
+building_name VARCHAR(100),
+place_name VARCHAR(80),
+place_type CHAR(40),
+timestamp DATETIME
+```
+)ENGINE=INNODB DEFAULT CHARSET=utf8; 
