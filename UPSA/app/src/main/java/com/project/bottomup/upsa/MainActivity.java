@@ -2,12 +2,10 @@ package com.project.bottomup.upsa;
 
 import android.Manifest;
 import android.app.DialogFragment;
-import android.app.Fragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Point;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -42,23 +40,24 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
 import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener, GoogleMap.OnMarkerClickListener{
-    // 구글 서버로 부터 받아온 데이터를 저장할 리스트
+    // 서버로 부터 받아온 데이터를 저장할 리스트
+    ArrayList<Integer> id_list; //장소아이디
     ArrayList<Double> lat_list; //위도
     ArrayList<Double> lng_list; //경도
     ArrayList<String> name_list; //이름
-    ArrayList<String> vicinity_list; //주소
+    ArrayList<String> building_list; //빌딩 이름
     // 지도의 표시한 마커(주변장소표시)를 관리하는 객체를 담을 리스트
     ArrayList<Marker> markers_list;
 
     // 카테고리 배열 (앱 UI에 사용)
     String[] category_ui_array={ "전체","카페","식당","공원" };
     // 타입값 배열 (url 요청코드는 영어로 값이 전달됨)
-    String[] category_type_array={ "all","cafe","restaurant","park" };
+    String[] category_type_array={ "ALL","CAFE","RESTAURANT","PARK" };
 
     //체크할 권한 배열
     String[] permission_list = {
@@ -69,7 +68,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     Location myLocation;
     // 위치 정보를 관리
     LocationManager manager;
-
+    LatLng location_center;
+    int location_zoom;
+    double [] zoom_realMeter={20088000.56607700,10044000.28303850,5022000.14151925,2511000.07075963,1255500.03537981,627750.01768991,313875.00884495,156937.50442248,78468.75221124
+                                ,39234.37610562,19617.18805281,9808.59402640,4909.29701320,2452.14850660,1226.07425330,613.03712665,306.51856332,153.25928166,76.62964083,38.31482042};
     // 지도 관리
     protected GoogleMap map;
     LatLng position = new LatLng(37.56, 126.97); //초기설정(서울)37.56, 126.97
@@ -103,10 +105,11 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         mapFragment.getMapAsync(this);
 
         //객체 생성
+        id_list=new ArrayList<>();
         lat_list=new ArrayList<>();
         lng_list=new ArrayList<>();
         name_list=new ArrayList<>();
-        vicinity_list=new ArrayList<>();
+        building_list=new ArrayList<>();
         markers_list=new ArrayList<>();
 
         markerClick=new ArrayList<>();
@@ -145,7 +148,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         map.moveCamera(CameraUpdateFactory.newLatLng(position)); //서울로 초기위치 설정
         map.animateCamera(CameraUpdateFactory.zoomTo(15));
 
-//        //지도를 long click했을 때 이벤트
+//        // 지도를 long click했을 때 이벤트
 //        googleMap.setOnMapLongClickListener(new GoogleMap.OnMapLongClickListener() {
 //            @Override
 //            public void onMapLongClick(LatLng latLng) {
@@ -164,6 +167,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         //마커 클릭에 대한 리스너
         map.setOnMarkerClickListener(this);
+
+        //카메라가 이동한 후 이벤트
+        map.setOnCameraIdleListener(new GoogleMap.OnCameraIdleListener() {
+            @Override
+            public void onCameraIdle() {
+                location_center = map.getCameraPosition().target;
+                location_zoom = (int)map.getCameraPosition().zoom;
+                Log.i("MainActivity","location_center : "+location_center.latitude+"/ "+location_center.longitude);
+                Log.i("MainActivity","location_zoom : "+location_zoom);
+            }
+        });
     }
 
     void show()
@@ -397,97 +411,91 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     //주변 정보 가져오기
-    public void getNearbyPlace(String type_keyword){
-        NetworkThread thread=new NetworkThread(type_keyword);
-        thread.start();
-    }
+    public void getNearbyPlace(final String type_keyword){
+        try{
 
-    //네트워크에 연결할 때는 항상 메인스레드가 아닌 별도의 스레드를 통해 해당 기능을 구현
-    //주변 정보 가져오는 스레드
-    class NetworkThread extends Thread{
-        String type_keyword;
-        public NetworkThread(String type_keyword){
-            this.type_keyword=type_keyword;
-        }
-        @Override
-        public void run() {
-            try{
-                //데이터를 담아놓을 리스트를 초기화한다.
-                lat_list.clear();
-                lng_list.clear();
-                name_list.clear();
-                vicinity_list.clear();
+            final StringBuffer sb = new StringBuffer();
+            NetworkManager.add(new Runnable() {
+                @Override
+                public void run() {
+                    try{
+                        //데이터를 담아놓을 리스트를 초기화한다.
+                        id_list.clear();
+                        lat_list.clear();
+                        lng_list.clear();
+                        name_list.clear();
+                        building_list.clear();
 
-                // 접속할 페이지 주소
-                //google 장소 검색 참고 (https://developers.google.com/places/web-service/search?hl=ko)
-                String site="https://maps.googleapis.com/maps/api/place/nearbysearch/json"; //json 형식으로 나타냄
-                site+="?location="+myLocation.getLatitude()+","
-                        +myLocation.getLongitude()
-                        +"&radius=1000&sensor=false&language=ko"; //1000미터
-                if(type_keyword!=null){
-                    if(type_keyword.equals("all")==false){
-                        site+="&types="+type_keyword;
-                    }
-                    else if(type_keyword.equals("all")==true) {
-                        //전체 검색 구현해야함
+                        Log.i("MainActivity","쓰레드런");
+                        String site = NetworkManager.url + "/locationfg";
+                        site+="?X="+location_center.latitude+"&Y="+location_center.longitude+"&Radius="+0.3556*zoom_realMeter[location_zoom]/10000;
+                        if(type_keyword!=null){
+                            site+="&Category=\""+type_keyword+"\"";
+                        }
+                        Log.i("MainActivity","site = "+site);
+
+                        URL url = new URL(site);
+                        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+
+                        if(connection != null){
+                            connection.setConnectTimeout(2000);
+                            connection.setUseCaches(false);
+                            if(connection.getResponseCode() == HttpURLConnection.HTTP_OK){
+
+                                // 스트림 추출
+                                InputStream is=connection.getInputStream();
+                                InputStreamReader isr =new InputStreamReader(is,"utf-8");
+                                BufferedReader br=new BufferedReader(isr);
+                                String str=null;
+                                StringBuffer buf=new StringBuffer();
+                                // 읽어온다
+                                do{
+                                    str=br.readLine();
+                                    if(str!=null){
+                                        buf.append(str);
+                                    }
+                                }while(str!=null);
+                                br.close(); //스트림 해제
+
+                                String rec_data=buf.toString();
+                                Log.i("MainActivity","서버에서 받아온 DATA = "+rec_data);
+                                // JSON 데이터 분석
+                                JSONArray root=new JSONArray(rec_data);
+                                //개수만큼 반복
+                                for(int i=0; i<root.length() ; i++){
+                                    // 객체를 추출한다.(장소하나의 정보)
+                                    JSONObject obj1=root.getJSONObject(i);
+                                    //place Id 추출
+                                    int placeId=obj1.getInt("_id");
+                                    // 위도 경도 추출
+                                    JSONObject geometry=obj1.getJSONObject("location");
+                                    double lat=geometry.getDouble("x");
+                                    double lng=geometry.getDouble("y");
+                                    //빌딩 이름 추출
+                                    String placeBuilding=obj1.getString("building_name");
+                                    // 장소 이름 추출
+                                    String name=obj1.getString("place_name");
+                                    // 데이터를 담는다
+                                    id_list.add(placeId);
+                                    lat_list.add(lat);
+                                    lng_list.add(lng);
+                                    building_list.add(placeBuilding);
+                                    name_list.add(name);
+                                }
+                            }
+                            connection.disconnect(); // 연결 끊기
+                        }
+                        //지도에 표시
+                        showMarker();
+                    }catch(Exception e){
+                        e.printStackTrace();
                     }
                 }
-                site+="&key=AIzaSyAKZhz5lT8ga5YWEgkPsxPfYVz4S9J1Wu8";
-                // 접속
-                URL url=new URL(site);
-                URLConnection conn=url.openConnection();
-                // 스트림 추출
-                InputStream is=conn.getInputStream();
-                InputStreamReader isr =new InputStreamReader(is,"utf-8");
-                BufferedReader br=new BufferedReader(isr);
-                String str=null;
-                StringBuffer buf=new StringBuffer();
-                // 읽어온다
-                do{
-                    str=br.readLine();
-                    if(str!=null){
-                        buf.append(str);
-                    }
-                }while(str!=null);
-                String rec_data=buf.toString();
-                // JSON 데이터 분석
-                JSONObject root=new JSONObject(rec_data);
-                //status 값을 추출한다.
-                String status=root.getString("status");
-                // 가져온 값이 있을 경우
-                if(status.equals("OK")){
-                    //results 배열을 가져온다
-                    JSONArray results=root.getJSONArray("results");
-                    // 개수만큼 반복한다.
-                    for(int i=0; i<results.length() ; i++){
-                        // 객체를 추출한다.(장소하나의 정보)
-                        JSONObject obj1=results.getJSONObject(i);
-                        // 위도 경도 추출
-                        JSONObject geometry=obj1.getJSONObject("geometry");
-                        JSONObject location=geometry.getJSONObject("location");
-                        double lat=location.getDouble("lat");
-                        double lng=location.getDouble("lng");
-                        // 장소 이름 추출
-                        String name=obj1.getString("name");
-                        // 대략적인 주소 추출
-                        String vicinity=obj1.getString("vicinity");
-                        // 데이터를 담는다
-                        lat_list.add(lat);
-                        lng_list.add(lng);
-                        name_list.add(name);
-                        vicinity_list.add(vicinity);
-                    }
-                    //지도에 표시
-                    showMarker();
-                }
-                else{ //가져온 값이 없는 경우
-                    Toast.makeText(getApplicationContext(),"저장된 장소가 없습니다.",Toast.LENGTH_LONG).show();
-                }
-
-            }catch (Exception e){e.printStackTrace();}
+            });
+        }catch (Exception e){
+            e.printStackTrace();
         }
     }
-
 
     // 지도에 표시해주는 메서드
     public void showMarker(){
@@ -506,7 +514,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     double lat= lat_list.get(i);
                     double lng=lng_list.get(i);
                     String name=name_list.get(i);
-                    String vicinity=vicinity_list.get(i);
                     // 생성할 마커의 정보를 가지고 있는 객체를 생성
                     MarkerOptions options=new MarkerOptions();
                     // 위치설정
@@ -514,7 +521,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     options.position(pos);
                     // 말풍선이 표시될 값 설정
                     options.title(name);
-                    options.snippet(vicinity);
                     // 아이콘 설정
                     //BitmapDescriptor icon= BitmapDescriptorFactory.fromResource(R.mipmap.ic_map_marker);
                     //options.icon(icon);

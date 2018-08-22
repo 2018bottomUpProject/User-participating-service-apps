@@ -1,10 +1,10 @@
 package com.project.bottomup.upsa;
 
 import android.util.Log;
-
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-public class MyThread {
+public class NetworkManager {
+    public static String url = "http://192.168.1.52:8080"; //서버 주소
     private static InnerThread thread = new InnerThread();
     //runnable을 받을 큐
     private static ConcurrentLinkedQueue<Runnable> concurrentLinkedQueue = new ConcurrentLinkedQueue<Runnable>();
@@ -13,7 +13,7 @@ public class MyThread {
     }
     public static void add(Runnable run) throws InterruptedException {
         concurrentLinkedQueue.add(run);
-        Log.e("MyThread","add_Queue");
+        Log.e("NetworkManager","add_Queue");
     }
     private static class InnerThread extends Thread{
         Runnable tempRunnable;
@@ -36,7 +36,7 @@ public class MyThread {
                     else{
                         tempRunnable = concurrentLinkedQueue.poll();
                         if(tempRunnable!=null) {
-                            Log.e("MyThread","run");
+                            Log.e("NetworkManager","run");
                             tempRunnable.run();
                         }
                     }

@@ -20,7 +20,7 @@ public class IntroActivity extends Activity{
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(iv);
         Glide.with(this).load(R.raw.fireeee).into(imageViewTarget);
 
-        MyThread.init(); //thread 시작
+        NetworkManager.init(); //thread 시작
         Handler handler = new Handler();
         handler.postDelayed(new Runnable(){
             @Override
