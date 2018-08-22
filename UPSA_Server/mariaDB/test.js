@@ -1,4 +1,5 @@
-var sql = require('./db_sql')();
+let sql = require('./db_sql')();
+let init_sql = require('./db_init_sql')();
 
 console.log('test.js started');
 sql.testselect(function(err, data){

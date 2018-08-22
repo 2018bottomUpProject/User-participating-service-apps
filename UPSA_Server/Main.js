@@ -4,13 +4,15 @@ let https = require('https');
 
 
 let Dummyapp = require('./Dummyapp');
-let app;
+let app = require('./app');
 
 //if just want using Dummy, set this true.
-let startDummyServer = true;
+let startDummyServer = false;
 
 let port = 8080;
 let server;
+
+
 if(startDummyServer) {
     /* Dummy HTTP server open                      *
     *  if do not want, just set it with annotation*/
@@ -21,16 +23,19 @@ if(startDummyServer) {
     server.on('error', onError);
     server.on('listening', onListening);
 }
-else{    
-    DB.init();
-    let sigint_func = function() {
-        DB.close();
-        process.exit();
-    };
-    process.on("SIGINT", sigint_func);
+else{
+    app.set('port', port);
+    server = http.createServer(app);
+    server.listen(app.get('port'));
+    server.on('error', onError);
+    server.on('listening', onListening);
 
 
 }
+let sigint_func = function() {
+    process.exit();
+};
+process.on("SIGINT", sigint_func);
 
 
 function onError(error) {
