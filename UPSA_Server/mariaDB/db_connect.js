@@ -1,3 +1,4 @@
+"use strict";
 let mysql = require('mysql');
 
 module.exports = function () {

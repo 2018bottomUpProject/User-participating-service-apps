@@ -1,3 +1,4 @@
+"use strict";
 let pool = require('./db_connect');
 
 let init = function(callback){

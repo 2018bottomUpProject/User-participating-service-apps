@@ -1,3 +1,4 @@
+"use strict";
 let sql = require('./db_sql')();
 let init_sql = require('./db_init_sql')();
 
