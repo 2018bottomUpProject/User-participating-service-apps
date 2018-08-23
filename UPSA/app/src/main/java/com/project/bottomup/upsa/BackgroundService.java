@@ -38,7 +38,6 @@ public class BackgroundService extends Service {
     private int scanCount = 0;// 스캔 횟수 저장 변수
     String text = "";
     private List<ScanResult> mScanResult; // 스캔 결과 저장할 리스트
-    //ScanResult bResult1 = null, bResult2 = null, bResult3 = null;// wifi 상위 3개 저장할 변수들
     private ArrayList<String> currentResultList;
     private ArrayList<String> prevResultList;
     private Location prev = null;// 이전 위치를 저장할 변수
@@ -114,7 +113,7 @@ public class BackgroundService extends Service {
         try{
             mScanResult = wifimanager.getScanResults(); // ScanResult
             postWiFiInfo(mScanResult); // 서버에 보내줄 정보 맵에 넣기
-        /*
+            /*
          스캔 결과 중 세기가 좋은 상위 3개를 찾고
          이전 상위 3개와 비교해서 3개 모두 변경되었다면
          위치가 변경되었다고 인식한다
@@ -173,7 +172,7 @@ public class BackgroundService extends Service {
                     Log.i(TAG,"FIRST_READ LIST");
                     Log.i(TAG,"prevResult:"+prevResultList.get(0)+"/ "+prevResultList.get(1)+"/ "+prevResultList.get(2));
                 }
-            }else if(check==false && count==3){
+            }else if(count==3){ //이전 상위 3개 WIFI정보와 현재 상위 3개 WIFI정보가 모두 일치하지 않을 때
                 Log.i(TAG, "WiFi 현재 위치 변경됨 -> prevList 리셋(초기화)");
                 prevResultList.clear();
             }
@@ -184,7 +183,6 @@ public class BackgroundService extends Service {
 
     // 서버에 WiFi 리스트 보내주기 위한 메소드
     public void postWiFiInfo(List<ScanResult> resultList){
-        Log.i(TAG,"postInfo()");
         map = new HashMap<String,Integer>();
         for(int i=0;i<resultList.size();i++){
             ScanResult result=resultList.get(i);
@@ -279,7 +277,7 @@ public class BackgroundService extends Service {
         dummyPlaceConnector=new DummyPlaceConnector();
         Log.i(TAG,"pushInfo()");
         try{
-            MyThread.add(new Runnable() {
+            NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
                     Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("KT_GiGA_2G_aplus 2층"));

@@ -42,7 +42,7 @@ public class AddCategoryFragment extends Fragment {
             public void onClick(View view) {
                 //프래그먼트 교체
                 Log.i("AddCategory","restaurant_click");
-                onApplySelectedListener.postCategory(restText.getText().toString());
+                onApplySelectedListener.postCategory("RESTAURANT");
                 //식당정보 프래그먼트로 이동
                 ((FragmentReplacable) getActivity()).replaceFragment("cafe");
             }
@@ -53,7 +53,7 @@ public class AddCategoryFragment extends Fragment {
             public void onClick(View view) {
                 //프래그먼트 교체
                 Log.i("AddCategory","cafe_click");
-                onApplySelectedListener.postCategory(cafeText.getText().toString());
+                onApplySelectedListener.postCategory("CAFE");
                 //식당정보 프래그먼트로 이동
                 ((FragmentReplacable) getActivity()).replaceFragment("cafe");
             }
@@ -64,7 +64,7 @@ public class AddCategoryFragment extends Fragment {
             public void onClick(View view) {
                 //프래그먼트 교체
                 Log.i("AddCategory","park_click");
-                onApplySelectedListener.postCategory(parkText.getText().toString());
+                onApplySelectedListener.postCategory("PARK");
                 //공원정보 프래그먼트로 이동
                 ((FragmentReplacable) getActivity()).replaceFragment("park");
             }

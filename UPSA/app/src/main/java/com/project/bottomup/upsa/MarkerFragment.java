@@ -15,7 +15,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class MarkerFragment extends DialogFragment {
-    ArrayList<String> markerClick = new ArrayList<String>();
+    ArrayList<DocumentInfo> markerClick = new ArrayList<DocumentInfo>();
+    ArrayList<String> name = new ArrayList<String>();
+    ArrayList<Integer> id = new ArrayList<Integer>();
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -25,10 +27,12 @@ public class MarkerFragment extends DialogFragment {
         builder.setView(view);
         try {
             Bundle bundle = this.getArguments();
-            markerClick = bundle.getStringArrayList("markerClick");
+            markerClick = bundle.getParcelableArrayList("markerClick");
 
             for (int i = 0; i < markerClick.size(); i++) {
-                Log.i("MarkerFragment", "가게이름" + (i+1) + " : " + markerClick.get(i).toString());
+                Log.i("MarkerFragment", "가게이름" + (i+1) + " : " + markerClick.get(i).getPlaceName());
+                name.add(i,markerClick.get(i).getPlaceName());
+                id.add(i,markerClick.get(i).getPlaceId());
             }
         }catch(Exception e){
             Toast.makeText(getActivity(), "등록된 장소(시설)가 없습니다.", Toast.LENGTH_SHORT).show();
@@ -36,7 +40,7 @@ public class MarkerFragment extends DialogFragment {
         }
 
         // ArrayAdapter 생성. 아이템 View를 선택(single choice)가능하도록 만듦.
-        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,markerClick);
+        final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1,name);
 
         // listView 생성 및 adapter 지정
         final ListView listview = (ListView)view.findViewById(R.id.markerContainer) ;

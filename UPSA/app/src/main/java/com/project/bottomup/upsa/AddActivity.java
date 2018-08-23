@@ -137,18 +137,20 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                         Toast.makeText(this,"카테고리를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
-                    if(placeMenu!=null && placeMenu.size()>0){
-                        JSONArray postMenu = new JSONArray();
-                        for(int i=0; i<placeMenu.size(); i++){
-                            JSONObject temp = new JSONObject();
-                            temp.put("name",placeMenu.get(i).getName());
-                            temp.put("price",placeMenu.get(i).getPrice());
-                            postMenu.put(i,temp);
+                    if(placeCategory != "park") {
+                        if (placeMenu != null && placeMenu.size() > 0) {
+                            JSONArray postMenu = new JSONArray();
+                            for (int i = 0; i < placeMenu.size(); i++) {
+                                JSONObject temp = new JSONObject();
+                                temp.put("name", placeMenu.get(i).getName());
+                                temp.put("price", placeMenu.get(i).getPrice());
+                                postMenu.put(i, temp);
+                            }
+                            document.put("menu", postMenu);
+                        } else {
+                            Toast.makeText(this, "메뉴를 등록해주세요.", Toast.LENGTH_LONG).show();
+                            throw new Exception();
                         }
-                        document.put("menu",postMenu);
-                    }else{
-                        Toast.makeText(this,"메뉴를 등록해주세요.",Toast.LENGTH_LONG).show();
-                        throw  new Exception();
                     }
                     if(placeInfo!="initial" && placeInfo!=null) {
                         document.put("extraInfo", placeInfo);
@@ -226,7 +228,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     public void postInfo(){
         dummyPlaceConnector = new DummyPlaceConnector();
         try{
-            MyThread.add(new Runnable() {
+            NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
                     Log.i("AddActivity","쓰레드런");
