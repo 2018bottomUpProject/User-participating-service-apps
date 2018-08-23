@@ -9,7 +9,7 @@ let app = require('./app');
 //if just want using Dummy, set this true.
 let startDummyServer = false;
 
-let port = 8080;
+let port = 8899;
 let server;
 
 
