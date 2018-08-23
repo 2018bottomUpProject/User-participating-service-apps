@@ -14,8 +14,8 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
     };
     let name = req.query.Category.replace(/"/gi,"").replace(/ /gi, "");
     let returnval = category[name]+"";
-    console.log("CATCHED PARAMETER : ", name);
-    console.log("RETURN VALUE : ", returnval);
+    console.log("CATEGORY:GET -> CATCHED PARAMETER : ", name);
+    console.log("CATEGORY:GET -> RETURN VALUE : ", returnval);
     res.send(returnval);
     //http://192.168.1.52:8080/category?Category=%22CAFE%22
 });

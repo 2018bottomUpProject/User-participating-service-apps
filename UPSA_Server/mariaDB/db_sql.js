@@ -1,6 +1,8 @@
 let pool = require('./db_connect');
+let fs = require('fs');
+
 let query_function = function(sql, callback){
-    console.log(sql);
+    console.log("DB_SQL : ",sql);
     pool.getConnection(function(err, con){
         if(err){
             console.log(err);
@@ -14,7 +16,7 @@ let query_function = function(sql, callback){
     });
 };
 let testselect = function(callback){
-    let  sql = 'select * from test where ST_DISTANCE(location,POINT(2,2))<= 1';
+    let  sql = 'select * from Location where _id=1';
     query_function(sql,callback);
 };
 let getLocation = function(X, Y, category, radius, callback){
@@ -27,10 +29,16 @@ let getLocation = function(X, Y, category, radius, callback){
 let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType){//자료 처리가 필요함.
 
 };
-let getDocument = function(article){//파일 관련
+let newDocument = function(place_id, article){
+    fs.mkdirSync('./here');
+};
+let editDocument = function(place_id, article){
 
 };
-let delDocument = function(article){//파일 관련
+let getDocument = function(place_id, article){//파일 관련
+
+};
+let delDocument = function(place_id, article){//파일 관련
 
 };
 let getReview = function(place_id, index_start, index_end, callback){
@@ -50,9 +58,6 @@ let delReview = function(id, callback){
     query_function(sql,callback);
 };
 let getLog = function(){
-
-};
-let getCategory = function(){
 
 };
 let getPermission = function(place_id, user_id, callback){
@@ -76,6 +81,8 @@ module.exports = function () {
         testselect: testselect,
         getLocation:getLocation,
         newLocation:newLocation,
+        newDocument:newDocument,
+        editDocument:editDocument,
         getDocument:getDocument,
         delDocument:delDocument,
         getReview:getReview,
@@ -83,7 +90,6 @@ module.exports = function () {
         editReview:editReview,
         delReview:delReview,
         getLog:getLog,
-        getCategory:getCategory,
         getPermission:getPermission,
         getUser:getUser,
         newUser:newUser,
