@@ -4,7 +4,7 @@ import android.util.Log;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class NetworkManager {
-    public static String url = "http://192.168.1.52:8080"; //서버 주소
+    public static String url = "http://oreh.onyah.net:8899"; //서버 주소
     private static InnerThread thread = new InnerThread();
     //runnable을 받을 큐
     private static ConcurrentLinkedQueue<Runnable> concurrentLinkedQueue = new ConcurrentLinkedQueue<Runnable>();
