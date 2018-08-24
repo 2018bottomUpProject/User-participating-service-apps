@@ -30,8 +30,10 @@ let getLocation = function(X, Y, category, radius, callback){
 let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType){//자료 처리가 필요함.
 
 };
-let newDocument = function(place_id, article){
-    fs.mkdirSync('./here');
+let newDocument = function(place_id, article, callback){
+    fs.writeFileSync('Documents/'+place_id, article, 'utf8');
+    callback();
+    console.log('동기적 파일 쓰기 완료');
 };
 let editDocument = function(place_id, article){
 

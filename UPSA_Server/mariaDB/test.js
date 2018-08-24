@@ -3,6 +3,7 @@ let sql = require('./db_sql')();
 let init_sql = require('./db_init_sql')();
 
 console.log('test.js started');
+/*
 sql.testselect(function(err, data){
     if (err) console.log(err);
     else console.log(data);
@@ -14,4 +15,5 @@ sql.testselect(function(err, data){
             console.log('test.js finished');
         }
     });
-});
+});*/
+sql.newDocument("asdf", "aslkdjglkasd");
