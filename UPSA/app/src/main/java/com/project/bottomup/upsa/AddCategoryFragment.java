@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 public class AddCategoryFragment extends Fragment {
+    private static final String TAG = "AddCategory";
 
     private OnApplySelectedListener onApplySelectedListener;
     @Override
@@ -35,13 +36,13 @@ public class AddCategoryFragment extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_add_category, container, false);
-        Log.i("AddCategory","OnCreateView");
+        Log.i(TAG,"OnCreateView");
         final TextView restText = (TextView) rootView.findViewById(R.id.restaurant);
         restText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //프래그먼트 교체
-                Log.i("AddCategory","restaurant_click");
+                Log.i(TAG,"restaurant_click");
                 onApplySelectedListener.postCategory("RESTAURANT");
                 //식당정보 프래그먼트로 이동
                 ((FragmentReplacable) getActivity()).replaceFragment("cafe");
@@ -52,21 +53,43 @@ public class AddCategoryFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //프래그먼트 교체
-                Log.i("AddCategory","cafe_click");
+                Log.i(TAG,"cafe_click");
                 onApplySelectedListener.postCategory("CAFE");
-                //식당정보 프래그먼트로 이동
+                //카페정보 프래그먼트로 이동
                 ((FragmentReplacable) getActivity()).replaceFragment("cafe");
             }
         });
-        final TextView parkText = (TextView) rootView.findViewById(R.id.park);
-        parkText.setOnClickListener(new View.OnClickListener() {
+        final TextView storeText = (TextView) rootView.findViewById(R.id.store);
+        storeText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //프래그먼트 교체
-                Log.i("AddCategory","park_click");
-                onApplySelectedListener.postCategory("PARK");
-                //공원정보 프래그먼트로 이동
-                ((FragmentReplacable) getActivity()).replaceFragment("park");
+                Log.i(TAG,"store_click");
+                onApplySelectedListener.postCategory("STORE");
+                //편의점정보 프래그먼트로 이동
+                ((FragmentReplacable) getActivity()).replaceFragment("convenience");
+            }
+        });
+        final TextView convenienceText = (TextView) rootView.findViewById(R.id.convenience);
+        convenienceText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //프래그먼트 교체
+                Log.i(TAG,"convenience_click");
+                onApplySelectedListener.postCategory("CONVENIENCE");
+                //편의시설정보 프래그먼트로 이동
+                ((FragmentReplacable) getActivity()).replaceFragment("convenience");
+            }
+        });
+        final TextView restRoomText = (TextView) rootView.findViewById(R.id.restRoom);
+        restRoomText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //프래그먼트 교체
+                Log.i(TAG,"restRoom_click");
+                onApplySelectedListener.postCategory("RESTROOM");
+                //편의시설정보 프래그먼트로 이동
+                ((FragmentReplacable) getActivity()).replaceFragment("restRoom");
             }
         });
 

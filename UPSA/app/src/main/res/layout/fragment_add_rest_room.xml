@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    tools:context=".AddRestRoomFragment">
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restRoom_ch1"
+            android:layout_alignLeft="@+id/RestRoomEditText">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴지 유무"
+                android:id="@+id/restRoom1_1"   />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남녀공용"
+                android:id="@+id/restRoom1_2"
+                android:layout_below="@+id/restRoom1_1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restRoom_ch2"
+            android:layout_marginTop="15dp"
+            android:layout_below="@+id/restRoom_ch1"
+            android:layout_alignLeft="@+id/RestRoomEditText">
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="주차 공간"
+                android:id="@+id/restRoom_2"/>
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유료"
+                android:id="@+id/restRoom2_1"
+                android:visibility="gone"
+                android:layout_marginLeft="30dp"
+                android:layout_below="@+id/restRoom_2"/>
+        </RelativeLayout>
+
+        <EditText
+            android:layout_width="350dp"
+            android:layout_height="500dp"
+            android:id="@+id/RestRoomEditText"
+            android:hint="블로그URL 등의 부가정보를 입력해주세요. 정확한 정보를 알려주시면 등록에 도움이 됩니다."
+            android:textSize="15dp"
+            android:inputType="textMultiLine|textNoSuggestions"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/restRoom_ch2"
+            android:cursorVisible="true"
+            android:background="@drawable/back"
+            />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_below="@+id/RestRoomEditText"
+            android:layout_marginTop="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignRight="@+id/RestRoomEditText"
+            android:layout_alignEnd="@+id/RestRoomEditText"
+            android:text="리뷰등록"/>
+    </RelativeLayout>
+</FrameLayout>
