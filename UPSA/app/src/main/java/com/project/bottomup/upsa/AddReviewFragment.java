@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.TextView;
 
 
 public class AddReviewFragment extends Fragment {
@@ -39,17 +40,27 @@ public class AddReviewFragment extends Fragment {
         Log.i("AddReview","OnCreateView");
 
         //editText 내용 가져오기
-        EditText editText = (EditText) rootView.getRootView().findViewById(R.id.ReEditText);
+        final TextView textView = (TextView) rootView.getRootView().findViewById(R.id.ReTextView);
+        final EditText editText = (EditText) rootView.getRootView().findViewById(R.id.ReEditText);
         editText.addTextChangedListener(new TextWatcher() {
+            String str;
             @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
                 //입력하기 전에
                 //리뷰 보내기
                 onApplySelectedListener.postReview("initial");
+                str = charSequence.toString();
             }
             @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
                 //입력되는 텍스트에 변화가 있을 때
+                //글자수 200자 제한
+                if(charSequence.length()>200){
+                    editText.setText(str);
+                    editText.setSelection(start);
+                }else{
+                    textView.setText(String.valueOf(charSequence.length()));
+                }
             }
             @Override
             public void afterTextChanged(Editable editable) {

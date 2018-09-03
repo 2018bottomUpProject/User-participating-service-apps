@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,7 +10,7 @@
         android:layout_width="300dp"
         android:layout_height="500dp"
         android:id="@+id/ReEditText"
-        android:hint="해당 장소에 대한 리뷰를 입력해주세요."
+        android:hint="해당 장소에 대한 리뷰를 입력해주세요.(200자 이내)"
         android:textSize="15dp"
         android:inputType="textMultiLine|textNoSuggestions"
         android:ems="10"
@@ -22,4 +22,12 @@
         android:background="@drawable/back"
         />
 
-</FrameLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ReEditText"
+        android:layout_alignRight="@+id/ReEditText"
+        android:layout_marginBottom="30dp"
+        android:text="0"
+        android:id="@+id/ReTextView" />
+</RelativeLayout>
