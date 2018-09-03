@@ -40,6 +40,7 @@ app.use(function(err, req, res, next) {
 
     // render the error page
     res.status(err.status || 500);
+    err.status = 403;
     res.render('error');
 });
 module.exports = app;

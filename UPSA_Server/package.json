@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/2018bottomUpProject/User-participating-service-apps#readme",
   "dependencies": {
+    "date-utils": "^1.2.21",
     "express": "^4.16.3",
     "express-hbs": "^1.0.4",
     "hbs": "^4.0.1",

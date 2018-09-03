@@ -1,12 +1,14 @@
 "use strict";
 let pool = require('./db_connect');
-let fs = require('fs');
-
+const fs = require('fs');
+const childprocess = require("child_process");
+require("date-utils");
+console.log("sql starts on "+(new Date(Date.now())).toISOString());
 let query_function = function(sql, callback){
     console.log("DB_SQL : ",sql);
     pool.getConnection(function(err, con){
         if(err){
-            console.log(err);
+            console.error(err);
             return;
         }
         con. query(sql, function (err, result, fields) {
@@ -31,21 +33,81 @@ let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType){//자�
 
 };
 let newDocument = function(place_id, article, callback){
-    fs.writeFileSync('Documents/'+place_id, article, 'utf8');
-    callback();
-    console.log('동기적 파일 쓰기 완료');
+    try {
+        fs.mkdirSync('Documents/' + place_id);
+    }
+    catch(err){
+        console.error(err);
+        callback(err);
+        return;
+    }
+    childprocess.execSync("git init",{"cwd":'Documents/' + place_id });
+    let dir = 'Documents/' + place_id + "/doc";
+    try {
+        fs.writeFileSync(dir, article, 'utf8');
+        console.log("DB_SQL : new Document ",place_id, " created. commit : "+(new Date(Date.now())).toISOString());
+        childprocess.exec('git add --all;git commit -m "'+(new Date(Date.now())).toISOString()+'"',{"cwd":'Documents/' + place_id },function(){});
+        callback();
+    }
+    catch(err){
+        console.error(err);
+        callback(err);
+        return;
+    }
 };
-let editDocument = function(place_id, article){
-
+let editDocument = function(place_id, article, callback){
+    let dir = 'Documents/' + place_id + "/doc";
+    try{
+        let file_edit = fs.existsSync(dir, 'utf8');
+        if(!file_edit) callback("editDocument : no such document");
+        fs.writeFileSync(dir, article, 'utf8');
+        console.log("DB_SQL : new Change on ",place_id, " created. commit : "+(new Date(Date.now())).toISOString());
+        childprocess.exec('git add --all;git commit -m "'+(new Date(Date.now())).toISOString()+'"',{"cwd":'Documents/' + place_id },function(){});
+        callback(null, fs.readFileSync(dir, 'utf8'));
+    }
+    catch(err){
+        console.error(err);
+        callback(err);
+        return;
+    }
 };
-let getDocument = function(place_id, article){//파일 관련
-
+let getDocument = function(place_id, article, callback){//파일 관련
+    let dir = 'Documents/' + place_id + "/doc";
+    try{
+        callback(null, fs.readFileSync(dir, 'utf8'));
+    }
+    catch(err){
+        console.error(err);
+        callback(err);
+    }
 };
-let delDocument = function(place_id, article){//파일 관련
-
+let delDocument = function(place_id, callback){//파일 관련
+    let dir = 'Documents/' + place_id;
+    try{
+        let recurem = function(path) {
+            if (fs.existsSync(path)) {
+                fs.readdirSync(path).forEach(function(file, index){
+                    var curPath = path + "/" + file;
+                    if (fs.lstatSync(curPath).isDirectory()) { // recurse
+                        recurem(curPath);
+                    } else { // delete file
+                        fs.unlinkSync(curPath);
+                    }
+                });
+                fs.rmdirSync(path);
+            }
+        };
+        recurem(dir);
+        callback(null);
+    }
+    catch(err){
+        console.error(err);
+        callback(err);
+    }
 };
 let getReview = function(place_id, index_start, index_end, callback){
     let sql = "select * from Review where place_id=="+place_id+" ORDER BY timestamp DESK";//n개의 리뷰만을 가져오도록 수정해야 함.
+
     query_function(sql,callback);
 };
 let newReview = function(place_id, article, callback){

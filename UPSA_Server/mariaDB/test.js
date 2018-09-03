@@ -16,4 +16,4 @@ sql.testselect(function(err, data){
         }
     });
 });*/
-sql.newDocument("asdf", "aslkdjglkasd");
+sql.newDocument("asdf", "aslkdjglkasd",function(){console.log("end")});
