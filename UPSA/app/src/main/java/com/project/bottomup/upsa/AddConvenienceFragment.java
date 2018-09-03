@@ -15,7 +15,9 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 
-public class AddParkFragment extends Fragment {
+public class AddConvenienceFragment extends Fragment {
+    private static final String TAG = "AddConvenienceFragment";
+
     private CheckBox cb1; //화장실
     private CheckBox cb1_1; //휴지
     private CheckBox cb1_2; //남녀공용
@@ -45,15 +47,15 @@ public class AddParkFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        Log.i("AddPark","onCreateView");
-        View rootView=inflater.inflate(R.layout.fragment_add_park, container, false);
+        Log.i(TAG,"onCreateView");
+        View rootView=inflater.inflate(R.layout.fragment_add_convenience, container, false);
 
-        cb1 = (CheckBox)rootView.findViewById(R.id.park_1);
-        cb1_1 = (CheckBox)rootView.findViewById(R.id.park1_1);
-        cb1_2 = (CheckBox)rootView.findViewById(R.id.park1_2);
+        cb1 = (CheckBox)rootView.findViewById(R.id.convenience_1);
+        cb1_1 = (CheckBox)rootView.findViewById(R.id.convenience1_1);
+        cb1_2 = (CheckBox)rootView.findViewById(R.id.convenience1_2);
 
-        cb2 = (CheckBox)rootView.findViewById(R.id.park_2);
-        cb2_1 = (CheckBox)rootView.findViewById(R.id.park2_1);
+        cb2 = (CheckBox)rootView.findViewById(R.id.convenience_2);
+        cb2_1 = (CheckBox)rootView.findViewById(R.id.convenience2_1);
 
         final CheckBox[] toilet = {cb1,cb1_1,cb1_2};
         final CheckBox[] parking = {cb2,cb2_1};
@@ -94,7 +96,7 @@ public class AddParkFragment extends Fragment {
         });
 
         //editText 내용 가져오기
-        EditText editText = (EditText) rootView.getRootView().findViewById(R.id.ParkEditText);
+        EditText editText = (EditText) rootView.getRootView().findViewById(R.id.ConvenienceEditText);
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -122,7 +124,7 @@ public class AddParkFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 //프래그먼트 교체
-                Log.i("AddPark","button_click");
+                Log.i(TAG,"button_click");
                 ((FragmentReplacable) getActivity()).replaceFragment("review");
             }
         });

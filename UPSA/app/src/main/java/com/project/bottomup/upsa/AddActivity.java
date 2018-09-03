@@ -29,6 +29,7 @@ import java.util.ArrayList;
 import network.DummyPlaceConnector;
 
 public class AddActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable, OnApplySelectedListener{
+    private static final String TAG = "AddActivity";
     //툴바 생성
     Toolbar toolbar;
     //지도 관리
@@ -48,6 +49,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private String placeInfo;
     private ArrayList<MenuInfo> placeMenu;
     private String placeReview;
+    private ArrayList<String> noMenu;
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +75,10 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
             mapFragment.getMapAsync(this);
             setDefaultFragment();
+
+            //메뉴 필수 아닌 카테고리
+            noMenu = new ArrayList<>();
+            noMenu.add("STORE"); noMenu.add("CONVENIENCE"); noMenu.add("RESTROOM");
     }
 
     @Override
@@ -137,7 +143,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                         Toast.makeText(this,"카테고리를 등록해주세요.",Toast.LENGTH_LONG).show();
                         throw  new Exception();
                     }
-                    if(placeCategory != "park") {
+                    if(!noMenu.contains(placeCategory)) {
                         if (placeMenu != null && placeMenu.size() > 0) {
                             JSONArray postMenu = new JSONArray();
                             for (int i = 0; i < placeMenu.size(); i++) {
@@ -174,17 +180,17 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     if(placeReview!=null && placeReview.length()>0) {
                         document.put("review", placeReview);
                     }
-                    Log.i("AddActivity","카테고리 push "+placeCategory);
-                    Log.i("AddActivity","이름 push "+placeName);
-                    Log.i("AddActivity","빌딩 push "+placeBuilding);
-                    Log.i("AddActivity","전화번호 push "+placeTel);
-                    Log.i("AddActivity","세부정보 push "+placeInfo);
-                    Log.i("AddActivity","리뷰 push "+placeReview);
-                    Log.i("AddActivity","lat, lng push "+currentlat+"/"+currentlng);
+                    Log.i(TAG,"카테고리 push "+placeCategory);
+                    Log.i(TAG,"이름 push "+placeName);
+                    Log.i(TAG,"빌딩 push "+placeBuilding);
+                    Log.i(TAG,"전화번호 push "+placeTel);
+                    Log.i(TAG,"세부정보 push "+placeInfo);
+                    Log.i(TAG,"리뷰 push "+placeReview);
+                    Log.i(TAG,"lat, lng push "+currentlat+"/"+currentlng);
                     for(int i=0; i<placeToilet.length; i++){
-                        Log.i("AddActivity","화장실"+i+" push "+placeToilet[i].getText().toString()+"/"+placeToilet[i].isChecked());
+                        Log.i(TAG,"화장실"+i+" push "+placeToilet[i].getText().toString()+"/"+placeToilet[i].isChecked());
                     }for(int i=0; i<placeParking.length; i++){
-                        Log.i("AddActivity","주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
+                        Log.i(TAG,"주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
                     }
 
                     postInfo();
@@ -215,9 +221,13 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
         else if( fragmentId == "cafe" ) {
             transaction.replace(R.id.childfragment, new AddCafeFragment());
         }
-        if( fragmentId == "park" ) {
-            transaction.replace(R.id.childfragment, new AddParkFragment());
+        else if( fragmentId == "convenience" ) {
+            transaction.replace(R.id.childfragment, new AddConvenienceFragment());
         }
+        else if( fragmentId == "restRoom" ) {
+            transaction.replace(R.id.childfragment, new AddRestRoomFragment());
+        }
+
         //Back 버튼 클릭 시 이전 프래그먼트로 이동
         transaction.addToBackStack(null);
 
@@ -231,7 +241,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i("AddActivity","쓰레드런");
+                    Log.i(TAG,"쓰레드런");
                     String UserId = "이것은수정할아이디이다.";
                     String placeId = "이것은수정할장소아이디이다.";
                     dummyPlaceConnector.newDocument(placeId,UserId,placeBuilding, placeCategory, placeName, document);
