@@ -37,15 +37,38 @@
             android:layout_below="@+id/restaurant"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"/>
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/park"
-            android:text = "공원"
+            android:id="@+id/store"
+            android:text = "편의점"
             android:textSize="10pt"
             android:layout_below="@+id/cafe"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/convenience"
+            android:text = "편의시설"
+            android:textSize="10pt"
+            android:layout_below="@+id/store"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/restRoom"
+            android:text = "화장실"
+            android:textSize="10pt"
+            android:layout_below="@+id/convenience"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="30dp"/>
+
     </RelativeLayout>
 
 </FrameLayout>

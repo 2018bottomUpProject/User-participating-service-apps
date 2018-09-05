@@ -46,6 +46,8 @@ import java.net.URL;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener, GoogleMap.OnMarkerClickListener{
+    private static final String TAG = "MainActivity";
+
     // 서버로 부터 받아온 데이터를 저장할 리스트
     ArrayList<Integer> id_list; //장소아이디
     ArrayList<Double> lat_list; //위도
@@ -56,9 +58,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     ArrayList<Marker> markers_list;
 
     // 카테고리 배열 (앱 UI에 사용)
-    String[] category_ui_array={ "전체","카페","식당","공원" };
+    String[] category_ui_array={ "전체","카페","식당","편의점", "편의시설", "화장실" };
     // 타입값 배열 (url 요청코드는 영어로 값이 전달됨)
-    String[] category_type_array={ "ALL","CAFE","RESTAURANT","PARK" };
+    String[] category_type_array={ "ALL","CAFE","RESTAURANT","STORE","CONVENIENCE", "RESTROOM" };
 
     //체크할 권한 배열
     String[] permission_list = {
@@ -91,14 +93,14 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Log.d("MainActivity", "onCreate()");
+        Log.d(TAG, "onCreate()");
 
         toolbar = (Toolbar) findViewById(R.id.main_toolbar);
         setSupportActionBar(toolbar);
 
         //서비스 실행
         this.startService(new Intent(this,BackgroundService.class));
-        Log.d("MainActivity","startService");
+        Log.d(TAG,"startService");
 
         //지도 불러오기
         FragmentManager fragmentManager = getSupportFragmentManager();
@@ -125,8 +127,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             notifiLat = intent.getDoubleExtra("lat",0);
             notifiLng = intent.getDoubleExtra("lng",0);
-            Log.i("MainActivity", "getIntent lat : " + notifiLat);
-            Log.i("MainActivity", "getIntent lng : " + notifiLng);
+            Log.i(TAG, "getIntent lat : " + notifiLat);
+            Log.i(TAG, "getIntent lng : " + notifiLng);
 
             // gps 값 넘겨주면 다이얼로그 띄우기
             if(notifiLat!=0&&notifiLng!=0){
@@ -170,8 +172,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             public void onCameraIdle() {
                 location_center = map.getCameraPosition().target;
                 location_zoom = (int)map.getCameraPosition().zoom;
-                Log.i("MainActivity","location_center : "+location_center.latitude+"/ "+location_center.longitude);
-                Log.i("MainActivity","location_zoom : "+location_zoom);
+                Log.i(TAG,"location_center : "+location_center.latitude+"/ "+location_center.longitude);
+                Log.i(TAG,"location_zoom : "+location_zoom);
             }
         });
     }
@@ -436,13 +438,13 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         name_list.clear();
                         building_list.clear();
 
-                        Log.i("MainActivity","쓰레드런");
+                        Log.i(TAG,"쓰레드런");
                         String site = NetworkManager.url + "/locationfg";
                         site+="?X="+location_center.latitude+"&Y="+location_center.longitude+"&Radius="+0.3556*zoom_realMeter[location_zoom]/10000;
                         if(type_keyword!=null){
                             site+="&Category=\""+type_keyword+"\"";
                         }
-                        Log.i("MainActivity","site = "+site);
+                        Log.i(TAG,"site = "+site);
 
                         URL url = new URL(site);
                         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
@@ -468,7 +470,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                                 br.close(); //스트림 해제
 
                                 String rec_data=buf.toString();
-                                Log.i("MainActivity","서버에서 받아온 DATA = "+rec_data);
+                                Log.i(TAG,"서버에서 받아온 DATA = "+rec_data);
                                 // JSON 데이터 분석
                                 JSONArray root=new JSONArray(rec_data);
                                 //개수만큼 반복
