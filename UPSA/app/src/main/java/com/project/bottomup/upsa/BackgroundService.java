@@ -45,18 +45,17 @@ public class BackgroundService extends Service {
 
     private static final String TAG = "BG Service";
     WifiManager wifimanager;
-    private int scanCount = 0;// 스캔 횟수 저장 변수
     String text = "";
     private List<ScanResult> mScanResult; // 스캔 결과 저장할 리스트
-    private ArrayList<String> currentResultList;
-    private ArrayList<String> prevResultList;
+    private List<ScanResult> currentResult;
+    private List<ScanResult> prevResult;
     private Location prev = null;// 이전 위치를 저장할 변수
     HashMap<String, Integer> map;
     private DummyPlaceConnector dummyPlaceConnector;
     String deviceID = "";// 디바이스 ID 저장 변수
     GPSListener gpsListener = new GPSListener();
     Handler networkHandler;
-    int minute=1;
+    int minute=-1;
     String category="";
 
     public BackgroundService() {
@@ -69,14 +68,13 @@ public class BackgroundService extends Service {
         Log.i(TAG, "onCreate()");
         networkHandler = new Handler();
         dummyPlaceConnector = new DummyPlaceConnector();
+        currentResult = new ArrayList<ScanResult>();
+        prevResult = new ArrayList<ScanResult>();
 
         // 사용자의 디바이스 ID 가져오기
         Context mContext=getApplicationContext();
         deviceID  = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
         Log.i(TAG,"deviceID: "+deviceID);
-
-        currentResultList = new ArrayList<String>();
-        prevResultList = new ArrayList<String>();
 
         // WiFi 켜져있나 확인
         checkWiFi();
@@ -122,6 +120,96 @@ public class BackgroundService extends Service {
             }
         }
     };
+    public void threeWiFi(List<ScanResult> prev, List<ScanResult> current){
+        Log.i(TAG,"threeWiFi()");
+        if(prev==null){
+            return;
+        }
+        List<ScanResult> prevThree=new ArrayList<>(),currentThree=new ArrayList<>();
+        int count=0;//상위 3개 비교할 변수
+        //prev 상위 3개 찾기
+        ScanResult max=prev.get(0);
+        for(int i=0;i<3;i++){
+            for(int j=0;j<prev.size();j++){
+                if(max.level<prev.get(j).level){//max보다 현재 값이 더 세면
+                    max=prev.get(j);//max 값 갱신
+                }
+            }
+            prevThree.add(max);//찾은 최댓값 저장
+            prev.remove(max);//최댓값 중복 피하기 위해 삭제
+            max=prev.get(0);//max 초기화
+        }
+        //current 상위 3개 찾기
+        max=current.get(0);
+        for(int i=0;i<3;i++){
+            for(int j=0;j<current.size();j++){
+                if(max.level<current.get(j).level){//max보다 현재 값이 더 세면
+                    max=current.get(j);//max 값 갱신
+                }
+            }
+            currentThree.add(max);//찾은 최댓값 저장
+            current.remove(max);//최댓값 중복 피하기 위해 삭제
+            max=current.get(0);//max 초기화
+        }
+        //최댓값 3개 삭제했던 것 글로벌 변수에 다시 복구
+        for (int i=0;i<3;i++){
+            prev.add(prevThree.get(i));
+            current.add(currentThree.get(i));
+        }
+        //prev와 current의 상위 3개 비교, 3개 모두 달라지면 위치는 변경된 것으로 파악
+        for(int i=0;i<3;i++){
+            for(int j=0;j<3;j++){
+                if(!(prevThree.get(i).SSID.equals(currentThree.get(j).SSID))){//prev의 i번째 값이 current에 없다면
+                    count++;
+                }
+            }
+        }
+        if(count==3){
+            Log.i(TAG,"WiFi를 통해 위치 변경 확인");
+        }
+        else{
+            Log.i(TAG,"WiFI를 통해 위치 변경 X 확인");
+        }
+    }
+
+    public void changedWiFiCount(List<ScanResult> prev, List<ScanResult> current){
+        Log.i(TAG,"changedWiFiCount()");
+        int count=0;
+        if(prev==null){
+            return;
+        }
+        for(int i=0;i<prev.size();i++){// 과거 값이 현재에 존재하는 지 확인
+            for(int j=0;j<current.size();j++){
+                if(prev.get(i).SSID.equals(current.get(j).SSID)){//같은 게 있으면 break
+                    break;
+                }
+                if(j==current.size()-1){//마지막까지 돌았는 데도 같은게 없으면 count++
+                    count++;
+                }
+            }
+        }
+        Log.i(TAG,minute+"분 WiFi "+count+"개 변경됨(prev:"+prev.size()+"개,current:"+current.size()+"개)");
+    }
+    public void setPrevCurrent(){
+        initWIFIScan();
+        Log.i(TAG,"setPrevCurrent()");
+        if(minute==0){//맨 처음에 리스트 받아올 때
+            currentResult=wifimanager.getScanResults();
+            if(currentResult==null){
+                Log.i(TAG,"current가 널이요ㅠㅠㅠ");
+            }
+            else{
+                Log.i(TAG,"current size:"+currentResult.size());
+            }
+        }
+        else if(minute>0){//1분마다 prev와 current 리스트를 비교하기 위해 설정
+            prevResult=currentResult;
+            currentResult=wifimanager.getScanResults();
+            Log.i(TAG,"prev size:"+prevResult.size());
+            Log.i(TAG,"current size:"+currentResult.size());
+        }
+        unregisterReceiver(mReceiver);
+    }
 
     public void getWIFIScanResult() {
         try{
@@ -136,90 +224,6 @@ public class BackgroundService extends Service {
                 return;
             }
 
-            ScanResult max=null;
-            boolean first=false; // 처음 WiFi리스트를 읽는 것인지 판단
-            int three=0; // 상위 3개의 wifi가 모두 바꼈는지 판단
-            int count=0; // wifi가 몇개 바뀌었는지 판단
-            currentResultList.clear(); //현재 ResultList 비우기
-
-            if(mScanResult.get(0)!=null){
-                max=mScanResult.get(0);// max를 찾아 저장할 변수
-            }
-            if(prevResultList.size()==0){//WiFI리스트를 처음 읽는 것이라면
-                first=true;
-            }
-
-            boolean check = true;//Result들이 모두 변경되었는지 알아보기 위한 변수
-            for(int i=0;i<3;i++) {//3개의 상위 wifi를 찾을 때 까지 반복
-                for (int j = 0; j < mScanResult.size(); j++) {//mScanResult 돌면서 상위 값 찾기
-                    if (max.level < mScanResult.get(j).level) {
-                        max = mScanResult.get(j); //max에 제일 큰 값이 들어감
-                    }
-                }
-                if(first==true) {
-                    prevResultList.add(max.SSID);
-                }else{
-                    check = prevResultList.contains(max.SSID); //직전 ResultList에 max가 존재하는지 판단
-                    if(check==false){ //없다면
-                        three++;
-                        check=true;
-                        Log.i(TAG,"max = "+max);
-                        Log.i(TAG,"prevResult:"+prevResultList.get(0)+"/ "+prevResultList.get(1)+"/ "+prevResultList.get(2));
-                    }
-                    currentResultList.add(max.SSID); //현재 ResultList에 max값 넣어주기
-                }
-                mScanResult.remove(max);// max로 찾은 값은 list에서 지워주기
-                max=mScanResult.get(0); //max 초기화
-            }
-
-            //나머지 WiFi값 저장
-            for(int i=0; i<mScanResult.size(); i++){
-                if(first==true){
-                    prevResultList.add(mScanResult.get(i).SSID);
-                }else if(three<3){
-                    currentResultList.add(mScanResult.get(i).SSID);
-                }
-            }
-
-            //몇개가 달라졌는지 판단
-            for(int i=0; i<currentResultList.size();i++){
-                if(!prevResultList.contains(currentResultList.get(i))){
-                    count++;
-                }
-            }
-
-            unregisterReceiver(mReceiver);//WiFi 스캔 종료
-
-            if(check==true && count<3){
-                if(first==false){ //리스트가 처음이 아닐때
-                    Log.i(TAG,"WiFi 현재 같은 위치 변경X");
-                    String log ="";
-                    for(int i=0; i<prevResultList.size();i++){
-                        log += "prev"+i+"=> "+prevResultList.get(i)+", ";
-                    }
-                    Log.i(TAG,log);
-                    log="";
-                    for(int i=0; i<currentResultList.size();i++){
-                        log += "current"+i+"=> "+currentResultList.get(i)+", ";
-                    }
-                    Log.i(TAG,log);
-                    Log.i(TAG, "★★★WiFi 바뀐 정도 - "+count+"★★★");
-                    setNotifi(); // 알림바띄우기
-                    pushInfo();// 1분동안 같은 위치에 머물렀으므로 정보 등록 기능 획득
-                    prevResultList.clear();
-                    prevResultList.addAll(currentResultList);
-                } else {// 리스트를 처음 읽었다면 아직 1분이 안된 경우이므로 한 번 쉰다
-                    Log.i(TAG,"FIRST_READ LIST");
-                    String log ="";
-                    for(int i=0; i<prevResultList.size();i++){
-                        log += "prev"+i+"=> "+prevResultList.get(i)+", ";
-                    }
-                    Log.i(TAG,log);
-                }
-            }else if(three==3){ //이전 상위 3개 WIFI정보와 현재 상위 3개 WIFI정보가 모두 일치하지 않을 때
-                Log.i(TAG, "WiFi 현재 위치 변경됨 -> prevList 리셋(초기화)");
-                prevResultList.clear();
-            }
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -246,7 +250,6 @@ public class BackgroundService extends Service {
 
     public void initWIFIScan() {
         checkWiFi();// WiFi 켜져있는지 확인
-        scanCount = 0;
         text = "";
         final IntentFilter filter = new IntentFilter(
                 WifiManager.SCAN_RESULTS_AVAILABLE_ACTION);
@@ -265,10 +268,10 @@ public class BackgroundService extends Service {
         Log.i(TAG,"setNotifi()");
         NotificationCompat.Builder mBuilder=
                 new NotificationCompat.Builder(this)
-                .setSmallIcon(R.drawable.intro) // 아이콘 임의로 아무거나 설정>>수정
-                .setContentTitle("정보 등록 가능")
-                .setContentText("1분 동안 위치 변경X -> 정보등록 가능합니다")
-                .setAutoCancel(true); // 클릭 시 지우기
+                        .setSmallIcon(R.drawable.intro) // 아이콘 임의로 아무거나 설정>>수정
+                        .setContentTitle("정보 등록 가능")
+                        .setContentText("1분 동안 위치 변경X -> 정보등록 가능합니다")
+                        .setAutoCancel(true); // 클릭 시 지우기
         Intent resultIntent=new Intent(getApplicationContext(),MainActivity.class);
         //MainActivity에 경도,위도 전송
         resultIntent.putExtra("lat",gpsListener.latitude);
@@ -397,14 +400,9 @@ public class BackgroundService extends Service {
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
-                    // 소수 4자리까지 사용
-                    String strlat=String.format("%.4f",gpsListener.latitude);
-                    String strlng=String.format("%.4f",gpsListener.longitude);
-                    double lat=Double.parseDouble(strlat);
-                    double lng=Double.parseDouble(strlng);
-                    Log.i(TAG,"pushInfo() "+deviceID+" "+lat+" "+lng+" "+map.get("KT_GiGA_2G_aplus 2층"));
+                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("KT_GiGA_2G_aplus 2층"));
                     // 서버에 위치 등록 정보 넘겨주기
-                    dummyPlaceConnector.postLocationBG(deviceID,lat,lng,map);
+                    dummyPlaceConnector.postLocationBG(deviceID,gpsListener.latitude,gpsListener.longitude,map);
                 }
             });
         }catch(Exception e){
@@ -418,15 +416,13 @@ public class BackgroundService extends Service {
         float accuracy;
         String provider;
         public void onLocationChanged(Location location) {
+            minute++;
             latitude = location.getLatitude();
             longitude = location.getLongitude();
             altitude=location.getAltitude();
             accuracy=location.getAccuracy();
             provider=location.getProvider();
-            Log.i(TAG,"lat: "+latitude+" lng: "+longitude+" alt: "+altitude+" acc: "+accuracy+" pro: "+provider);
-            checkLocationStatus(location);
-        }
-        public void checkLocationStatus(Location location){
+            Log.i(TAG,"현재 위치 "+minute+" 분 lat: "+latitude+" lng: "+longitude+" alt: "+altitude+" acc: "+accuracy+" pro: "+provider);
             /*
              이전 GPS와 현재 GPS의 위치가 같은 범위에 있는 지 확인한 후
              같다면 WiFi 정보가 같은지 확인한다
@@ -434,6 +430,7 @@ public class BackgroundService extends Service {
             if(prev==null){//처음 GPS 위치를 받아온 것이라면
                 prev=location;//5분뒤의 위치와 비교하기 위함
                 Log.i(TAG,"GPS 처음 prev lat,lng:"+prev.getLatitude()+", "+prev.getLongitude());
+                setPrevCurrent();//1분마다 와이파이 prev와 current 갱신
             }
             else{//이전 값이 존재한다면(5분 전의 GPS 값이 존재)
                 // 서버한테 위치 보내주고 등록된 장소인지 확인하기
@@ -474,7 +471,9 @@ public class BackgroundService extends Service {
                 // 카페, 식당이면 10m, 공원 50m
                 if(distance<50){//거리 차가 50m 내외라면
                     Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
-                    initWIFIScan(); // WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
+                    setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
+                    threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
+                    changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
                 }
                 else{//50m 이상이면 위치가 갱신된 것이므로
                     prev=location;//prev 값을 현재 location 값으로 변경
