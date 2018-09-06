@@ -17,6 +17,11 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
     //http://localhost:8080/locationfg?X=36.3619378&Y=127.35299439999994&WifiList=[]&Category=%22RESTAURANT%22&Radius=0.0001
 });
 router.post('/', function(req, res, next){//해당 위치를 임시 등록(글 등록은 안함.)
+    console.log("LOCATIONBG:GET -> X : ",req.query.X);
+    console.log("LOCATIONBG:GET -> Y : ",req.query.Y);
+    console.log("LOCATIONBG:GET -> WifiList : ",req.query.WifiList);
+    console.log("LOCATIONBG:GET -> Category : ", req.query.Category);
+    console.log("LOCATIONBG:GET -> Radius : ", req.query.Radius);
     res.send('test(post)');
 });
 router.delete('/', function(req, res, next){//해당 위치를 임시 등록(글 등록은 안함.)
