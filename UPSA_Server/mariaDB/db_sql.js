@@ -106,7 +106,7 @@ let delDocument = function(place_id, callback){//파일 관련
     }
 };
 let getReview = function(place_id, index_start, index_end, callback){
-    let sql = "select * from Review where place_id=="+place_id+" ORDER BY timestamp DESK";//n개의 리뷰만을 가져오도록 수정해야 함.
+    let sql = "select * from Review where place_id="+place_id+" ORDER BY timestamp DESK";//n개의 리뷰만을 가져오도록 수정해야 함.
 
     query_function(sql,callback);
 };
@@ -126,11 +126,11 @@ let getLog = function(){
 
 };
 let getPermission = function(place_id, user_id, callback){
-    let sql = "select * from Permission where place_id=="+place_id+" AND user_id="+user_id;//n개의 리뷰만을 가져오도록 수정해야 함.
+    let sql = "select * from Permission where place_id="+place_id+" AND user_id="+user_id;//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let getUser = function(device_id, callback){
-    let sql = "select * from User where device_id=="+device_id;//n개의 리뷰만을 가져오도록 수정해야 함.
+    let sql = "select * from User where device_id="+device_id;//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let newUser = function(device_id, password, callback){
