@@ -23,7 +23,12 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.MalformedURLException;
+import java.net.URLConnection;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -212,9 +217,10 @@ public class BackgroundService extends Service {
     }
 
     public void getWIFIScanResult() {
+        Log.i(TAG,"getWiFiScanResult()");
         try{
-            mScanResult = wifimanager.getScanResults(); // ScanResult
-            postWiFiInfo(mScanResult); // 서버에 보내줄 정보 맵에 넣기
+            //mScanResult = wifimanager.getScanResults(); // ScanResult
+            postWiFiInfo(currentResult); // 서버에 보내줄 정보 맵에 넣기
             /*
          스캔 결과 중 세기가 좋은 상위 3개를 찾고
          이전 상위 3개와 비교해서 3개 모두 변경되었다면
@@ -231,11 +237,13 @@ public class BackgroundService extends Service {
 
     // 서버에 WiFi 리스트 보내주기 위한 메소드
     public void postWiFiInfo(List<ScanResult> resultList){
+        Log.i(TAG,"postWiFiInfo()");
         map = new HashMap<String,Integer>();
         for(int i=0;i<resultList.size();i++){
             ScanResult result=resultList.get(i);
             map.put(result.SSID,result.level);
         }
+        Log.i(TAG,"map size: "+map.size());
     }
 
     public void checkWiFi(){// WiFi가 켜져있는지 확인
@@ -400,9 +408,25 @@ public class BackgroundService extends Service {
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("KT_GiGA_2G_aplus 2층"));
-                    // 서버에 위치 등록 정보 넘겨주기
-                    dummyPlaceConnector.postLocationBG(deviceID,gpsListener.latitude,gpsListener.longitude,map);
+                    if(map==null){
+                        Log.i(TAG,"map이 널");
+                    }
+                    postWiFiInfo(currentResult);
+                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("CNU WiFi"));
+                    // 서버에 위치 등록 정보 넘겨주기 8899/locationbg
+                    // url에 보낼 데이터 추가, connetion 생각해보기!0!
+                    String site = NetworkManager.url + "/locationbg";
+                    try {
+                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude;//+"&WifiList="+mapToJson(map)
+                        URL url=new URL(site);
+                        URLConnection conn = url.openConnection();
+                        conn.getInputStream();
+                        Log.i(TAG,"서버에 get보냄");
+                    } catch (MalformedURLException e) {// for URL
+                        e.printStackTrace();
+                    } catch (IOException e) {// for URLConnection
+                        e.printStackTrace();
+                    }
                 }
             });
         }catch(Exception e){
@@ -465,7 +489,7 @@ public class BackgroundService extends Service {
 //                        }
 //                    }
 //                }
-
+                setNotifi();//테스트를 위해 1분마다 노티피케이션을 띄움
                 double distance=prev.distanceTo(location);
                 Log.i(TAG,"distance: "+distance);
                 // 카페, 식당이면 10m, 공원 50m
@@ -474,6 +498,7 @@ public class BackgroundService extends Service {
                     setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
                     threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
                     changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
+                    //pushInfo();
                 }
                 else{//50m 이상이면 위치가 갱신된 것이므로
                     prev=location;//prev 값을 현재 location 값으로 변경
@@ -484,14 +509,14 @@ public class BackgroundService extends Service {
         public void onProviderDisabled(String provider) {
             // GPS가 꺼지면 함수 호출
             checkGPS();
-            Log.i(TAG,"onProviderDisabled");
+            Log.i(TAG,"onProviderDisabled()");
         }
         public void onProviderEnabled(String provider) {
             // GPS가 다시 켜지면 함수 호출
-            Log.i(TAG,"onProviderEnabled");
+            Log.i(TAG,"onProviderEnabled()");
         }
         public void onStatusChanged(String provider, int status, Bundle extras) {
-            Log.i(TAG,"onStatusChanged");
+            Log.i(TAG,"onStatusChanged()");
         }
 
     }
