@@ -24,7 +24,7 @@ let testselect = function(callback){
 };
 let getLocation = function(X, Y, category, radius, callback){
     let sql = "select * from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<="+radius;
-    if(category !== "\"ALL\"" || category !== "ALL"){
+    if(category !== "\"ALL\"" && category !== "ALL"){
         sql = sql + " AND place_type=" + category;
     }
     query_function(sql,callback);
