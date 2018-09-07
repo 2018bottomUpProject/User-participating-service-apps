@@ -24,6 +24,16 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 
 import network.DummyPlaceConnector;
@@ -37,7 +47,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private double currentlat;
     private double currentlng;
     //서버 관리
-    private DummyPlaceConnector dummyPlaceConnector;
     protected JSONObject document = new JSONObject();
     //장소 정보 관리
     private String placeName;
@@ -236,15 +245,34 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
 
     //최종 서버 전송 단계
     public void postInfo(){
-        dummyPlaceConnector = new DummyPlaceConnector();
         try{
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
-                    Log.i(TAG,"쓰레드런");
-                    String UserId = "이것은수정할아이디이다.";
-                    String placeId = "이것은수정할장소아이디이다.";
-                    dummyPlaceConnector.newDocument(placeId,UserId,placeBuilding, placeCategory, placeName, document);
+                    try{
+                        Log.i(TAG,"쓰레드런");
+                        String userId = "이것은수정할아이디이다.";
+                        int placeId = 3; //임의설정
+                        String site = NetworkManager.url + "/document/"+placeId;
+                        site+="?Article="+document.toString();
+                        URL url = new URL(site);
+                        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
+
+                        //전달방식 -> POST
+                        connection.setRequestMethod("POST");
+                        connection.setConnectTimeout(2000);
+                        //서버로부터 메시지를 받을 수 있도록 함.
+                        connection.setDoInput(true);
+                        //서버로 데이터를 전송할 수 있도록 함.
+                        connection.setDoOutput(true);
+
+                        if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
+                            Log.i(TAG,"서버 연결 성공");
+                        }
+                        connection.disconnect();
+                        }catch(Exception e){
+                        e.printStackTrace();
+                    }
                 }
             });
         }catch(Exception e){
