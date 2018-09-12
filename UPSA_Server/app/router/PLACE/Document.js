@@ -27,6 +27,7 @@ router.get('/:PlaceId', function(req, res, next) {//PlaceId 받음
 router.post('/:PlaceId', function(req, res, next){
     console.log("DOCUMENT:POST -> PLACE_ID : ",req.params.PlaceId);
     console.log("DOCUMENT:POST -> ARTICLE : ", req.query.Article);
+    console.log("DOCUMENT:POST -> ARTICLE : ", req.query);
     sql.newDocument(req.params.PlaceId, req.query.Article, function(err){
         if(err){
             console.error("DOCUMENT:GET FAILED : ", err);

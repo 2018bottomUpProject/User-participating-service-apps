@@ -22,15 +22,37 @@ let testselect = function(callback){
     let  sql = 'select * from Location where _id=1';
     query_function(sql,callback);
 };
-let getLocation = function(X, Y, category, radius, callback){
-    let sql = "select * from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<="+radius;
-    if(category !== "\"ALL\"" && category !== "ALL"){
+let getLocation = function(select, X, Y, category, radius, callback){
+    let sql = "select "+select+" from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<="+radius;
+    if(category !== "\"ALL\"" && category !== "ALL" && category !== undefined){
         sql = sql + " AND place_type=" + category;
     }
     query_function(sql,callback);
 };
-let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType){//자료 처리가 필요함.
-
+let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType, callback){//자료 처리가 필요함.
+    let sql1 = "INSERT INTO Location(";
+    let sql2 = ") VALUES(";
+    let sql3 = ")";
+    let sql_arg1 = ["_id", "location", "wifi_list", "building_name", "place_name", "place_type"];
+    let sql_arg2 = [0, "POINT("+X+","+Y+")", WifiList, BuildingName, PlaceName, PlaceType];
+    let sql;
+    for(let i in sql_arg2){
+        if(sql_arg2[i] !== undefined){
+            if(i===1){
+                if(X === undefined || Y === undefined){
+                    continue;
+                }
+                if(i !== 0){
+                    sql1+=",";
+                    sql2+=",";
+                }
+                sql1 += sql_arg1[i];
+                sql2 +=sql_arg2[i];
+            }
+        }
+    }
+    sql = sql1+sql2+sql3;
+    query_function(sql, callback);
 };
 let newDocument = function(place_id, article, callback){
     try {
