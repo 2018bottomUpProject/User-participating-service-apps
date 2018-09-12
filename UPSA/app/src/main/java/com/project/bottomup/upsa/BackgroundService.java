@@ -23,8 +23,10 @@ import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.net.MalformedURLException;
@@ -51,9 +53,10 @@ public class BackgroundService extends Service {
     private static final String TAG = "BG Service";
     WifiManager wifimanager;
     String text = "";
-    private List<ScanResult> mScanResult; // 스캔 결과 저장할 리스트
+    //private List<ScanResult> mScanResult; // 스캔 결과 저장할 리스트
     private List<ScanResult> currentResult;
     private List<ScanResult> prevResult;
+    private  List<ScanResult> sortResult;
     private Location prev = null;// 이전 위치를 저장할 변수
     HashMap<String, Integer> map;
     private DummyPlaceConnector dummyPlaceConnector;
@@ -118,7 +121,7 @@ public class BackgroundService extends Service {
         public void onReceive(Context context, Intent intent) {//스캔 결과 받는다
             final String action = intent.getAction();
             if (action.equals(WifiManager.SCAN_RESULTS_AVAILABLE_ACTION)) {
-                getWIFIScanResult();
+                //getWIFIScanResult();
                 wifimanager.startScan();
             } else if (action.equals(WifiManager.NETWORK_STATE_CHANGED_ACTION)) {
                 sendBroadcast(new Intent("wifi.ON_NETWORK_STATE_CHANGED"));
@@ -216,24 +219,32 @@ public class BackgroundService extends Service {
         unregisterReceiver(mReceiver);
     }
 
-    public void getWIFIScanResult() {
-        Log.i(TAG,"getWiFiScanResult()");
-        try{
-            //mScanResult = wifimanager.getScanResults(); // ScanResult
-            postWiFiInfo(currentResult); // 서버에 보내줄 정보 맵에 넣기
-            /*
-         스캔 결과 중 세기가 좋은 상위 3개를 찾고
-         이전 상위 3개와 비교해서 3개 모두 변경되었다면
-         위치가 변경되었다고 인식한다
-         */
-            if(mScanResult.size()==0){//WiFi 결과가 없다면
-                return;
-            }
-
-        }catch(Exception e){
-            e.printStackTrace();
+    public void WiFiSort() {//FG에서 사용하기 위해 WiFi 리스트를 세기가 큰 순서로 정렬
+        Log.i(TAG,"WiFISort()");
+        sortResult=new ArrayList<ScanResult>();
+        if(currentResult.size()==0){
+            return;
         }
+        ScanResult max;
+        //current에서 max값을 찾아 sort에 저장
+        for(int i=0;i<currentResult.size();i++){
+            max=currentResult.get(i);//max값 지정
+            for(int j=0;j<currentResult.size();j++){//처음부터 순회하며
+                if(max.level<currentResult.get(j).level){//max보다 더 센 값이 있다면
+                    max=currentResult.get(j);//max값 변경
+                }
+            }
+            sortResult.add(max);//sort에 저장
+            currentResult.remove(max);//중복 방지를 위해 max삭제
+            i=-1;//다시 처음부터 시작
+        }
+        for(int i=0;i<sortResult.size();i++){//remove로 인해 현재 current.size가 0이므로 다시 추가
+            Log.i(TAG,sortResult.get(i).SSID+","+sortResult.get(i).level);
+            currentResult.add(sortResult.get(i));
+        }
+        Log.i(TAG,"current size: "+currentResult.size()+", sort size: "+sortResult.size());
     }
+
 
     // 서버에 WiFi 리스트 보내주기 위한 메소드
     public void postWiFiInfo(List<ScanResult> resultList){
@@ -412,19 +423,26 @@ public class BackgroundService extends Service {
                         Log.i(TAG,"map이 널");
                     }
                     postWiFiInfo(currentResult);
-                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("CNU WiFi"));
+                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+map.get("CNU WiFi"));
                     // 서버에 위치 등록 정보 넘겨주기 8899/locationbg
                     // url에 보낼 데이터 추가, connetion 생각해보기!0!
                     String site = NetworkManager.url + "/locationbg";
                     try {
-                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude;//+"&WifiList="+mapToJson(map)
+                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude+"&Radius=1000&Category=ALL"+"&WifiList="+mapToJson(map);
                         URL url=new URL(site);
-                        URLConnection conn = url.openConnection();
-                        conn.getInputStream();
-                        Log.i(TAG,"서버에 get보냄");
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();//URL 연결한 객체 생성
+                        if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {//연결이 되면{
+                            Log.i(TAG,"서버와 연결됨");
+                            Log.i(TAG,site);
+                        }
+                        //conn.getInputStream();
+                        Log.i(TAG,"서버에 get 보냄");
                     } catch (MalformedURLException e) {// for URL
                         e.printStackTrace();
                     } catch (IOException e) {// for URLConnection
+                        e.printStackTrace();
+                    }
+                    catch (JSONException e) {// for mapToJson()
                         e.printStackTrace();
                     }
                 }
@@ -489,11 +507,10 @@ public class BackgroundService extends Service {
 //                        }
 //                    }
 //                }
-                setNotifi();//테스트를 위해 1분마다 노티피케이션을 띄움
                 double distance=prev.distanceTo(location);
                 Log.i(TAG,"distance: "+distance);
                 // 카페, 식당이면 10m, 공원 50m
-                if(distance<50){//거리 차가 50m 내외라면
+                if(distance<10){//거리 차가 10m 내외라면
                     Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
                     setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
                     threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
@@ -504,6 +521,8 @@ public class BackgroundService extends Service {
                     prev=location;//prev 값을 현재 location 값으로 변경
                     Log.i(TAG,"GPS 현재 위치 변경됨");
                 }
+                WiFiSort();
+                setNotifi();//테스트를 위해 1분마다 노티피케이션을 띄움
             }
         }
         public void onProviderDisabled(String provider) {
