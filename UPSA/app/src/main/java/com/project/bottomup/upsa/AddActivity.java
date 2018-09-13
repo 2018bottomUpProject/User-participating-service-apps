@@ -1,6 +1,7 @@
 package com.project.bottomup.upsa;
 
 import android.content.Intent;
+import android.net.wifi.ScanResult;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -49,6 +50,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     //서버 관리
     protected JSONObject document = new JSONObject();
     //장소 정보 관리
+    private ArrayList<ScanResult> placeWifiList;
     private String placeName;
     private String placeBuilding;
     private String placeTel;
@@ -78,7 +80,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             Intent intent=getIntent();
             currentlat=intent.getDoubleExtra("현재lat",37.56);
             currentlng=intent.getDoubleExtra("현재lng",126.97);
-
+            placeWifiList=intent.getParcelableArrayListExtra("현재wifiList");
             //지도 불러오기
             FragmentManager fragmentManager = getSupportFragmentManager();
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
@@ -189,6 +191,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     if(placeReview!=null && placeReview.length()>0) {
                         document.put("review", placeReview);
                     }
+
                     Log.i(TAG,"카테고리 push "+placeCategory);
                     Log.i(TAG,"이름 push "+placeName);
                     Log.i(TAG,"빌딩 push "+placeBuilding);
@@ -201,8 +204,23 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     }for(int i=0; i<placeParking.length; i++){
                         Log.i(TAG,"주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
                     }
+                    if(placeWifiList!=null) {
+                        for (int i = 0; i < placeWifiList.size(); i++) {
+                            Log.i(TAG, "와이파이리스트 push" + i + "이름,세기 : " + placeWifiList.get(i).SSID + "," + placeWifiList.get(i).level);
+                        }
+                    }else{
+                        Log.i(TAG,"넘겨줄 wifiList가 없습니다.");
+                    }
 
-                    postInfo();
+                    //location 기본 정보 전송
+                    String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
+                            "&WifiList="+placeWifiList+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
+                    int placeId = (int)NetworkManager.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+
+                    //location에 대한 document 정보 전송
+                    String document_site = "/document/"+placeId+"?Article="+document.toString();
+                    NetworkManager.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보 전송
+
                     finish();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -241,43 +259,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
         transaction.addToBackStack(null);
 
         transaction.commit();
-    }
-
-    //최종 서버 전송 단계
-    public void postInfo(){
-        try{
-            NetworkManager.add(new Runnable() {
-                @Override
-                public void run() {
-                    try{
-                        Log.i(TAG,"쓰레드런");
-                        String userId = "이것은수정할아이디이다.";
-                        int placeId = 3; //임의설정
-                        String site = NetworkManager.url + "/document/"+placeId;
-                        site+="?Article="+document.toString();
-                        URL url = new URL(site);
-                        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-
-                        //전달방식 -> POST
-                        connection.setRequestMethod("POST");
-                        connection.setConnectTimeout(2000);
-                        //서버로부터 메시지를 받을 수 있도록 함.
-                        connection.setDoInput(true);
-                        //서버로 데이터를 전송할 수 있도록 함.
-                        connection.setDoOutput(true);
-
-                        if(connection.getResponseCode() == HttpURLConnection.HTTP_OK) {
-                            Log.i(TAG,"서버 연결 성공");
-                        }
-                        connection.disconnect();
-                        }catch(Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
     //카테고리 정보 가져오는 메서드

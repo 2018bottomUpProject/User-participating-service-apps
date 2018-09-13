@@ -11,6 +11,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.wifi.ScanResult;
 import android.os.Parcelable;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
@@ -85,6 +86,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     //notification 받았을 때 현재 사용자 위치
     Double notifiLat;
     Double notifiLng;
+    //notification 받았을 때 wifiList
+    ArrayList<ScanResult> notifiWifiList;
 
     //툴바 생성
     Toolbar toolbar;
@@ -127,9 +130,17 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
             notifiLat = intent.getDoubleExtra("lat",0);
             notifiLng = intent.getDoubleExtra("lng",0);
+            notifiWifiList = intent.getParcelableArrayListExtra("wifiList");
+
             Log.i(TAG, "getIntent lat : " + notifiLat);
             Log.i(TAG, "getIntent lng : " + notifiLng);
-
+            if(notifiWifiList!=null) {
+                for (int i = 0; i < notifiWifiList.size(); i++) {
+                    Log.i(TAG, "get_wifi" + i + "이름,세기 : " + notifiWifiList.get(i).SSID + "," + notifiWifiList.get(i).level);
+                }
+            }else{
+                Log.i(TAG,"넘겨줄 wifiList가 없습니다.");
+            }
             // gps 값 넘겨주면 다이얼로그 띄우기
             if(notifiLat!=0&&notifiLng!=0){
                 show();
@@ -224,6 +235,8 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             Intent intent = new Intent(MainActivity.this, AddActivity.class);
             intent.putExtra("현재lat", notifiLat);
             intent.putExtra("현재lng", notifiLng);
+            intent.putParcelableArrayListExtra("현재wifiList",notifiWifiList);
+
             startActivity(intent);
         }
         //DialogFragment에서 NO했을 때
