@@ -1,6 +1,7 @@
 package com.project.bottomup.upsa;
 
 import android.content.Intent;
+import android.net.wifi.ScanResult;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -26,8 +27,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import network.DummyPlaceConnector;
-
 public class AddActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable, OnApplySelectedListener{
     private static final String TAG = "AddActivity";
     //툴바 생성
@@ -37,9 +36,9 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private double currentlat;
     private double currentlng;
     //서버 관리
-    private DummyPlaceConnector dummyPlaceConnector;
     protected JSONObject document = new JSONObject();
     //장소 정보 관리
+    private ArrayList<ScanResult> placeWifiList;
     private String placeName;
     private String placeBuilding;
     private String placeTel;
@@ -69,6 +68,13 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             Intent intent=getIntent();
             currentlat=intent.getDoubleExtra("현재lat",37.56);
             currentlng=intent.getDoubleExtra("현재lng",126.97);
+            ArrayList<ScanResult> temp =intent.getParcelableArrayListExtra("현재wifiList");
+
+            //wifi 상위 5개 전송
+            for(int i=0; i<5; i++){
+                placeWifiList.add(temp.get(i));
+                Log.i(TAG,"WIFI전송"+i+"; "+placeWifiList.get(i).SSID+"/ "+placeWifiList.get(i).level);
+            }
 
             //지도 불러오기
             FragmentManager fragmentManager = getSupportFragmentManager();
@@ -180,6 +186,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     if(placeReview!=null && placeReview.length()>0) {
                         document.put("review", placeReview);
                     }
+
                     Log.i(TAG,"카테고리 push "+placeCategory);
                     Log.i(TAG,"이름 push "+placeName);
                     Log.i(TAG,"빌딩 push "+placeBuilding);
@@ -193,7 +200,21 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                         Log.i(TAG,"주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
                     }
 
-                    postInfo();
+                    //location 기본 정보 전송
+                    String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
+                            "&WifiList="+placeWifiList+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
+                    JSONObject rec_data = NetworkManager.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+                    int placeId = rec_data.getInt("_id");
+
+                    //location에 대한 document 정보 전송
+                    String document_site = "/document/"+placeId+"?Article="+document.toString();
+                    rec_data = NetworkManager.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보 전송
+                    String ok = rec_data.getString("result");
+
+                    if(ok == "ok"){
+                        Toast.makeText(this,"문서 등록이 완료되었습니다.",Toast.LENGTH_LONG).show();
+                    }
+
                     finish();
                 }catch (Exception e){
                     e.printStackTrace();
@@ -232,24 +253,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
         transaction.addToBackStack(null);
 
         transaction.commit();
-    }
-
-    //최종 서버 전송 단계
-    public void postInfo(){
-        dummyPlaceConnector = new DummyPlaceConnector();
-        try{
-            NetworkManager.add(new Runnable() {
-                @Override
-                public void run() {
-                    Log.i(TAG,"쓰레드런");
-                    String UserId = "이것은수정할아이디이다.";
-                    String placeId = "이것은수정할장소아이디이다.";
-                    dummyPlaceConnector.newDocument(placeId,UserId,placeBuilding, placeCategory, placeName, document);
-                }
-            });
-        }catch(Exception e){
-            e.printStackTrace();
-        }
     }
 
     //카테고리 정보 가져오는 메서드

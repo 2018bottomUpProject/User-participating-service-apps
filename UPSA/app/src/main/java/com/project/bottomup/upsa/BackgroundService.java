@@ -17,20 +17,16 @@ import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
+import android.os.Parcelable;
 import android.provider.Settings;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 import android.widget.Toast;
 
-import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
 import java.net.MalformedURLException;
-import java.net.URLConnection;
 import java.util.ArrayList;
 
 import org.json.JSONArray;
@@ -45,9 +41,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import network.DummyPlaceConnector;
-
-
 public class BackgroundService extends Service {
 
     private static final String TAG = "BG Service";
@@ -59,7 +52,6 @@ public class BackgroundService extends Service {
     private  List<ScanResult> sortResult;
     private Location prev = null;// 이전 위치를 저장할 변수
     HashMap<String, Integer> map;
-    private DummyPlaceConnector dummyPlaceConnector;
     String deviceID = "";// 디바이스 ID 저장 변수
     GPSListener gpsListener = new GPSListener();
     Handler networkHandler;
@@ -75,7 +67,6 @@ public class BackgroundService extends Service {
         super.onCreate();
         Log.i(TAG, "onCreate()");
         networkHandler = new Handler();
-        dummyPlaceConnector = new DummyPlaceConnector();
         currentResult = new ArrayList<ScanResult>();
         prevResult = new ArrayList<ScanResult>();
 
@@ -295,6 +286,9 @@ public class BackgroundService extends Service {
         //MainActivity에 경도,위도 전송
         resultIntent.putExtra("lat",gpsListener.latitude);
         resultIntent.putExtra("lng",gpsListener.longitude);
+        //MainActivity에 WifiList 전송
+        resultIntent.putParcelableArrayListExtra("wifiList", (ArrayList<? extends Parcelable>) sortResult);
+
         Log.i(TAG,"put lat / lng :"+gpsListener.latitude+"/"+gpsListener.longitude);
 
         TaskStackBuilder stackBuilder=TaskStackBuilder.create(this);
