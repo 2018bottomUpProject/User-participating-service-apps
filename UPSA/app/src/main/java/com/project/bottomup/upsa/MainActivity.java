@@ -438,8 +438,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     //주변 정보 가져오기
     public void getNearbyPlace(final String type_keyword){
         try{
-
-            final StringBuffer sb = new StringBuffer();
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {

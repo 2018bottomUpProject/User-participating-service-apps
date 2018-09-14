@@ -25,19 +25,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
-import java.io.OutputStreamWriter;
-import java.io.PrintWriter;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-
-import network.DummyPlaceConnector;
 
 public class AddActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable, OnApplySelectedListener{
     private static final String TAG = "AddActivity";
@@ -80,7 +68,14 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             Intent intent=getIntent();
             currentlat=intent.getDoubleExtra("현재lat",37.56);
             currentlng=intent.getDoubleExtra("현재lng",126.97);
-            placeWifiList=intent.getParcelableArrayListExtra("현재wifiList");
+            ArrayList<ScanResult> temp =intent.getParcelableArrayListExtra("현재wifiList");
+
+            //wifi 상위 5개 전송
+            for(int i=0; i<5; i++){
+                placeWifiList.add(temp.get(i));
+                Log.i(TAG,"WIFI전송"+i+"; "+placeWifiList.get(i).SSID+"/ "+placeWifiList.get(i).level);
+            }
+
             //지도 불러오기
             FragmentManager fragmentManager = getSupportFragmentManager();
             SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
@@ -204,22 +199,21 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     }for(int i=0; i<placeParking.length; i++){
                         Log.i(TAG,"주차"+i+" push "+placeParking[i].getText().toString()+"/"+placeParking[i].isChecked());
                     }
-                    if(placeWifiList!=null) {
-                        for (int i = 0; i < placeWifiList.size(); i++) {
-                            Log.i(TAG, "와이파이리스트 push" + i + "이름,세기 : " + placeWifiList.get(i).SSID + "," + placeWifiList.get(i).level);
-                        }
-                    }else{
-                        Log.i(TAG,"넘겨줄 wifiList가 없습니다.");
-                    }
 
                     //location 기본 정보 전송
                     String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
                             "&WifiList="+placeWifiList+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
-                    int placeId = (int)NetworkManager.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+                    JSONObject rec_data = NetworkManager.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+                    int placeId = rec_data.getInt("_id");
 
                     //location에 대한 document 정보 전송
                     String document_site = "/document/"+placeId+"?Article="+document.toString();
-                    NetworkManager.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보 전송
+                    rec_data = NetworkManager.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보 전송
+                    String ok = rec_data.getString("result");
+
+                    if(ok == "ok"){
+                        Toast.makeText(this,"문서 등록이 완료되었습니다.",Toast.LENGTH_LONG).show();
+                    }
 
                     finish();
                 }catch (Exception e){
