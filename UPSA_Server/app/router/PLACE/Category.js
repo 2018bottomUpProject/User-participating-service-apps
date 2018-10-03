@@ -11,7 +11,7 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
         'CAFE' : 5*60,
         'RESTAURANT' : 30*60
     };
-    let name = req.query.Category.replace(/"/gi,"").replace(/ /gi, "");//띄어쓰기 및 따옴표는 에러를 유발하므로
+    let name = (req.query.Category+"").replace(/"/gi,"").replace(/ /gi, "");//띄어쓰기 및 따옴표는 에러를 유발하므로
     let returnval = category[name]+"";
     console.log("CATEGORY:GET -> CATCHED PARAMETER : ", name);
     console.log("CATEGORY:GET -> RETURN VALUE : ", returnval);

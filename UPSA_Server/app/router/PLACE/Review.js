@@ -19,12 +19,8 @@ router.get('/', function(req, res, next) {
 router.post('/', function(req, res, next){
     console.log("REVIEW:GET -> PlaceId : ",req.query.PlaceId);
     console.log("REVIEW:GET -> Article : ",req.query.Article);
-    sql.newReview(req.query.PlaceId, req.query.Article, function(err, result){
-        if(result === ""){
-            res.send([{"result":"EMPTY"}]);
-        }
-        else
-            res.send(result);
+    sql.newReview(req.query.PlaceId, (req.query.Article+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"), function(err, result){
+        res.send(result);
     });
 });
 module.exports = router;

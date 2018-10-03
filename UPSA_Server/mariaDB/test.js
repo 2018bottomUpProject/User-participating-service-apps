@@ -2,9 +2,10 @@
 let sql = require('./db_sql')();
 let init_sql = require('./db_init_sql')();
 
+console.log("\"".replace("\"","\\\"").replace("'","\\'"));
 console.log('test.js started');
-
-sql.testselect(function(err, data){
+let sql_query = 'select * from Location where _id=19';
+sql.testselect(sql_query, function(err, data){
     if (err) console.log(err);
     else console.log(data);
 

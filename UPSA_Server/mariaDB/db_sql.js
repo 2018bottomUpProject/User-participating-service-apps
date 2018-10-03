@@ -18,14 +18,13 @@ let query_function = function(sql, callback){
         });
     });
 };
-let testselect = function(callback){
-    let  sql = 'select * from Location where _id=19';
+let testselect = function(sql, callback){
     query_function(sql,callback);
 };
 let getLocation = function(select, X, Y, category, radius, callback){
     let sql = "select "+select+" from Location where ST_DISTANCE(location, POINT("+X+","+Y+"))<="+radius;
     if(category !== "\"ALL\"" && category !== "ALL" && category !== undefined){
-        sql = sql + " AND place_type=" + category;
+        sql = sql + " AND place_type=\"" + category+"\"";//STRING " OK
     }
     query_function(sql,callback);
 };
@@ -38,7 +37,7 @@ let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType, callba
     let sql;
     for(let i in sql_arg2){
         if(sql_arg2[i] !== undefined){
-            if(i > 1) sql_arg2[i] = '"'+sql_arg2[i]+'"';
+            if(i > 1) sql_arg2[i] = '"'+sql_arg2[i]+'"';//STRING " OK
             if(X === undefined || Y === undefined){
                 continue;
             }
@@ -133,8 +132,8 @@ let getReview = function(place_id, index_start, index_end, callback){
     query_function(sql,callback);
 };
 let newReview = function(place_id, article, callback){
-    let sql = "insert into Review values(0,"+place_id+","+article+", NOW())";
-    query_function(sql,callback);
+    let sql = "insert into Review values(0,"+place_id+",\""+article+"\", NOW())";//STRING " OK
+    query_function(sql,function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
 let editReview = function(id, place_id, article, callback){
     let sql = "update Review set place_id="+place_id+" article="+article+" where id="+id;
