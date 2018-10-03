@@ -23,6 +23,10 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
     protected GoogleMap map;
     private double currentlat;
     private double currentlng;
+    private String placeName;
+    private String placeBuilding;
+    private String placeTel;
+    private String placeCategory;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -30,13 +34,17 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_document);
         Log.d(TAG, "onCreate()");
 
-        toolbar = (Toolbar) findViewById(R.id.add_toolbar);
-        toolbar.setTitle("장소이름 (수정요망)");
-        setSupportActionBar(toolbar);
-
         Intent intent=getIntent();
-        currentlat=intent.getDoubleExtra("현재lat",37.56);
-        currentlng=intent.getDoubleExtra("현재lng",126.97);
+        currentlat=intent.getDoubleExtra("lat",37.56);
+        currentlng=intent.getDoubleExtra("lng",126.97);
+        placeName =intent.getStringExtra("name");
+        placeBuilding=intent.getStringExtra("building");
+        placeTel=intent.getStringExtra("tel");
+        placeCategory=intent.getStringExtra("category");
+
+        toolbar = (Toolbar) findViewById(R.id.add_toolbar);
+        toolbar.setTitle(placeName);
+        setSupportActionBar(toolbar);
 
         //지도 불러오기
         FragmentManager fragmentManager = getSupportFragmentManager();

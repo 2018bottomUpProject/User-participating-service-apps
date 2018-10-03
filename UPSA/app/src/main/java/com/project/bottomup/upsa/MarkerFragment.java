@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -65,12 +66,12 @@ public class MarkerFragment extends DialogFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 try {
                     //final int placeId = id.get(position);
-                    final int placeId = 3; //임의설정
+                    final int placeId = 19; //임의설정
                     final Intent intent = new Intent(getActivity(), DocumentActivity.class);
 
                     final StringBuffer sb = new StringBuffer();
-                    final Boolean[] toilet = new Boolean[3];
-                    final Boolean[] parking = new Boolean[2];
+                    final boolean[] toilet = new boolean[3];
+                    final boolean[] parking = new boolean[2];
 
                     NetworkManager.add(new Runnable() {
                         @Override
@@ -123,7 +124,7 @@ public class MarkerFragment extends DialogFragment {
                                         String category = root.getString("category");
                                         intent.putExtra("category",category);
                                         // 부가 정보 추출 및 전송
-                                        intent.putExtra("extraInfo",root.getString("extraInfo"));
+                                                intent.putExtra("extraInfo",root.getString("extraInfo"));
                                         // 화장실에 대한 정보 추출 및 전송
                                         toilet[0] = root.getBoolean("화장실");
                                         toilet[1] = root.getBoolean("휴지 유무");
@@ -134,11 +135,12 @@ public class MarkerFragment extends DialogFragment {
                                         parking[1] = root.getBoolean("유료");
                                         intent.putExtra("parking",parking);
                                         // 리뷰에 대한 정보 추출 및 전송
-                                        intent.putExtra("review",root.getString("review"));
+                                        String review = root.getJSONArray("review").toString();
+                                        intent.putExtra("review", review);
                                         // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
                                         if(category == "CAFE" || category == "RESTAURANT"){
-                                            JSONArray menu = root.getJSONArray("menu");
-
+                                            String menu = root.getJSONArray("menu").toString();
+                                            intent.putExtra("menu", menu);
                                         }
                                     }
                                 }
