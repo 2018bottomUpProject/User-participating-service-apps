@@ -57,6 +57,7 @@ public class BackgroundService extends Service {
     Handler networkHandler;
     int minute=-1;
     String category="";
+    NetworkManager nm = new NetworkManager();
 
     public BackgroundService() {
     }
@@ -230,7 +231,6 @@ public class BackgroundService extends Service {
             i=-1;//다시 처음부터 시작
         }
         for(int i=0;i<sortResult.size();i++){//remove로 인해 현재 current.size가 0이므로 다시 추가
-            Log.i(TAG,sortResult.get(i).SSID+","+sortResult.get(i).level);
             currentResult.add(sortResult.get(i));
         }
         Log.i(TAG,"current size: "+currentResult.size()+", sort size: "+sortResult.size());
@@ -241,7 +241,10 @@ public class BackgroundService extends Service {
     public void postWiFiInfo(List<ScanResult> resultList){
         Log.i(TAG,"postWiFiInfo()");
         map = new HashMap<String,Integer>();
-        for(int i=0;i<resultList.size();i++){
+        for(int i=0;i<5;i++){
+            if(i>=resultList.size()-1){//리스트가 5개까지 존재하지 않을 경우
+                break;
+            }
             ScanResult result=resultList.get(i);
             map.put(result.SSID,result.level);
         }
@@ -343,69 +346,6 @@ public class BackgroundService extends Service {
         return json;
     }
 
-    //주변 정보 가져오기
-    public void getServerData(){
-        try{
-            final StringBuffer sb = new StringBuffer();
-            NetworkManager.add(new Runnable() {
-                @Override
-                public void run() {
-                    try{
-                        Log.i(TAG,"getServerData()");
-                        String site = NetworkManager.url + "/locationbg";
-                        site+="?X="+36.3623087+"&Y="+127.348543300000074+"&WifiList="+"{}";//mapToJson(map)
-
-                        URL url = new URL(site);
-                        HttpURLConnection connection = (HttpURLConnection)url.openConnection();
-                        if(connection != null){
-                            connection.setConnectTimeout(2000);//서버 타임아웃시간 2분
-                            connection.setUseCaches(false);
-
-                            if (connection.getResponseCode() == HttpURLConnection.HTTP_OK){//연결이 되면
-                                // 스트림 추출
-                                InputStream is=connection.getInputStream();
-                                InputStreamReader isr =new InputStreamReader(is,"utf-8");
-                                BufferedReader br=new BufferedReader(isr);
-                                String str=null;
-                                StringBuffer buf=new StringBuffer();
-                                // 읽어온다
-                                do{
-                                    str=br.readLine();
-                                    if(str!=null){
-                                        buf.append(str);
-                                    }
-                                }while(str!=null);
-                                br.close(); //스트림 해제
-                                String rec_data=buf.toString();
-                                Log.i(TAG,"서버에서 받아온 DATA = "+rec_data);
-                                // JSON 데이터 분석
-                                JSONArray root=new JSONArray(rec_data);
-                                //개수만큼 반복
-                                for(int i=0; i<root.length() ; i++){
-                                    // 객체를 추출한다.(장소하나의 정보)
-                                    JSONObject obj1=root.getJSONObject(i);
-                                    //카테고리 추출
-                                    category=obj1.getString("Category");
-                                }
-                            }
-                            connection.disconnect(); // 연결 끊기
-                        }
-                        networkHandler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                printToast("category: "+category);
-                            }
-                        });
-                    }catch(Exception e){
-                        e.printStackTrace();
-                    }
-                }
-            });
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-    }
-
     // 서버에 보낼 메소드
     public void pushInfo(){
         Log.i(TAG,"pushInfo()");
@@ -416,21 +356,42 @@ public class BackgroundService extends Service {
                     if(map==null){
                         Log.i(TAG,"map이 널");
                     }
-                    postWiFiInfo(currentResult);
-                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+map.get("CNU WiFi"));
-                    // 서버에 위치 등록 정보 넘겨주기 8899/locationbg
-                    // url에 보낼 데이터 추가, connetion 생각해보기!0!
+                    WiFiSort();
+                    postWiFiInfo(sortResult);//서버에 보내줄 와이파이 리스트 map에 넣기
+                    Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("CNU WiFi"));
                     String site = NetworkManager.url + "/locationbg";
                     try {
-                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude+"&Radius=1000&Category=ALL"+"&WifiList="+mapToJson(map);
+                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude+"&Radius=0.0001&Category=ALL"+"&WifiList="+mapToJson(map);//36.3628449 127.350014200000032 +mapToJson(map)
                         URL url=new URL(site);
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();//URL 연결한 객체 생성
                         if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {//연결이 되면{
                             Log.i(TAG,"서버와 연결됨");
                             Log.i(TAG,site);
                         }
-                        //conn.getInputStream();
-                        Log.i(TAG,"서버에 get 보냄");
+                        // 스트림 추출
+                        InputStream is=conn.getInputStream();
+                        InputStreamReader isr =new InputStreamReader(is,"utf-8");
+                        BufferedReader br=new BufferedReader(isr);
+                        String str=null;
+                        StringBuffer buf=new StringBuffer();
+                        // 읽어온다
+                        do{
+                            str=br.readLine();
+                            if(str!=null){
+                                buf.append(str);
+                            }
+                        }while(str!=null);
+                        br.close(); //스트림 해제
+
+                        String rec_data=buf.toString();
+                        Log.i(TAG,"서버에서 받아온 DATA = "+rec_data);
+
+                        // 객체를 추출한다.(장소하나의 정보)
+                        JSONArray root=new JSONArray(rec_data);
+                        JSONObject obj=root.getJSONObject(0);
+                        category=obj.getString("place_type");
+                        Log.i(TAG,"추출 결과 place_type: "+category);
+
                     } catch (MalformedURLException e) {// for URL
                         e.printStackTrace();
                     } catch (IOException e) {// for URLConnection
@@ -448,7 +409,7 @@ public class BackgroundService extends Service {
 
 
     private class GPSListener implements LocationListener {
-        double latitude,longitude,altitude;
+        double latitude,longitude,altitude, distance;
         float accuracy;
         String provider;
         public void onLocationChanged(Location location) {
@@ -471,52 +432,97 @@ public class BackgroundService extends Service {
             else{//이전 값이 존재한다면(5분 전의 GPS 값이 존재)
                 // 서버한테 위치 보내주고 등록된 장소인지 확인하기
 
-//                if(minute==1) {//처음 체크할 때
-//                    initWIFIScan();// map 갱신하기 위해 WiFi 체크
-//                    getServerData();// 위치가 서버에 존재하는 지 확인
-//                    Log.i(TAG, "category: " + category);
-//                }
-//                if(category==null){// 등록되지 않은 장소라면
-//                    setNotifi();// 노티피케이션 띄우기
-//                }
-//                else{// 서버에 등록된 장소라면 카테고리별로 시간 측정
-//                    // 현재 위치 카테고리에 따라 머무르는 시간, 거리 범위가 달라짐
-//                    if(category.equals("CAFE")){//카페라면 5분 동안 있는 지 체크
-//                        if(minute>=5){//5분이 지났으면
-//                            double distance=prev.distanceTo(location);
-//                            if(distance<10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
-//                                Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
-//                                initWIFIScan(); // WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
-//                            }
-//                            else{//위치가 바뀌었다면
-//                                prev=location;//prev 값을 현재 location 값으로 변경
-//                                Log.i(TAG,"GPS 현재 위치 변경됨");
-//                            }
-//                            minute=1;//초기화
-//                        }
-//                        else{
-//                            //5분이 안되었으면 될 때까지 기다림
-//                            minute++;
-//                            Log.i(TAG,minute+"분");
-//                        }
-//                    }
-//                }
-                double distance=prev.distanceTo(location);
-                Log.i(TAG,"distance: "+distance);
-                // 카페, 식당이면 10m, 공원 50m
-                if(distance<10){//거리 차가 10m 내외라면
-                    Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
+                if(minute==1) {//처음 체크할 때
+                    Log.i(TAG,"1분");
                     setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
                     threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
                     changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
-                    //pushInfo();
+                    pushInfo();//현재 위치의 정보 보내주기
+                   // getServerData();// 위치가 서버에 존재하는 지 확인
+                    //Log.i(TAG, "여기!0! category: " + category);
                 }
-                else{//50m 이상이면 위치가 갱신된 것이므로
-                    prev=location;//prev 값을 현재 location 값으로 변경
-                    Log.i(TAG,"GPS 현재 위치 변경됨");
+                if(category==null||category.equals("null")){// 등록되지 않은 장소라면
+                    Log.i(TAG,minute+"분, 카테고리가 null->노티피 띄우기");
+                    WiFiSort();// FG에 보내줄 와이파이 정렬
+                    setNotifi();// 노티피케이션 띄우기
+                    minute=0;//FG에 등록 요청 후 minute은 초기화
+                    category="";//카테고리도 초기화
                 }
-                WiFiSort();
-                setNotifi();//테스트를 위해 1분마다 노티피케이션을 띄움
+                else{// 서버에 등록된 장소라면 카테고리별로 시간 측정
+                    // 현재 위치 카테고리에 따라 머무르는 시간, 거리 범위가 달라짐
+                    if(category.equals("CAFE")||category.equals("CONVENIENCE")){//카페, 편의점이라면 5분 동안 있는 지 체크
+                        if(minute>=5){//5분이 지났으면
+                            distance=prev.distanceTo(location);
+                            if(distance<=10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
+                                Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
+                                setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
+                                threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
+                                changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
+                                pushInfo();//현재 위치의 정보 보내주기
+                                // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기'
+                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                nm.postInfo(toServer);
+                            }
+                            else{//위치가 바뀌었다면
+                                prev=location;//prev 값을 현재 location 값으로 변경
+                                Log.i(TAG,"GPS 현재 위치 변경됨");
+                                minute=0;//초기화
+                            }
+                        }
+                        else{//5분이 안되었으면 될 때까지 기다림
+                            minute++;
+                            Log.i(TAG,minute+"분");
+                        }
+                    }
+                    if(category.equals("RESTAURANT")||category.equals("FACILITY")){//식당이거나 편의시설이라면 5분 동안 있는 지 체크
+                        if(minute>=30){//30분이 지났으면
+                            distance=prev.distanceTo(location);
+                            if(distance<=10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
+                                Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
+                                setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
+                                threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
+                                changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
+                                pushInfo();//현재 위치의 정보 보내주기
+                                // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
+                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                nm.postInfo(toServer);
+                            }
+                            else{//위치가 바뀌었다면
+                                prev=location;//prev 값을 현재 location 값으로 변경
+                                Log.i(TAG,"GPS 현재 위치 변경됨");
+                                minute=0;//초기화
+                            }
+                        }
+                        else{//5분이 안되었으면 될 때까지 기다림
+                            minute++;
+                            Log.i(TAG,minute+"분");
+                        }
+                    }
+                    if(category.equals("TOILET")){//편의점라면 5분 동안 있는 지 체크
+                        if(minute>=5){//5분이 지났으면
+                            distance=prev.distanceTo(location);
+                            if(distance<=10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
+                                Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
+                                setPrevCurrent();// WiFi 스캔을 시작하여 같은 위치가 맞는 지 판별
+                                threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
+                                changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
+                                pushInfo();//현재 위치의 정보 보내주기
+                                // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
+                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                nm.postInfo(toServer);
+                            }
+                            else{//위치가 바뀌었다면
+                                prev=location;//prev 값을 현재 location 값으로 변경
+                                Log.i(TAG,"GPS 현재 위치 변경됨");
+                                minute=0;//초기화
+                            }
+                        }
+                        else{//5분이 안되었으면 될 때까지 기다림
+                            minute++;
+                            Log.i(TAG,minute+"분");
+                        }
+                    }
+                }
             }
         }
         public void onProviderDisabled(String provider) {
