@@ -278,7 +278,7 @@ public class BackgroundService extends Service {
         Log.i(TAG,"setNotifi()");
         NotificationCompat.Builder mBuilder=
                 new NotificationCompat.Builder(this)
-                        .setSmallIcon(R.drawable.intro) // 아이콘 임의로 아무거나 설정>>수정
+                        .setSmallIcon(R.drawable.alarm) // 아이콘 임의로 아무거나 설정>>수정
                         .setContentTitle("정보 등록 가능")
                         .setContentText("1분 동안 위치 변경X -> 정보등록 가능합니다")
                         .setAutoCancel(true); // 클릭 시 지우기
