@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.bottomup.upsa.DocumentActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/add_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/addmap"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:id="@+id/getname"
+        android:layout_centerHorizontal="true"
+        android:hint="장소 이름을 입력해주세요"
+        android:layout_marginTop="10dp"
+        android:layout_below="@+id/addmap" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:id="@+id/getbuilding"
+        android:layout_centerHorizontal="true"
+        android:hint="빌딩 이름을 입력해주세요(선택 사항)"
+        android:layout_below="@+id/getname" />
+
+    <TextView
+        android:layout_width="300dp"
+        android:layout_height="30dp"
+        android:id="@+id/gettel"
+        android:layout_centerHorizontal="true"
+        android:hint="전화번호를 입력해주세요"
+        android:layout_below="@+id/getbuilding"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonLayout"
+        android:layout_below="@+id/gettel">
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonPlaceInfo"
+            android:text="Info"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonPlaceMenu"
+            android:text="Menu"
+            android:layout_weight="1"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonPlaceReview"
+            android:text="Review"
+            android:layout_weight="1"/>
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/buttonLayout"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingRight="5px" >
+
+            <fragment
+                android:name="com.project.bottomup.upsa.PlaceInfoFragment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/placeChild_fragment"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

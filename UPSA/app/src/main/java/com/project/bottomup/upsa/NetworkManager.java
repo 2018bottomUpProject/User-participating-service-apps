@@ -2,6 +2,7 @@ package com.project.bottomup.upsa;
 
 import android.util.Log;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -15,10 +16,12 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 public class NetworkManager {
     private static final String TAG = "NetworkManager";
     public static String url = "http://oreh.onyah.net:8899"; //서버 주소192.168.1.52:8899
+    public static boolean isEnd = false;
+
     private static InnerThread thread = new InnerThread();
     //runnable을 받을 큐
     private static ConcurrentLinkedQueue<Runnable> concurrentLinkedQueue = new ConcurrentLinkedQueue<Runnable>();
-    public static JSONObject jsonObject; //서버에서 받아온 data를 저장할 변수
+    private static JSONObject jsonObject = new JSONObject(); //서버에서 받아온 data를 저장할 변수
 
     public static void init(){
         thread.start();
@@ -59,7 +62,8 @@ public class NetworkManager {
         }
     }
 
-    public static JSONObject postInfo(final String str){
+    public void postInfo(final String str){
+        isEnd = false;
         try{
             add(new Runnable() {
                 @Override
@@ -100,11 +104,17 @@ public class NetworkManager {
                                 String rec_data=buf.toString();
                                 Log.i(TAG,"서버에서 받아온 DATA = "+rec_data);
 
+                                // JSON 데이터 분석
+                                JSONArray root=new JSONArray(rec_data);
                                 //JSONObject 추출
-                                jsonObject = new JSONObject(rec_data);
+                                for(int i=0; i<root.length(); i++){
+                                    jsonObject = root.getJSONObject(0);
+                                    Log.i(TAG, jsonObject.toString());
+                                }
                             }
                             connection.disconnect();
                         }
+                        isEnd = true;
                     }catch(JSONException e){
                         Log.i(TAG, "JSON Exception 발생");
                         e.printStackTrace();
@@ -117,6 +127,10 @@ public class NetworkManager {
         }catch(Exception e){
             e.printStackTrace();
         }
+    }
+
+    public JSONObject getResult(){
+        Log.i(TAG,"getResult- "+ jsonObject.toString());
         return jsonObject;
     }
 }

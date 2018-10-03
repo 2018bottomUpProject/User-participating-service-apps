@@ -482,7 +482,7 @@ public class BackgroundService extends Service {
 //                else{// 서버에 등록된 장소라면 카테고리별로 시간 측정
 //                    // 현재 위치 카테고리에 따라 머무르는 시간, 거리 범위가 달라짐
 //                    if(category.equals("CAFE")){//카페라면 5분 동안 있는 지 체크
-//                        if(minute==5){//5분이 지났으면
+//                        if(minute>=5){//5분이 지났으면
 //                            double distance=prev.distanceTo(location);
 //                            if(distance<10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
 //                                Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");

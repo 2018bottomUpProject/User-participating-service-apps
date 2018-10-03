@@ -393,7 +393,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         int id = item.getItemId();
         switch(id){
             case R.id.menu1 :           // 현재 위치
-
                 getMyLocation();
                 break;
             case R.id.menu2 :           // 카테고리 검색
