@@ -31,9 +31,12 @@ public class PlaceReviewFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_place_review, container, false);
         Log.i(TAG,"OnCreateView");
 
-        placeId = 51;
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            placeId = bundle.getInt("_id");
+        }
         index_start = 0;
-        index_end = 5;
+        index_end = 4;
 
         try {
             NetworkManager.add(new Runnable() {

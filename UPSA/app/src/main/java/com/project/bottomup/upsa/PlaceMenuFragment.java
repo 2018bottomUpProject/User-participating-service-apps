@@ -14,9 +14,16 @@ public class PlaceMenuFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_place_menu, container, false);
         Log.i(TAG,"OnCreateView");
+
+        Bundle bundle = getArguments();
+        if(bundle != null){
+            String menu = bundle.getString("menu");
+        }
+
         return rootView;
     }
 }

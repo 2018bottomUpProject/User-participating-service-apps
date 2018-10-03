@@ -7,6 +7,10 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -91,6 +95,13 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
         mapFragment.getMapAsync(this);
 
+        // 장소 기본 정보 세팅
+        TextView nameGet = (TextView)findViewById(R.id.getname);
+        TextView buildingGet = (TextView)findViewById(R.id.getbuilding);
+        TextView telGet = (TextView)findViewById(R.id.gettel);
+        nameGet.setText("장소 이름      "+placeName); buildingGet.setText("빌딩 이름        "+placeBuilding);
+        telGet.setText("전화번호        "+placeTel);
+
         setDefaultFragment();
     }
 
@@ -106,7 +117,13 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
     public void setDefaultFragment() {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         //첫번째로 보여지는 fragment는 placeInfoFragment로 설정
-        transaction.add(R.id.placeChild_fragment, new PlaceInfoFragment());
+        PlaceInfoFragment fragment = new PlaceInfoFragment();
+        Bundle bundle = new Bundle();
+        bundle.putString("extraInfo", extraInfo);
+        bundle.putBooleanArray("toilet", toilet);
+        bundle.putBooleanArray("parking", parking);
+        fragment.setArguments(bundle);
+        transaction.add(R.id.placeChild_fragment, fragment);
         transaction.commit();
     }
 
@@ -115,18 +132,47 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
     public void replaceFragment(String fragmentId){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         if( fragmentId == "placeInfo" ) {
-            transaction.replace(R.id.placeChild_fragment, new PlaceInfoFragment());
+            PlaceInfoFragment fragment = new PlaceInfoFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("extraInfo", extraInfo);
+            bundle.putBooleanArray("toilet", toilet);
+            bundle.putBooleanArray("parking", parking);
+            fragment.setArguments(bundle);
+            transaction.replace(R.id.placeChild_fragment, fragment);
         }
         else if( fragmentId == "placeMenu" ) {
-            transaction.replace(R.id.placeChild_fragment, new PlaceMenuFragment());
+            PlaceMenuFragment fragment = new PlaceMenuFragment();
+            Bundle bundle = new Bundle();
+            bundle.putString("menu", menu);
+            fragment.setArguments(bundle);
+            transaction.replace(R.id.placeChild_fragment, fragment);
         }
         else if( fragmentId == "placeReview" ) {
-            transaction.replace(R.id.placeChild_fragment, new PlaceReviewFragment());
+            PlaceReviewFragment fragment = new PlaceReviewFragment();
+            Bundle bundle = new Bundle();
+            bundle.putInt("_id", placeId);
+            fragment.setArguments(bundle);
+            transaction.replace(R.id.placeChild_fragment, fragment);
         }
 
         //Back 버튼 클릭 시 이전 프래그먼트로 이동
         transaction.addToBackStack(null);
 
         transaction.commit();
+    }
+
+    // 버튼을 클릭했을 때 이벤트 처리 메서드
+    public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.buttonPlaceInfo:
+                replaceFragment("placeInfo");
+                break;
+            case R.id.buttonPlaceMenu:
+                replaceFragment("placeMenu");
+                break;
+            case R.id.buttonPlaceReview:
+                replaceFragment("placeReview");
+                break;
+        }
     }
 }
