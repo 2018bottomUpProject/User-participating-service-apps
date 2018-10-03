@@ -4,9 +4,13 @@ let router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.send('test(get)');
-});
-router.post('/', function(req, res, next){
-    res.send('test(post)');
+    console.log("PERMISSION:GET -> DeviceId : ",req.query.DeviceId);
+    console.log("PERMISSION:GET -> PlaceId : ",req.query.PlaceId);
+    sql.getPermission(req.query.PlaceId, req.query.DeviceId, function(err, result){
+        if(err){
+            console.error(err);
+        }
+        res.send(result);
+    });
 });
 module.exports = router;
