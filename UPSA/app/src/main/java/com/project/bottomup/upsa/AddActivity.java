@@ -71,7 +71,11 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
             ArrayList<ScanResult> temp =intent.getParcelableArrayListExtra("현재wifiList");
 
             //wifi 상위 5개 전송
+            placeWifiList = new ArrayList<ScanResult>();
             for(int i=0; i<5; i++){
+                if(i>=temp.size()-1){
+                    break;
+                }
                 placeWifiList.add(temp.get(i));
                 Log.i(TAG,"WIFI전송"+i+"; "+placeWifiList.get(i).SSID+"/ "+placeWifiList.get(i).level);
             }
@@ -138,6 +142,8 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     if(buildingPut.getText().length()>0){
                         placeBuilding=buildingPut.getText().toString();
                         document.put("building",placeBuilding);
+                    }else{
+                        document.put("building",null);
                     }
 
                     document.put("lat",currentlat);
@@ -185,6 +191,8 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     //필수사항 아님
                     if(placeReview!=null && placeReview.length()>0) {
                         document.put("review", placeReview);
+                    }else{
+                        document.put("review",null);
                     }
 
                     Log.i(TAG,"카테고리 push "+placeCategory);
@@ -201,17 +209,29 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
 
                     //location 기본 정보 전송
+                    NetworkManager nm = new NetworkManager();
                     String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
                             "&WifiList="+placeWifiList+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
-                    JSONObject rec_data = NetworkManager.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+                    nm.postInfo(location_site); //기본 정보 전송 -> placeId 받기
+                    while(true){ // thread 작업이 끝날 때까지 대기
+                        if(NetworkManager.isEnd){
+                            break;
+                        }
+                    }
+                    JSONObject rec_data = nm.getResult();
                     int placeId = rec_data.getInt("_id");
 
                     //location에 대한 document 정보 전송
                     String document_site = "/document/"+placeId+"?Article="+document.toString();
-                    rec_data = NetworkManager.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보 전송
+                    nm.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보
+                    while(true){ // thread 작업이 끝날 때까지 대기
+                        if(NetworkManager.isEnd){
+                            break;
+                        }
+                    }
+                    rec_data = nm.getResult();
                     String ok = rec_data.getString("result");
-
-                    if(ok == "ok"){
+                    if(ok.equals("OK")){
                         Toast.makeText(this,"문서 등록이 완료되었습니다.",Toast.LENGTH_LONG).show();
                     }
 

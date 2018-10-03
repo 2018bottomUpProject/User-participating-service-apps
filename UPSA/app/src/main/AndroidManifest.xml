@@ -47,6 +47,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AddActivity" />
+        <activity android:name=".DocumentActivity" />
 
         <!-- 구글 지도 사용을 위한 API key -->
         <meta-data
