@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -32,6 +34,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -214,6 +218,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 int index = lat_list.indexOf(lat);
                 DocumentInfo documentInfo = new DocumentInfo(id_list.get(index), name_list.get(index));
                 markerClick.add(documentInfo);
+                //markerClick.add(documentInfo);
             }else{
                 throw  new Exception();
             }
@@ -508,7 +513,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                             connection.disconnect(); // 연결 끊기
                         }
                         //지도에 표시
-                        showMarker();
+                        showMarker(type_keyword);
                     }catch(Exception e){
                         e.printStackTrace();
                     }
@@ -520,7 +525,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     }
 
     // 지도에 표시해주는 메서드
-    public void showMarker(){
+    public void showMarker(final String keyword){
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -544,8 +549,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                     // 말풍선이 표시될 값 설정
                     options.title(name);
                     // 아이콘 설정
+
+                    BitmapDescriptor icon = BitmapDescriptorFactory.fromResource(R.mipmap.ic_launcher);
+                    if(keyword.equals("CAFE")){//카페
+                        icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_cafe);
+                   }else if(keyword.equals("RESTAURANT")){//식당
+                       icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_res);
+                   }else if(keyword.equals("STORE")){//편의점
+                       icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_store);
+                   }else if(keyword.equals("CONVENIENCE")){//편의시설
+                       icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_etc);
+                   }else if(keyword.equals("RESTROOM")) {//화장실
+                        icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_toilet);
+                   }else {
+                        icon= BitmapDescriptorFactory.fromResource(R.mipmap.marker_all);
+                    }
                     //BitmapDescriptor icon= BitmapDescriptorFactory.fromResource(R.mipmap.ic_map_marker);
-                    //options.icon(icon);
+                    options.icon(icon);
                     // 마커를 지도에 표시한다.
                     Marker marker=map.addMarker(options);
                     markers_list.add(marker);
