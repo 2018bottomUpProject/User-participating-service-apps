@@ -19,7 +19,7 @@ let query_function = function(sql, callback){
     });
 };
 let testselect = function(callback){
-    let  sql = 'select * from Location where _id=1';
+    let  sql = 'select * from Location where _id=19';
     query_function(sql,callback);
 };
 let getLocation = function(select, X, Y, category, radius, callback){
@@ -38,21 +38,21 @@ let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType, callba
     let sql;
     for(let i in sql_arg2){
         if(sql_arg2[i] !== undefined){
-            if(i===1){
-                if(X === undefined || Y === undefined){
-                    continue;
-                }
-                if(i !== 0){
-                    sql1+=",";
-                    sql2+=",";
-                }
-                sql1 += sql_arg1[i];
-                sql2 +=sql_arg2[i];
+            if(i > 1) sql_arg2[i] = '"'+sql_arg2[i]+'"';
+            if(X === undefined || Y === undefined){
+                continue;
             }
+            if(i != 0){
+                sql1+=",";
+                sql2+=",";
+            }
+            sql1 += sql_arg1[i];
+            sql2 +=sql_arg2[i];
+
         }
     }
     sql = sql1+sql2+sql3;
-    query_function(sql, callback);
+    query_function(sql, function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
 let newDocument = function(place_id, article, callback){
     try {

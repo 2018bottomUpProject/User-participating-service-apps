@@ -23,13 +23,13 @@ router.post('/', function(req, res, next){//해당 위치를 임시 등록(글 �
     console.log("LOCATIONFG:POST -> BuildingName : ",req.query.BuildingName);
     console.log("LOCATIONFG:POST -> PlaceName : ",req.query.PlaceName);
     console.log("LOCATIONFG:POST -> PlaceType : ",req.query.PlaceType);
-    sql.newLocation(req.query.X, req.query.Y, req.query.WifiList, req.query.BuildingName, req.query.PlaceName, req.query.PlaceType, function (err) {
+    sql.newLocation(req.query.X, req.query.Y, req.query.WifiList, req.query.BuildingName, req.query.PlaceName, req.query.PlaceType, function (err, result) {
         if(err){
             res.send(err);
             return;
         }
         else{
-            res.send("OK");
+            res.send(result);
         }
     });
 });

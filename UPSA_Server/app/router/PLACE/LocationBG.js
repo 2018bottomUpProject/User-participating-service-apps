@@ -16,7 +16,4 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
     });
     //http://localhost:8080/locationfg?X=36.3619378&Y=127.35299439999994&WifiList=[]&Category=%22RESTAURANT%22&Radius=0.0001
 });
-router.delete('/', function(req, res, next){//해당 위치를 임시 등록(글 등록은 안함.)
-    res.send('test(post)');
-});
 module.exports = router;
