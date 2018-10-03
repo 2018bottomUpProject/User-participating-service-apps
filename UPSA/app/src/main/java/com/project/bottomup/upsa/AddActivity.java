@@ -219,15 +219,17 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     }
                     JSONObject rec_data = nm.getResult();
                     int placeId = rec_data.getInt("_id");
+                    document.put("_id", placeId); // placeId -> 문서 정보에 등록
 
                     //location에 대한 document 정보 전송
                     String document_site = "/document/"+placeId+"?Article="+document.toString();
+                    Log.i(TAG, document.toString());
                     nm.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보
 
                     //필수사항 아님
                     if(placeReview!=null && placeReview.length()>0) {
                         // location에 대한 review 정보 전송
-                        String document_review = "/review?PlaceId="+placeId+"?Article="+placeReview;
+                        String document_review = "/review?PlaceId="+placeId+"&Article="+placeReview;
                         nm.postInfo(document_review);
                     }
 

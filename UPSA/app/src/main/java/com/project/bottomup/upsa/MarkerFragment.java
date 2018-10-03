@@ -1,10 +1,13 @@
 package com.project.bottomup.upsa;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.Parcelable;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -32,6 +35,23 @@ public class MarkerFragment extends DialogFragment {
     ArrayList<DocumentInfo> markerClick = new ArrayList<DocumentInfo>();
     ArrayList<String> name = new ArrayList<String>();
     ArrayList<Integer> id = new ArrayList<Integer>();
+
+    public interface OnCompleteListener{
+        void onLocationData(String data, int _id);
+    }
+
+    private OnCompleteListener mCallback;
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        try {
+            mCallback = (MarkerFragment.OnCompleteListener) activity;
+        }
+        catch (ClassCastException e) {
+            Log.d(TAG, "Activity doesn't implement the OnCompleteListener interface");
+        }
+    }
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -66,12 +86,7 @@ public class MarkerFragment extends DialogFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 try {
                     //final int placeId = id.get(position);
-                    final int placeId = 19; //임의설정
-                    final Intent intent = new Intent(getActivity(), DocumentActivity.class);
-
-                    final StringBuffer sb = new StringBuffer();
-                    final boolean[] toilet = new boolean[3];
-                    final boolean[] parking = new boolean[2];
+                    final int placeId = 51; //임의설정
 
                     NetworkManager.add(new Runnable() {
                         @Override
@@ -105,43 +120,7 @@ public class MarkerFragment extends DialogFragment {
 
                                         String rec_data = buf.toString();
                                         Log.i(TAG, "서버에서 받아온 DATA = " + rec_data);
-
-                                        // JSON 데이터 분석
-                                        // 객체를 추출한다.(장소하나의 정보)
-                                        JSONObject root = new JSONObject(rec_data);
-                                        //placeId 전송
-                                        intent.putExtra("_id",placeId);
-                                        // 위도 경도 추출 및 전송
-                                        intent.putExtra("lat", root.getDouble("lat"));
-                                        intent.putExtra("lng",root.getDouble("lng"));
-                                        // 빌딩 이름 추출 및 전송
-                                        intent.putExtra("building",root.getString("building"));
-                                        // 장소 이름 추출 및 전송
-                                        intent.putExtra("name", root.getString("name"));
-                                        // 전화번호 추출 및 전송
-                                        intent.putExtra("tel", root.getString("tel"));
-                                        //카테고리 추출 및 전송
-                                        String category = root.getString("category");
-                                        intent.putExtra("category",category);
-                                        // 부가 정보 추출 및 전송
-                                                intent.putExtra("extraInfo",root.getString("extraInfo"));
-                                        // 화장실에 대한 정보 추출 및 전송
-                                        toilet[0] = root.getBoolean("화장실");
-                                        toilet[1] = root.getBoolean("휴지 유무");
-                                        toilet[2] = root.getBoolean("남녀공용");
-                                        intent.putExtra("toilet",toilet);
-                                        // 주차 장소에 대한 정보 추출 및 전송
-                                        parking[0] = root.getBoolean("주차 공간");
-                                        parking[1] = root.getBoolean("유료");
-                                        intent.putExtra("parking",parking);
-                                        // 리뷰에 대한 정보 추출 및 전송
-                                        String review = root.getJSONArray("review").toString();
-                                        intent.putExtra("review", review);
-                                        // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
-                                        if(category == "CAFE" || category == "RESTAURANT"){
-                                            String menu = root.getJSONArray("menu").toString();
-                                            intent.putExtra("menu", menu);
-                                        }
+                                        mCallback.onLocationData(rec_data, placeId);
                                     }
                                 }
                             }catch(Exception e){
@@ -149,8 +128,6 @@ public class MarkerFragment extends DialogFragment {
                             }
                         }
                     });
-                    //해당 장소에 대한 document activity 열기
-                    startActivity(intent);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

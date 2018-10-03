@@ -15,18 +15,27 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class DocumentActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable{
     private static final String TAG = "DocumentActivity";
     //툴바 생성
     Toolbar toolbar;
     //지도 관리
     protected GoogleMap map;
+    //정보 관리
+    private int placeId;
     private double currentlat;
     private double currentlng;
     private String placeName;
     private String placeBuilding;
     private String placeTel;
     private String placeCategory;
+    private String extraInfo;
+    private boolean[] toilet = new boolean[3];
+    private boolean[] parking = new boolean[2];
+    private String menu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -34,17 +43,48 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_document);
         Log.d(TAG, "onCreate()");
 
-        Intent intent=getIntent();
-        currentlat=intent.getDoubleExtra("lat",37.56);
-        currentlng=intent.getDoubleExtra("lng",126.97);
-        placeName =intent.getStringExtra("name");
-        placeBuilding=intent.getStringExtra("building");
-        placeTel=intent.getStringExtra("tel");
-        placeCategory=intent.getStringExtra("category");
-
         toolbar = (Toolbar) findViewById(R.id.add_toolbar);
         toolbar.setTitle(placeName);
         setSupportActionBar(toolbar);
+
+        Intent intent=getIntent();
+        placeId = intent.getIntExtra("_id",0);
+        String data = intent.getStringExtra("data");
+
+        try{
+            // JSON 데이터 분석
+            // 객체를 추출한다.(장소하나의 정보)
+            JSONObject root = new JSONObject(data);
+
+            // 위도 경도 추출
+            currentlat=root.getDouble("lat");
+            currentlng=root.getDouble("lng");
+            // 장소 이름 추출 및 전송
+            placeName =root.getString("name");
+            // 빌딩 이름 추출 및 전송
+            placeBuilding=root.getString("building");
+            // 전화번호 추출 및 전송
+            placeTel=root.getString("tel");
+            //카테고리 추출 및 전송
+            placeCategory=root.getString("category");
+            // 부가 정보 추출 및 전송
+            extraInfo = root.getString("extraInfo");
+            // 화장실에 대한 정보 추출 및 전송
+            toilet[0] = root.getBoolean("화장실");
+            toilet[1] = root.getBoolean("휴지 유무");
+            toilet[2] = root.getBoolean("남녀공용");
+            // 주차 장소에 대한 정보 추출 및 전송
+            parking[0] = root.getBoolean("주차 공간");
+            parking[1] = root.getBoolean("유료");
+            // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
+            if(placeCategory == "CAFE" || placeCategory == "RESTAURANT"){
+                menu = root.getJSONArray("menu").toString();
+            }else{
+                menu = "undefined";
+            }
+        }catch(JSONException e){
+            e.printStackTrace();
+        }
 
         //지도 불러오기
         FragmentManager fragmentManager = getSupportFragmentManager();
