@@ -457,7 +457,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                         String site = NetworkManager.url + "/locationfg";
                         site+="?X="+location_center.latitude+"&Y="+location_center.longitude+"&Radius="+0.3556*zoom_realMeter[location_zoom]/10000;
                         if(type_keyword!=null){
-                            site+="&Category=\""+type_keyword+"\"";
+                            site+="&Category="+type_keyword;
                         }
                         Log.i(TAG,"site = "+site);
 

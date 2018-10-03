@@ -23,9 +23,13 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class AddActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable, OnApplySelectedListener{
     private static final String TAG = "AddActivity";
@@ -38,7 +42,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     //서버 관리
     protected JSONObject document = new JSONObject();
     //장소 정보 관리
-    private ArrayList<ScanResult> placeWifiList;
+    private HashMap<String, Integer> hashMap;
     private String placeName;
     private String placeBuilding;
     private String placeTel;
@@ -49,6 +53,10 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private ArrayList<MenuInfo> placeMenu;
     private String placeReview;
     private ArrayList<String> noMenu;
+    private JSONObject placeWifiList;
+
+    public AddActivity() {
+    }
 
     @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -65,30 +73,27 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                  getSupportActionBar().setDisplayShowHomeEnabled(true);
               }
 
-            Intent intent=getIntent();
-            currentlat=intent.getDoubleExtra("현재lat",37.56);
-            currentlng=intent.getDoubleExtra("현재lng",126.97);
-            ArrayList<ScanResult> temp =intent.getParcelableArrayListExtra("현재wifiList");
+              try{
+                  Intent intent=getIntent();
+                  currentlat=intent.getDoubleExtra("현재lat",37.56);
+                  currentlng=intent.getDoubleExtra("현재lng",126.97);
+                  ArrayList<ScanResult> temp =intent.getParcelableArrayListExtra("현재wifiList");
 
-            //wifi 상위 5개 전송
-            placeWifiList = new ArrayList<ScanResult>();
-            for(int i=0; i<5; i++){
-                if(i>=temp.size()-1){
-                    break;
-                }
-                placeWifiList.add(temp.get(i));
-                Log.i(TAG,"WIFI전송"+i+"; "+placeWifiList.get(i).SSID+"/ "+placeWifiList.get(i).level);
-            }
+                  postWiFiInfo(temp);
+                  placeWifiList = mapToJson(hashMap);
 
-            //지도 불러오기
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
-            mapFragment.getMapAsync(this);
-            setDefaultFragment();
+                  //지도 불러오기
+                  FragmentManager fragmentManager = getSupportFragmentManager();
+                  SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
+                  mapFragment.getMapAsync(this);
+                  setDefaultFragment();
 
-            //메뉴 필수 아닌 카테고리
-            noMenu = new ArrayList<>();
-            noMenu.add("STORE"); noMenu.add("CONVENIENCE"); noMenu.add("RESTROOM");
+                  //메뉴 필수 아닌 카테고리
+                  noMenu = new ArrayList<>();
+                  noMenu.add("STORE"); noMenu.add("CONVENIENCE"); noMenu.add("RESTROOM");
+              }catch(JSONException e){
+                e.printStackTrace();
+              }
     }
 
     @Override
@@ -188,13 +193,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                         throw  new Exception();
                     }
 
-                    //필수사항 아님
-                    if(placeReview!=null && placeReview.length()>0) {
-                        document.put("review", placeReview);
-                    }else{
-                        document.put("review",null);
-                    }
-
                     Log.i(TAG,"카테고리 push "+placeCategory);
                     Log.i(TAG,"이름 push "+placeName);
                     Log.i(TAG,"빌딩 push "+placeBuilding);
@@ -211,12 +209,13 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     //location 기본 정보 전송
                     NetworkManager nm = new NetworkManager();
                     String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
-                            "&WifiList="+placeWifiList+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
+                            "&WifiL ist="+placeWifiList.toString()+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
                     nm.postInfo(location_site); //기본 정보 전송 -> placeId 받기
                     while(true){ // thread 작업이 끝날 때까지 대기
-                        if(NetworkManager.isEnd){
+                        if(nm.isEnd){
                             break;
                         }
+                        Log.d(TAG, "아직 작업 안끝남.");
                     }
                     JSONObject rec_data = nm.getResult();
                     int placeId = rec_data.getInt("_id");
@@ -224,15 +223,12 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     //location에 대한 document 정보 전송
                     String document_site = "/document/"+placeId+"?Article="+document.toString();
                     nm.postInfo(document_site); //받은 placeId에 따른 장소 세부 정보
-                    while(true){ // thread 작업이 끝날 때까지 대기
-                        if(NetworkManager.isEnd){
-                            break;
-                        }
-                    }
-                    rec_data = nm.getResult();
-                    String ok = rec_data.getString("result");
-                    if(ok.equals("OK")){
-                        Toast.makeText(this,"문서 등록이 완료되었습니다.",Toast.LENGTH_LONG).show();
+
+                    //필수사항 아님
+                    if(placeReview!=null && placeReview.length()>0) {
+                        // location에 대한 review 정보 전송
+                        String document_review = "/review?PlaceId="+placeId+"?Article="+placeReview;
+                        nm.postInfo(document_review);
                     }
 
                     finish();
@@ -310,4 +306,28 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
         placeReview = content;
         return true;
     }
+
+    // 서버에 WiFi 리스트 보내주기 위한 메소드
+    public void postWiFiInfo(List<ScanResult> resultList){
+        Log.i(TAG,"postWiFiInfo()");
+        hashMap = new HashMap<String,Integer>();
+        for(int i=0;i<5;i++){
+            if(i>=resultList.size()-1){
+                break;
+            }
+            ScanResult result=resultList.get(i);
+            hashMap.put(result.SSID,result.level);
+        }
+        Log.i(TAG,"map size: "+hashMap.size());
+    }
+    public JSONObject mapToJson(HashMap<String,Integer> map) throws JSONException {
+        JSONObject json=new JSONObject();
+        for(Map.Entry<String,Integer> entry : map.entrySet()){
+            String key=entry.getKey();
+            Object value=entry.getValue();
+            json.put(key,value);
+        }
+        return json;
+    }
+
 }
