@@ -157,9 +157,6 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             transaction.replace(R.id.placeChild_fragment, fragment);
         }
 
-        //Back 버튼 클릭 시 이전 프래그먼트로 이동
-        transaction.addToBackStack(null);
-
         transaction.commit();
     }
 
