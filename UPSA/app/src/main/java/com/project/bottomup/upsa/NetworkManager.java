@@ -72,6 +72,7 @@ public class NetworkManager {
                         Log.i(TAG,"쓰레드런");
                         String site = url + str;
                         URL url = new URL(site);
+                        Log.i(TAG, "url site=? "+site);
                         HttpURLConnection connection = (HttpURLConnection)url.openConnection();
 
                         if(connection != null){

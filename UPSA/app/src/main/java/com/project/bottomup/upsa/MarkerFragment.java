@@ -86,7 +86,7 @@ public class MarkerFragment extends DialogFragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 try {
                     //final int placeId = id.get(position);
-                    final int placeId = 52; //임의설정
+                    final int placeId = 58; //임의설정
 
                     NetworkManager.add(new Runnable() {
                         @Override

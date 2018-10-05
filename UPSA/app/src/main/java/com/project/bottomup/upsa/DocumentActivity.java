@@ -81,7 +81,7 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             parking[0] = root.getBoolean("주차 공간");
             parking[1] = root.getBoolean("유료");
             // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
-            if(placeCategory == "CAFE" || placeCategory == "RESTAURANT"){
+            if(placeCategory.equals("CAFE") || placeCategory.equals("RESTAURANT")){
                 menu = root.getJSONArray("menu").toString();
             }else{
                 menu = "undefined";
@@ -143,6 +143,7 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         else if( fragmentId == "placeMenu" ) {
             PlaceMenuFragment fragment = new PlaceMenuFragment();
             Bundle bundle = new Bundle();
+            bundle.putString("placeName", placeName);
             bundle.putString("menu", menu);
             fragment.setArguments(bundle);
             transaction.replace(R.id.placeChild_fragment, fragment);

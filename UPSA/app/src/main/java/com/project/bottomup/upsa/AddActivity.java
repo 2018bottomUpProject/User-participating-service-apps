@@ -43,6 +43,7 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     protected JSONObject document = new JSONObject();
     //장소 정보 관리
     private HashMap<String, Integer> hashMap;
+    private JSONObject placeWifiList;
     private String placeName;
     private String placeBuilding;
     private String placeTel;
@@ -53,7 +54,6 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     private ArrayList<MenuInfo> placeMenu;
     private String placeReview;
     private ArrayList<String> noMenu;
-    private JSONObject placeWifiList;
 
     public AddActivity() {
     }
@@ -209,7 +209,8 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
                     //location 기본 정보 전송
                     NetworkManager nm = new NetworkManager();
                     String location_site = "/locationfg?"+"X="+currentlat+"&Y="+currentlng+
-                            "&WifiL ist="+placeWifiList.toString()+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
+                            "&WifiList="+placeWifiList.toString()+"&BuildingName="+placeBuilding+"&PlaceName="+placeName+"&Category="+placeCategory;
+                    Log.i(TAG, "SITE= "+location_site);
                     nm.postInfo(location_site); //기본 정보 전송 -> placeId 받기
                     while(true){ // thread 작업이 끝날 때까지 대기
                         if(nm.isEnd){
@@ -251,13 +252,13 @@ public class AddActivity extends AppCompatActivity implements OnMapReadyCallback
     }
 
     //프래그먼트 변경하는 메서드
-    @Override
-    public void replaceFragment(String fragmentId){
-        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if( fragmentId == "review" ) {
-            transaction.replace(R.id.childfragment, new AddReviewFragment());
-        }
-        else if( fragmentId == "cafe" ) {
+            @Override
+            public void replaceFragment(String fragmentId){
+                FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+                if( fragmentId == "review" ) {
+                    transaction.replace(R.id.childfragment, new AddReviewFragment());
+                }
+                else if( fragmentId == "cafe" ) {
             transaction.replace(R.id.childfragment, new AddCafeFragment());
         }
         else if( fragmentId == "convenience" ) {

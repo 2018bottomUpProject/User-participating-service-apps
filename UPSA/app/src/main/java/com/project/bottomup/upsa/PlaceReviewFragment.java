@@ -75,7 +75,6 @@ public class PlaceReviewFragment extends Fragment {
 
                                 // JSON 데이터 분석
                                 root=new JSONArray(rec_data);
-
                             }
                             connection.disconnect(); // 연결 끊기
                         }
@@ -87,9 +86,6 @@ public class PlaceReviewFragment extends Fragment {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        Log.i(TAG, "review ? "+ root.toString());
-
         return rootView;
     }
 }
