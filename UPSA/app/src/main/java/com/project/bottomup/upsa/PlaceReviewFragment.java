@@ -35,6 +35,7 @@ public class PlaceReviewFragment extends Fragment {
         if(bundle != null){
             placeId = bundle.getInt("_id");
         }
+
         index_start = 0;
         index_end = 4;
 
