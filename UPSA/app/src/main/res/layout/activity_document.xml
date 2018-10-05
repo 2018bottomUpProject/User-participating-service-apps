@@ -58,19 +58,22 @@
             android:layout_height="wrap_content"
             android:id="@+id/buttonPlaceInfo"
             android:text="Info"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonPlaceMenu"
             android:text="Menu"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onClick"/>
         <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/buttonPlaceReview"
             android:text="Review"
-            android:layout_weight="1"/>
+            android:layout_weight="1"
+            android:onClick="onClick"/>
     </LinearLayout>
 
     <ScrollView

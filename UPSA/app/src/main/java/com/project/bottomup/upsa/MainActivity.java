@@ -50,7 +50,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener, GoogleMap.OnMarkerClickListener{
+public class MainActivity extends AppCompatActivity implements OnMapReadyCallback ,AddDialogFragment.OnCompleteListener, MarkerFragment.OnCompleteListener, GoogleMap.OnMarkerClickListener{
     private static final String TAG = "MainActivity";
 
     // 서버로 부터 받아온 데이터를 저장할 리스트
@@ -248,6 +248,15 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         else if(admit == "NO"){
         }
         map.clear();
+    }
+
+    @Override
+    public void onLocationData(String data, int _id){
+        Intent intent = new Intent(MainActivity.this, DocumentActivity.class);
+        intent.putExtra("data", data);
+        intent.putExtra("_id", _id);
+
+        startActivity(intent);
     }
 
     public final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;

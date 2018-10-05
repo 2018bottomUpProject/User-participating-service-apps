@@ -6,10 +6,66 @@
     android:background="#FFFFFF"
     tools:context=".PlaceInfoFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="50dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="PlaceInfoFragment" />
+        android:layout_height="match_parent">
+
+        <TextView
+            android:layout_marginLeft="30dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_extra"
+            android:text="PUT Extra Information" />
+
+        <RelativeLayout
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toiletLayout"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/textView_extra">
+            <TextView
+            android:id="@+id/textView_toilet"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="PUT Toilet information" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="휴지 유무"
+                android:id="@+id/toilet_1"
+                android:layout_below="@+id/textView_toilet" />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="남녀공용"
+                android:id="@+id/toilet_2"
+                android:layout_below="@+id/toilet_1" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_marginLeft="30dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/parkingLayout"
+            android:layout_marginTop="30dp"
+            android:layout_below="@+id/toiletLayout">
+            <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_parking"
+            android:text="PUT Parking information"
+            />
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="유료"
+                android:id="@+id/parking_1"
+                android:layout_below="@+id/textView_parking"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>
