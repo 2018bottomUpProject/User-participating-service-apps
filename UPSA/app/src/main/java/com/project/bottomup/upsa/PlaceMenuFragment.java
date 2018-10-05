@@ -1,12 +1,10 @@
 package com.project.bottomup.upsa;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -51,13 +49,13 @@ public class PlaceMenuFragment extends Fragment {
                     }
 
                     //화면 출력
-                    menu_explain.setText("\""+placeName + "\"의 메뉴는 다음과 같습니다.");
+                    menu_explain.setText("\" "+placeName + " \"의 메뉴는 다음과 같습니다.");
                     // ArrayAdapter 생성. 아이템 View를 하나의 텍스트뷰로 구성하도록 레이아웃을 설정함.
                     final ArrayAdapter adapter = new ArrayAdapter(getActivity(), android.R.layout.simple_list_item_1  ,menuPrint);
                     final ListView menu_detail = (ListView)rootView.findViewById(R.id.printContainer_menu) ;
                     menu_detail.setAdapter(adapter);
                 }else{ // 메뉴가 없을 때
-                    menu_explain.setText(placeName + "에 등록된 메뉴가 없습니다.");
+                    menu_explain.setText("\" "+placeName + " \"에 등록된 메뉴가 없습니다.");
                 }
             }
 

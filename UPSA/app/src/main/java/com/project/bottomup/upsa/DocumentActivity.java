@@ -99,8 +99,8 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         TextView nameGet = (TextView)findViewById(R.id.getname);
         TextView buildingGet = (TextView)findViewById(R.id.getbuilding);
         TextView telGet = (TextView)findViewById(R.id.gettel);
-        nameGet.setText("장소 이름      "+placeName); buildingGet.setText("빌딩 이름        "+placeBuilding);
-        telGet.setText("전화번호        "+placeTel);
+        nameGet.setText("장소 이름:      \" "+placeName+"\""); buildingGet.setText("빌딩 이름:      \" "+placeBuilding+" \"");
+        telGet.setText("전화번호:       \" "+placeTel+" \"");
 
         setDefaultFragment();
     }
@@ -152,6 +152,7 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             PlaceReviewFragment fragment = new PlaceReviewFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("_id", placeId);
+            bundle.putString("placeName", placeName);
             fragment.setArguments(bundle);
             transaction.replace(R.id.placeChild_fragment, fragment);
         }
