@@ -42,7 +42,6 @@ import java.util.List;
 import java.util.Map;
 
 public class BackgroundService extends Service {
-
     private static final String TAG = "BG Service";
     WifiManager wifimanager;
     String text = "";
@@ -57,6 +56,7 @@ public class BackgroundService extends Service {
     Handler networkHandler;
     int minute=-1;
     String category="";
+    String placeID="";
     NetworkManager nm = new NetworkManager();
 
     public BackgroundService() {
@@ -385,12 +385,19 @@ public class BackgroundService extends Service {
 
                         String rec_data=buf.toString();
                         Log.i(TAG,"서버에서 받아온 DATA = "+rec_data);
+                        if(rec_data.equals("")){
+                            category="";
+                        }else{
+                            // 객체를 추출한다.(장소하나의 정보)
+                            JSONArray root=new JSONArray(rec_data);
+                            JSONObject obj1=root.getJSONObject(0);
+                            JSONObject obj2=root.getJSONObject(1);
+                            category=obj1.getString("place_type");
+                            placeID=obj2.getString("place_id");
+                            Log.i(TAG,"추출 결과 place_type: "+category);
+                            Log.i(TAG,"추출 결과 place_ID: "+placeID);
+                        }
 
-                        // 객체를 추출한다.(장소하나의 정보)
-                        JSONArray root=new JSONArray(rec_data);
-                        JSONObject obj=root.getJSONObject(0);
-                        category=obj.getString("place_type");
-                        Log.i(TAG,"추출 결과 place_type: "+category);
 
                     } catch (MalformedURLException e) {// for URL
                         e.printStackTrace();
@@ -441,7 +448,7 @@ public class BackgroundService extends Service {
                    // getServerData();// 위치가 서버에 존재하는 지 확인
                     //Log.i(TAG, "여기!0! category: " + category);
                 }
-                if(category==null||category.equals("null")){// 등록되지 않은 장소라면
+                if(category==null||category.equals("null")||category.equals("")){// 등록되지 않은 장소라면
                     Log.i(TAG,minute+"분, 카테고리가 null->노티피 띄우기");
                     WiFiSort();// FG에 보내줄 와이파이 정렬
                     setNotifi();// 노티피케이션 띄우기
@@ -460,7 +467,13 @@ public class BackgroundService extends Service {
                                 changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
                                 pushInfo();//현재 위치의 정보 보내주기
                                 // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기'
-                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
+                                if(minute==5){//여기 처음 방문한다면
+                                    toServer+="&new"+1;
+                                }
+                                else{//현재 위치에 계속 머무르는 중이라면
+                                    toServer+="&new"+0;
+                                }
                                 nm.postInfo(toServer);
                             }
                             else{//위치가 바뀌었다면
@@ -483,8 +496,14 @@ public class BackgroundService extends Service {
                                 threeWiFi(prevResult,currentResult);//상위 3개 와이파이 비교
                                 changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
                                 pushInfo();//현재 위치의 정보 보내주기
-                                // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
-                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                // 30분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
+                                String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
+                                if(minute==30){//여기 처음 방문한다면
+                                    toServer+="&new"+1;
+                                }
+                                else{//현재 위치에 계속 머무르는 중이라면
+                                    toServer+="&new"+0;
+                                }
                                 nm.postInfo(toServer);
                             }
                             else{//위치가 바뀌었다면
@@ -493,13 +512,13 @@ public class BackgroundService extends Service {
                                 minute=0;//초기화
                             }
                         }
-                        else{//5분이 안되었으면 될 때까지 기다림
+                        else{//30분이 안되었으면 될 때까지 기다림
                             minute++;
                             Log.i(TAG,minute+"분");
                         }
                     }
                     if(category.equals("TOILET")){//편의점라면 5분 동안 있는 지 체크
-                        if(minute>=5){//5분이 지났으면
+                        if(minute>=1){//1분이 지났으면
                             distance=prev.distanceTo(location);
                             if(distance<=10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
                                 Log.i(TAG,"GPS 현재 위치 변경X (-> WiFi도 바뀌었는지 확인하러 함수호출)");
@@ -508,16 +527,22 @@ public class BackgroundService extends Service {
                                 changedWiFiCount(prevResult,currentResult);//변경된 와이파이 갯수 확인
                                 pushInfo();//현재 위치의 정보 보내주기
                                 // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
-                                String toServer="/locationbg?deviceID="+deviceID+"&minute="+minute;
+                                String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
+                                if(minute==1){//여기 처음 방문한다면
+                                    toServer+="&new"+1;
+                                }
+                                else{//현재 위치에 계속 머무르는 중이라면
+                                    toServer+="&new"+0;
+                                }
                                 nm.postInfo(toServer);
                             }
                             else{//위치가 바뀌었다면
-                                prev=location;//prev 값을 현재 location 값으로 변경
+                                prev=location;//prev 값을 현재 location 값으로 변경z
                                 Log.i(TAG,"GPS 현재 위치 변경됨");
                                 minute=0;//초기화
                             }
                         }
-                        else{//5분이 안되었으면 될 때까지 기다림
+                        else{//1분이 안되었으면 될 때까지 기다림
                             minute++;
                             Log.i(TAG,minute+"분");
                         }
@@ -537,6 +562,5 @@ public class BackgroundService extends Service {
         public void onStatusChanged(String provider, int status, Bundle extras) {
             Log.i(TAG,"onStatusChanged()");
         }
-
     }
 }
