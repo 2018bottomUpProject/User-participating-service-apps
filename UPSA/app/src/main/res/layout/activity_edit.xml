@@ -47,13 +47,4 @@
         android:hint="전화번호를 입력해주세요"
         android:layout_below="@+id/buildingput"/>
 
-    <EditText
-        android:layout_width="300dp"
-        android:layout_height="50dp"
-        android:id="@+id/telput"
-        android:layout_centerHorizontal="true"
-        android:hint="전화번호를 입력해주세요"
-        android:layout_below="@+id/buildingput"/>
-
-
 </RelativeLayout>
