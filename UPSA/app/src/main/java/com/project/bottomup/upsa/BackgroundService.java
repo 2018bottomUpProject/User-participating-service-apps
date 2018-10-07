@@ -74,6 +74,7 @@ public class BackgroundService extends Service {
         // 사용자의 디바이스 ID 가져오기
         Context mContext=getApplicationContext();
         deviceID  = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
+
         Log.i(TAG,"deviceID: "+deviceID);
 
         // WiFi 켜져있나 확인

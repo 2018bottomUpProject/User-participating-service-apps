@@ -218,7 +218,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 int index = lat_list.indexOf(lat);
                 DocumentInfo documentInfo = new DocumentInfo(id_list.get(index), name_list.get(index));
                 markerClick.add(documentInfo);
-                //markerClick.add(documentInfo);
             }else{
                 throw  new Exception();
             }

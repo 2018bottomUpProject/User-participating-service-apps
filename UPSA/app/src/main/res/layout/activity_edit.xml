@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.project.bottomup.upsa.EditActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/edit_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:id="@+id/addmap"
+        class="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"/>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/addmap" >
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="30dp">
+
+            <RelativeLayout
+                android:id="@+id/edit_ch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp">
+                <EditText
+                    android:id="@+id/editName"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:hint="장소 이름을 입력해주세요" />
+
+                <EditText
+                    android:id="@+id/editBuilding"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/editName"
+                    android:hint="빌딩 이름을 입력해주세요(선택 사항)" />
+
+                <EditText
+                    android:id="@+id/editTel"
+                    android:layout_width="300dp"
+                    android:layout_height="50dp"
+                    android:layout_below="@+id/editBuilding"
+                    android:hint="전화번호를 입력해주세요" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/edit_ch2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_ch1"
+                android:layout_alignLeft="@+id/editExtraText"
+                android:layout_marginTop="15dp">
+
+                <CheckBox
+                    android:id="@+id/editToilet"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="화장실"/>
+
+                <CheckBox
+                    android:id="@+id/editToilet_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editToilet"
+                    android:layout_marginLeft="30dp"
+                    android:text="휴지 유무"
+                    android:visibility="gone" />
+
+                <CheckBox
+                    android:id="@+id/editToilet_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editToilet_1"
+                    android:layout_marginLeft="30dp"
+                    android:text="남녀공용"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/edit_ch3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_ch2"
+                android:layout_alignLeft="@+id/editExtraText"
+                android:layout_marginTop="15dp">
+
+                <CheckBox
+                    android:id="@+id/editParking"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="주차 공간"/>
+
+                <CheckBox
+                    android:id="@+id/editParking_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/editParking"
+                    android:layout_marginLeft="30dp"
+                    android:text="유료"
+                    android:visibility="gone" />
+            </RelativeLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/edit_ch3"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="30dp"
+                android:id="@+id/menu_layout">
+            <Button
+                android:id="@+id/edit_btn1"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메뉴 추가"/>
+
+            <Button
+                android:id="@+id/edit_btn2"
+                android:layout_weight="1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="메뉴 삭제"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="30dp"
+                android:id="@+id/listView_editMenu"
+                android:layout_below="@+id/menu_layout"
+                android:orientation="vertical">
+                <ListView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:id="@+id/editContainer_menu"
+                    android:background="@drawable/back"
+                    android:cacheColorHint="#00000000"
+                    android:choiceMode="none"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:longClickable="false">
+                </ListView>
+            </LinearLayout>
+
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="500dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:layout_below="@+id/listView_editMenu"
+                android:id="@+id/editExtraText"
+                android:background="@drawable/back"
+                android:cursorVisible="true"
+                android:ems="10"
+                android:hint="휴무일, 블로그URL 등의 부가정보를 입력해주세요. 정확한 정보를 알려주시면 등록에 도움이 됩니다."
+                android:inputType="textMultiLine|textNoSuggestions" />
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

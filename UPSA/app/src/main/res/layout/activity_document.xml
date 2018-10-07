@@ -30,7 +30,8 @@
         android:layout_centerHorizontal="true"
         android:hint="장소 이름을 입력해주세요"
         android:layout_marginTop="10dp"
-        android:layout_below="@+id/addmap" />
+        android:layout_below="@+id/addmap"
+        android:textSize="15dp"/>
 
     <TextView
         android:layout_width="300dp"
@@ -38,7 +39,8 @@
         android:id="@+id/getbuilding"
         android:layout_centerHorizontal="true"
         android:hint="빌딩 이름을 입력해주세요(선택 사항)"
-        android:layout_below="@+id/getname" />
+        android:layout_below="@+id/getname"
+        android:textSize="15dp"/>
 
     <TextView
         android:layout_width="300dp"
@@ -46,7 +48,8 @@
         android:id="@+id/gettel"
         android:layout_centerHorizontal="true"
         android:hint="전화번호를 입력해주세요"
-        android:layout_below="@+id/getbuilding"/>
+        android:layout_below="@+id/getbuilding"
+        android:textSize="15dp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
