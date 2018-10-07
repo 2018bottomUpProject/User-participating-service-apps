@@ -7,10 +7,14 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -19,6 +23,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -157,9 +162,6 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             transaction.replace(R.id.placeChild_fragment, fragment);
         }
 
-        //Back 버튼 클릭 시 이전 프래그먼트로 이동
-        transaction.addToBackStack(null);
-
         transaction.commit();
     }
 
@@ -177,4 +179,31 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                 break;
         }
     }
+
+
+    // 메뉴에 대한 메서드
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_document, menu);
+        return true;
+    }
+
+    // 메뉴 항목을 터치하면 호출되는 메서드
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // id 추출
+        int id = item.getItemId();
+        switch(id){
+            case R.id.menu4 :     // 문서 수정
+
+                break;
+
+            case R.id.menu5 :  // 문서 삭제
+
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
 }
