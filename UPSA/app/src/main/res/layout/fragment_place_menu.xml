@@ -16,7 +16,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView_placeMenu"
-            android:text="placeMenuFragment" />
+            android:text="placeMenuFragment"
+            android:textSize="15dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"

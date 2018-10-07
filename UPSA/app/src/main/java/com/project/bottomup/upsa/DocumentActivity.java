@@ -68,10 +68,6 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         setContentView(R.layout.activity_document);
         Log.d(TAG, "onCreate()");
 
-        toolbar = (Toolbar) findViewById(R.id.add_toolbar);
-        toolbar.setTitle(placeName);
-        setSupportActionBar(toolbar);
-
         Intent intent=getIntent();
         placeId = intent.getIntExtra("_id",0);
         String data = intent.getStringExtra("data");
@@ -119,6 +115,11 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         FragmentManager fragmentManager = getSupportFragmentManager();
         SupportMapFragment mapFragment = (SupportMapFragment) fragmentManager.findFragmentById(R.id.addmap);
         mapFragment.getMapAsync(this);
+
+        // 툴바 세팅
+        toolbar = (Toolbar) findViewById(R.id.add_toolbar);
+        toolbar.setTitle(placeName+"의 정보");
+        setSupportActionBar(toolbar);
 
         // 장소 기본 정보 세팅
         TextView nameGet = (TextView)findViewById(R.id.getname);
@@ -220,13 +221,15 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                 Log.i(TAG,permission);
 
                 Intent intent=new Intent(getApplicationContext(),EditActivity.class);
+                intent.putExtra("placeLat",currentlat);
+                intent.putExtra("placeLng", currentlng);
                 intent.putExtra("placeName",placeName);
                 intent.putExtra("placeBuilding",placeBuilding);
                 intent.putExtra("placeTel",placeTel);
                 intent.putExtra("extraInfo",extraInfo);
                 intent.putExtra("toilet",toilet);
-                Log.i(TAG,"placeName: "+placeName+" placeBuilding: "+placeBuilding+" placeTel "+placeTel+" extraInfo: "+extraInfo);
-                Log.i(TAG,"toilet: "+toilet[0]+" "+toilet[1]+" "+toilet[2]);
+                intent.putExtra("parking", parking);
+                intent.putExtra("menu", menu);
                 startActivity(intent);//EditActivity실행
                 break;
 
@@ -290,7 +293,4 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                 e.printStackTrace();
             }
         }
-
-
-
 }
