@@ -18,7 +18,7 @@ public class IntroActivity extends Activity{
         //setContentView(R.layout.activity_main);
         ImageView iv=(ImageView)findViewById(R.id.iv);
         GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(iv);
-        Glide.with(this).load(R.raw.fireeee).into(imageViewTarget);
+        Glide.with(this).load(R.raw.intro_real).into(imageViewTarget);//plus intro
 
         NetworkManager.init(); //thread 시작
         Handler handler = new Handler();
