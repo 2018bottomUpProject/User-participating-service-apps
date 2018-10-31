@@ -11,7 +11,7 @@ let query_function = function(sql, callback){
             console.error(err);
             return;
         }
-        con. query(sql, function (err, result, fields) {
+        con.query(sql, function (err, result, fields) {
             con.release();
             if (err) return callback(err);
             callback(null, result);
@@ -127,13 +127,14 @@ let delDocument = function(place_id, callback){//파일 관련
     }
 };
 let getReview = function(place_id, index_start, index_end, callback){
-    let sql = "select * from Review where place_id="+place_id+" ORDER BY timestamp DESK";//n개의 리뷰만을 가져오도록 수정해야 함.
-
+    let sql = "select * from Review where place_id="+place_id+" ORDER BY timestamp";//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let newReview = function(place_id, article, callback){
     let sql = "insert into Review values(0,"+place_id+",\""+article+"\", NOW())";//STRING " OK
-    query_function(sql,function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
+    query_function(sql,function(err, reault){
+        query_function("SELECT LAST_INSERT_ID() as _id;",callback);
+    });
 };
 let editReview = function(id, place_id, article, callback){
     let sql = "update Review set place_id="+place_id+" article="+article+" where id="+id;
@@ -147,7 +148,7 @@ let getLog = function(){
 
 };
 let getPermission = function(place_id, user_id, callback){
-    let sql = "select * from Permission where place_id="+place_id+" AND user_id="+user_id;//n개의 리뷰만을 가져오도록 수정해야 함.
+    let sql = "select * from Permission where place_id="+place_id+" AND user_id='"+user_id+"'";//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let updPermission = function(place_id, user_id, stay_time, visit, callback){

@@ -13,6 +13,7 @@ router.get('/', function(req, res, next) {//해당 위치에 일정 시간 이�
     console.log("LOCATIONFG:GET -> Auth : ",req.query.Auth);
     //그냥 위치에 맞는 시설 중 첫 번째를 보냄
     sql.getLocation("*", req.query.X, req.query.Y, (req.query.Category+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"), req.query.Radius, function(err, result){
+        console.log("LOCATIONFG:GET -> result length : ", result.length);
         res.send(result);
     });
     //http://localhost:8080/locationfg?X=36.3619378&Y=127.35299439999994&WifiList=[]&Category=%22RESTAURANT%22&Radius=0.0001
@@ -25,12 +26,13 @@ router.post('/', function(req, res, next){//해당 위치를 임시 등록(글 �
     console.log("LOCATIONFG:POST -> PlaceName : ",req.query.PlaceName);
     console.log("LOCATIONFG:POST -> Category : ",req.query.Category);
     console.log("LOCATIONFG:POST -> Auth : ",req.query.Auth);
-    sql.newLocation(req.query.X,
+    sql.newLocation(
+        req.query.X,
         req.query.Y,
         (req.query.WifiList+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"),
         (req.query.BuildingName+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"),
         (req.query.PlaceName+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"),
-        (req.query.PlaceType+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"),
+        (req.query.Category+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"),
         function (err, result) {
         if(err){
             console.error(err);

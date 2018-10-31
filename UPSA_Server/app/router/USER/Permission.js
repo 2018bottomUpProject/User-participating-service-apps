@@ -1,6 +1,7 @@
 "use strict";
 let express = require('express');
 let router = express.Router();
+let sql = require('../../../mariaDB/db_sql')();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,6 +11,7 @@ router.get('/', function(req, res, next) {
         if(err){
             console.error(err);
         }
+        console.log("PERMISSION:GET -> result : ",result);
         res.send(result);
     });
 });

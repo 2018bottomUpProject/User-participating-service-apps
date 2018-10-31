@@ -12,13 +12,15 @@ router.get('/', function(req, res, next) {
         if(result === ""){
             res.send([{"result":"EMPTY"}]);
         }
-        else
+        else {
+            //console.log(result);
             res.send(result);
+        }
     });
 });
 router.post('/', function(req, res, next){
-    console.log("REVIEW:GET -> PlaceId : ",req.query.PlaceId);
-    console.log("REVIEW:GET -> Article : ",req.query.Article);
+    console.log("REVIEW:POST -> PlaceId : ",req.query.PlaceId);
+    console.log("REVIEW:POST -> Article : ",req.query.Article);
     sql.newReview(req.query.PlaceId, (req.query.Article+"").replace(/\"/gi,"\\\"").replace(/'/gi,"\\'"), function(err, result){
         res.send(result);
     });

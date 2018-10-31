@@ -1,0 +1,2812 @@
+sql starts on 2018-10-03T16:21:45.224Z
+Port 8899 is already in use
+sql starts on 2018-10-03T16:21:54.781Z
+LOCATIONFG:GET -> X :  36.36646301350373
+LOCATIONFG:GET -> Y :  127.34458655118944
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646301350373,127.34458655118944))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.36646787310913
+LOCATIONFG:GET -> Y :  127.3445888981223
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646787310913,127.3445888981223))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.366462203569476
+LOCATIONFG:GET -> Y :  127.3445875570178
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366462203569476,127.3445875570178))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.36646382343798
+LOCATIONFG:GET -> Y :  127.34458956867458
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646382343798,127.34458956867458))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.36663552930921
+LOCATIONFG:GET -> Y :  127.34467104077339
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  STORE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36663552930921,127.34467104077339))<=0.021799600223674002 AND place_type="STORE"
+LOCATIONFG:GET -> X :  36.36709421970767
+LOCATIONFG:GET -> Y :  127.3477116599679
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36709421970767,127.3477116599679))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3664675
+LOCATIONBG:GET -> Y :  127.3445886
+LOCATIONBG:GET -> WifiList :  {"cse-410":-47,"CNU WiFi":-45,"eduroam":-51,"cse-411":-54,"castpro C13A":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664675,127.3445886))<=0.0001
+LOCATIONFG:GET -> X :  36.37156084268363
+LOCATIONFG:GET -> Y :  127.34502710402012
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37156084268363,127.34502710402012))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONFG:GET -> X :  36.37156084268363
+LOCATIONFG:GET -> Y :  127.34502710402012
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37156084268363,127.34502710402012))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.37213099695158
+LOCATIONFG:GET -> Y :  127.34550923109056
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37213099695158,127.34550923109056))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3718449
+LOCATIONBG:GET -> Y :  127.3453198
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-69,"iptime01":-54,"iptime_dldbqls":-75,"CNU_Dormitory2":-75,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718449,127.3453198))<=0.0001
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3720151
+LOCATIONBG:GET -> Y :  127.3454559
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime01":-53,"iptime":-88,"인간":-89,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720151,127.3454559))<=0.0001
+LOCATIONFG:GET -> X :  36.372009785527524
+LOCATIONFG:GET -> Y :  127.3454512283206
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372009785527524,127.3454512283206))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+REVIEW:GET -> PlaceId :  51
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  5
+DB_SQL :  select * from Review where place_id=51 ORDER BY timestamp DESK
+LOCATIONFG:GET -> X :  36.37209833197615
+LOCATIONFG:GET -> Y :  127.3455062136054
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37209833197615,127.3455062136054))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+REVIEW:GET -> PlaceId :  51
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  5
+DB_SQL :  select * from Review where place_id=51 ORDER BY timestamp DESK
+LOCATIONFG:GET -> X :  36.371675305807514
+LOCATIONFG:GET -> Y :  127.34519407153131
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371675305807514,127.34519407153131))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3721676
+LOCATIONBG:GET -> Y :  127.3455292
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-73,"iptime01":-54,"iptime_dldbqls":-78,"iptime":-79,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3721676,127.3455292))<=0.0001
+LOCATIONFG:GET -> X :  36.37206404723513
+LOCATIONFG:GET -> Y :  127.34548576176167
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37206404723513,127.34548576176167))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3720553
+LOCATIONBG:GET -> Y :  127.3454836
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-73,"iptime01":-55,"iptime_dldbqls":-77,"iptime":-72,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720553,127.3454836))<=0.0001
+LOCATIONBG:GET -> X :  36.3720711
+LOCATIONBG:GET -> Y :  127.3454696
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-68,"iptime01":-41,"iptime_dldbqls":-77,"CNU_Dormitory2":-84,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720711,127.3454696))<=0.0001
+sql starts on 2018-10-04T08:44:15.496Z
+LOCATIONBG:GET -> X :  36.3664719
+LOCATIONBG:GET -> Y :  127.3445897
+LOCATIONBG:GET -> WifiList :  
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664719,127.3445897))<=0.0001
+LOCATIONFG:GET -> X :  36.366575594283994
+LOCATIONFG:GET -> Y :  127.3438885062933
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366575594283994,127.3438885062933))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3665659
+LOCATIONBG:GET -> Y :  127.343863
+LOCATIONBG:GET -> WifiList :  {"cse5401":-39,"CNU WiFi":-41,"eduroam":-42,"motion":-69,"cse5401-5GHz":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665659,127.343863))<=0.0001
+LOCATIONFG:GET -> X :  36.36656020555387
+LOCATIONFG:GET -> Y :  127.34386805444957
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36656020555387,127.34386805444957))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.366698164061
+LOCATIONFG:GET -> Y :  127.34411012381315
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366698164061,127.34411012381315))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONFG:GET -> X :  36.36655777575408
+LOCATIONFG:GET -> Y :  127.34386201947927
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36655777575408,127.34386201947927))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3665577
+LOCATIONBG:GET -> Y :  127.3438619
+LOCATIONBG:GET -> WifiList :  {"SPG":-67,"cse5401":-48,"CNU WiFi":-42,"eduroam":-44,"cse5401-5GHz":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665577,127.3438619))<=0.0001
+REVIEW:GET -> PlaceId :  51
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=51 ORDER BY timestamp DESK
+LOCATIONFG:GET -> X :  36.366562365375806
+LOCATIONFG:GET -> Y :  127.3438623547554
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366562365375806,127.3438623547554))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3665601
+LOCATIONBG:GET -> Y :  127.3438551
+LOCATIONBG:GET -> WifiList :  {"SPG":-74,"cse5401":-42,"CNU WiFi":-41,"eduroam":-41,"cse5401-5GHz":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665601,127.3438551))<=0.0001
+LOCATIONFG:GET -> X :  36.36656020555387
+LOCATIONFG:GET -> Y :  127.34386906027794
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36656020555387,127.34386906027794))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3665671
+LOCATIONBG:GET -> Y :  127.3438658
+LOCATIONBG:GET -> WifiList :  {"SPG":-68,"cse5401":-41,"CNU WiFi":-39,"eduroam":-46,"cse5401-5GHz":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665671,127.3438658))<=0.0001
+LOCATIONFG:GET -> X :  36.36655048635432
+LOCATIONFG:GET -> Y :  127.34385833144188
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36655048635432,127.34385833144188))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3665658
+LOCATIONBG:GET -> Y :  127.3438674
+LOCATIONBG:GET -> WifiList :  {"cse5401":-43,"CNU WiFi":-48,"eduroam":-45,"cse5401-5GHz":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665658,127.3438674))<=0.0001
+LOCATIONFG:GET -> X :  36.366565605108626
+LOCATIONFG:GET -> Y :  127.34386704862118
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366565605108626,127.34386704862118))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.366557
+LOCATIONBG:GET -> Y :  127.3438611
+LOCATIONBG:GET -> WifiList :  {"cse5401":-46,"CNU WiFi":-54,"eduroam":-45,"cse5401-5GHz":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366557,127.3438611))<=0.0001
+LOCATIONBG:GET -> X :  36.3614101
+LOCATIONBG:GET -> Y :  127.3494802
+LOCATIONBG:GET -> WifiList :  {"dream305":-65,"unicornblue":-22,"ejms":-82,"dream307":-87,"Tenda9588":-84}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614101,127.3494802))<=0.0001
+LOCATIONBG:GET -> X :  36.3614112
+LOCATIONBG:GET -> Y :  127.349479
+LOCATIONBG:GET -> WifiList :  {"ejms":-80,"dream307":-75,"dream305":-65,"Tenda9588":-85,"unicornblue":-26}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614112,127.349479))<=0.0001
+LOCATIONBG:GET -> X :  36.361411
+LOCATIONBG:GET -> Y :  127.349482
+LOCATIONBG:GET -> WifiList :  {"dream305":-64,"SAMSUNG":-84,"unicornblue":-25,"ejms":-84,"Tenda9588":-86}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.361411,127.349482))<=0.0001
+LOCATIONBG:GET -> X :  36.3614211
+LOCATIONBG:GET -> Y :  127.349501
+LOCATIONBG:GET -> WifiList :  {"ejms":-74,"dream307":-70,"dream305":-67,"Tenda9588":-79,"unicornblue":-20}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614211,127.349501))<=0.0001
+LOCATIONBG:GET -> X :  36.3664646
+LOCATIONBG:GET -> Y :  127.3446117
+LOCATIONBG:GET -> WifiList :  {"cse-410":-51,"CNU WiFi":-56,"eduroam":-60,"cse-409":-59}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664646,127.3446117))<=0.0001
+LOCATIONFG:GET -> X :  36.36646895302138
+LOCATIONFG:GET -> Y :  127.34465260058641
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646895302138,127.34465260058641))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  51
+DOCUMENT:GET :  {"name":"ㅎㅇ","tel":"ㅎㅇ","building":"ㅎㅇ","lat":36.3664595,"lng":127.3445844,"category":"CONVENIENCE","extraInfo":"ㅎㅇㅎㅇㅎㅇㅎㅇㅎㅇ","화장실":false,"휴지 유무":false,"남녀공용":false,"주차 공간":false,"유료":false,"_id":51}
+LOCATIONBG:GET -> X :  36.3664731
+LOCATIONBG:GET -> Y :  127.3446498
+LOCATIONBG:GET -> WifiList :  {"cse-410":-55,"CNU WiFi":-56,"eduroam":-56,"DBLAB":-59,"cse-409":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664731,127.3446498))<=0.0001
+LOCATIONBG:GET -> X :  36.3664696
+LOCATIONBG:GET -> Y :  127.3446539
+LOCATIONBG:GET -> WifiList :  {"cse-410":-56,"CNU WiFi":-57,"eduroam":-57,"DBLAB":-58,"cse-409":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664696,127.3446539))<=0.0001
+LOCATIONBG:GET -> X :  36.3664707
+LOCATIONBG:GET -> Y :  127.3446532
+LOCATIONBG:GET -> WifiList :  {"cse-410":-47,"CNU WiFi":-58,"eduroam":-54,"cse-409":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664707,127.3446532))<=0.0001
+LOCATIONFG:POST -> X :  36.3664707
+LOCATIONFG:POST -> Y :  127.3446532
+LOCATIONFG:POST -> WifiList :  undefined
+LOCATIONFG:POST -> BuildingName :  공대5호관
+LOCATIONFG:POST -> PlaceName :  410호
+LOCATIONFG:POST -> Category :  CONVENIENCE
+LOCATIONFG:POST -> Auth :  undefined
+DB_SQL :  INSERT INTO Location(_id,location,wifi_list,building_name,place_name,place_type) VALUES(0,POINT(36.3664707,127.3446532),"undefined","공대5호관","410호","undefined")
+DB_SQL :  SELECT LAST_INSERT_ID() as _id;
+DOCUMENT:POST -> PLACE_ID :  52
+DOCUMENT:POST -> ARTICLE :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+DB_SQL : new Document  52  created. commit : 2018-10-05T09:28:08.010Z
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> Article :  다시 오고 싶지 않아요^^.
+DB_SQL :  insert into Review values(0,52,"다시 오고 싶지 않아요^^.", NOW())
+DB_SQL :  SELECT LAST_INSERT_ID() as _id;
+LOCATIONBG:GET -> X :  36.3664692
+LOCATIONBG:GET -> Y :  127.3446523
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-55,"eduroam":-57,"cse-409":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664692,127.3446523))<=0.0001
+LOCATIONFG:GET -> X :  36.366450324532664
+LOCATIONFG:GET -> Y :  127.34464522451162
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CONVENIENCE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366450324532664,127.34464522451162))<=0.021799600223674002 AND place_type="CONVENIENCE"
+LOCATIONFG:GET -> X :  36.366450324532664
+LOCATIONFG:GET -> Y :  127.34464522451162
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  STORE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366450324532664,127.34464522451162))<=0.021799600223674002 AND place_type="STORE"
+LOCATIONFG:GET -> X :  36.366450324532664
+LOCATIONFG:GET -> Y :  127.34464522451162
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTROOM
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366450324532664,127.34464522451162))<=0.021799600223674002 AND place_type="RESTROOM"
+LOCATIONFG:GET -> X :  36.366450324532664
+LOCATIONFG:GET -> Y :  127.34464522451162
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366450324532664,127.34464522451162))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONBG:GET -> X :  36.3664726
+LOCATIONBG:GET -> Y :  127.3446418
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-54,"eduroam":-57,"cse-409":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664726,127.3446418))<=0.0001
+LOCATIONBG:GET -> X :  36.3664743
+LOCATIONBG:GET -> Y :  127.3446407
+LOCATIONBG:GET -> WifiList :  {"cse-410":-55,"CNU WiFi":-60,"eduroam":-56,"cse-409":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664743,127.3446407))<=0.0001
+LOCATIONBG:GET -> X :  36.3664591
+LOCATIONBG:GET -> Y :  127.3446388
+LOCATIONBG:GET -> WifiList :  {"cse-410":-55,"CNU WiFi":-57,"eduroam":-57,"cse-409":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664591,127.3446388))<=0.0001
+LOCATIONFG:GET -> X :  36.366467333152976
+LOCATIONFG:GET -> Y :  127.3446549475193
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  STORE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366467333152976,127.3446549475193))<=0.021799600223674002 AND place_type="STORE"
+LOCATIONFG:GET -> X :  36.366467333152976
+LOCATIONFG:GET -> Y :  127.3446549475193
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366467333152976,127.3446549475193))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONBG:GET -> X :  36.3664605
+LOCATIONBG:GET -> Y :  127.3446136
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-61,"eduroam":-62}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664605,127.3446136))<=0.0001
+LOCATIONBG:GET -> X :  36.366466
+LOCATIONBG:GET -> Y :  127.3446379
+LOCATIONBG:GET -> WifiList :  {"cse-410":-52,"CNU WiFi":-61,"eduroam":-53,"cse-409":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366466,127.3446379))<=0.0001
+LOCATIONBG:GET -> X :  36.3664676
+LOCATIONBG:GET -> Y :  127.3446381
+LOCATIONBG:GET -> WifiList :  {"cse-410":-51,"CNU WiFi":-61,"eduroam":-54,"cse-409":-59}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664676,127.3446381))<=0.0001
+LOCATIONBG:GET -> X :  36.366462
+LOCATIONBG:GET -> Y :  127.3446577
+LOCATIONBG:GET -> WifiList :  {"cse-410":-55,"CNU WiFi":-55,"eduroam":-55,"DBLAB":-59,"cse-409":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366462,127.3446577))<=0.0001
+LOCATIONBG:GET -> X :  36.3664473
+LOCATIONBG:GET -> Y :  127.3446243
+LOCATIONBG:GET -> WifiList :  {"cse-410":-56,"CNU WiFi":-59,"eduroam":-59}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664473,127.3446243))<=0.0001
+LOCATIONFG:GET -> X :  36.36646679319685
+LOCATIONFG:GET -> Y :  127.3446512594819
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646679319685,127.3446512594819))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONBG:GET -> X :  36.3664702
+LOCATIONBG:GET -> Y :  127.3446533
+LOCATIONBG:GET -> WifiList :  {"cse-410":-52,"CNU WiFi":-60,"eduroam":-54,"cse-409":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664702,127.3446533))<=0.0001
+LOCATIONBG:GET -> X :  36.3664496
+LOCATIONBG:GET -> Y :  127.3446469
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-50,"eduroam":-58,"cse-409":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664496,127.3446469))<=0.0001
+LOCATIONBG:GET -> X :  36.3664687
+LOCATIONBG:GET -> Y :  127.3446506
+LOCATIONBG:GET -> WifiList :  {"cse-410":-56,"CNU WiFi":-48,"eduroam":-59,"cse-409":-58}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664687,127.3446506))<=0.0001
+LOCATIONFG:GET -> X :  36.366473002692274
+LOCATIONFG:GET -> Y :  127.34464153647423
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366473002692274,127.34464153647423))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONBG:GET -> X :  36.3664687
+LOCATIONBG:GET -> Y :  127.3446531
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-56,"eduroam":-49,"cse-409":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664687,127.3446531))<=0.0001
+LOCATIONBG:GET -> X :  36.3664742
+LOCATIONBG:GET -> Y :  127.3446562
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-47,"eduroam":-57,"cse-409":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664742,127.3446562))<=0.0001
+LOCATIONBG:GET -> X :  36.3664609
+LOCATIONBG:GET -> Y :  127.3446515
+LOCATIONBG:GET -> WifiList :  {"cse-410":-58,"CNU WiFi":-59,"cse-409":-52,"eduroam":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664609,127.3446515))<=0.0001
+LOCATIONBG:GET -> X :  36.3664689
+LOCATIONBG:GET -> Y :  127.3446653
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-58,"DBLAB":-57,"eduroam":-58}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664689,127.3446653))<=0.0001
+LOCATIONBG:GET -> X :  36.3664615
+LOCATIONBG:GET -> Y :  127.3446117
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-55,"eduroam":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664615,127.3446117))<=0.0001
+LOCATIONFG:GET -> X :  36.36646787310913
+LOCATIONFG:GET -> Y :  127.3446512594819
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646787310913,127.3446512594819))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONFG:GET -> X :  36.366459773766636
+LOCATIONFG:GET -> Y :  127.34461303800344
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366459773766636,127.34461303800344))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONBG:GET -> X :  36.3664673
+LOCATIONBG:GET -> Y :  127.3446523
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-56,"eduroam":-51,"cse-409":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664673,127.3446523))<=0.0001
+LOCATIONBG:GET -> X :  36.3664653
+LOCATIONBG:GET -> Y :  127.3446495
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-57,"eduroam":-47,"cse-409":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664653,127.3446495))<=0.0001
+LOCATIONBG:GET -> X :  36.3664703
+LOCATIONBG:GET -> Y :  127.3446539
+LOCATIONBG:GET -> WifiList :  {"cse-410":-56,"CNU WiFi":-49,"cse-409":-54,"eduroam":-59}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664703,127.3446539))<=0.0001
+LOCATIONBG:GET -> X :  36.3664702
+LOCATIONBG:GET -> Y :  127.3446545
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-57,"cse-409":-53,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664702,127.3446545))<=0.0001
+LOCATIONFG:GET -> X :  36.36646517332839
+LOCATIONFG:GET -> Y :  127.34461136162281
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36646517332839,127.34461136162281))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+LOCATIONBG:GET -> X :  36.3664704
+LOCATIONBG:GET -> Y :  127.3446283
+LOCATIONBG:GET -> WifiList :  {"cse-410":-53,"CNU WiFi":-50,"eduroam":-61,"cse-409":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664704,127.3446283))<=0.0001
+LOCATIONBG:GET -> X :  36.3664646
+LOCATIONBG:GET -> Y :  127.3446114
+LOCATIONBG:GET -> WifiList :  {"cse-410":-54,"CNU WiFi":-55,"eduroam":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3664646,127.3446114))<=0.0001
+LOCATIONFG:GET -> X :  36.366463283481835
+LOCATIONFG:GET -> Y :  127.34464857727289
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366463283481835,127.34464857727289))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+sql starts on 2018-10-05T15:21:35.680Z
+LOCATIONBG:GET -> X :  36.3720695
+LOCATIONBG:GET -> Y :  127.3454861
+LOCATIONBG:GET -> WifiList :  {"iptime01":-46,"JINI":-73,"iptime":-75,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720695,127.3454861))<=0.0001
+LOCATIONBG:GET -> X :  36.3719492
+LOCATIONBG:GET -> Y :  127.345428
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"JINI":-73,"iptime":-67,"인간":-66,"Rookie7":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719492,127.345428))<=0.0001
+LOCATIONBG:GET -> X :  36.3716891
+LOCATIONBG:GET -> Y :  127.3452006
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-69,"iptime":-75,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716891,127.3452006))<=0.0001
+LOCATIONFG:GET -> X :  36.1
+LOCATIONFG:GET -> Y :  127
+LOCATIONFG:GET -> WifiList :  {"SKLAGJSA":"ASJGALEIV"}
+LOCATIONFG:GET -> Category :  CONVENIENCE
+LOCATIONFG:GET -> Radius :  undefined
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.1,127))<=undefined AND place_type="CONVENIENCE"
+LOCATIONBG:GET -> X :  36.3719328
+LOCATIONBG:GET -> Y :  127.3454097
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-71,"iptime":-78,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719328,127.3454097))<=0.0001
+LOCATIONBG:GET -> X :  36.3719553
+LOCATIONBG:GET -> Y :  127.3454204
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-68,"iptime":-73,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719553,127.3454204))<=0.0001
+LOCATIONBG:GET -> X :  36.371915
+LOCATIONBG:GET -> Y :  127.345397
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-71,"iptime01":-55,"JINI":-69,"iptime":-65,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371915,127.345397))<=0.0001
+LOCATIONBG:GET -> X :  36.3719778
+LOCATIONBG:GET -> Y :  127.3454545
+LOCATIONBG:GET -> WifiList :  {"iptime01":-55,"JINI":-72,"iptime":-70,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719778,127.3454545))<=0.0001
+LOCATIONFG:GET -> X :  36.371689343726224
+LOCATIONFG:GET -> Y :  127.34520010650158
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371689343726224,127.34520010650158))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3716817
+LOCATIONBG:GET -> Y :  127.3451965
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-69,"iptime":-70,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716817,127.3451965))<=0.0001
+LOCATIONBG:GET -> X :  36.3718686
+LOCATIONBG:GET -> Y :  127.3453558
+LOCATIONBG:GET -> WifiList :  {"iptime01":-55,"JINI":-70,"iptime":-72,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718686,127.3453558))<=0.0001
+LOCATIONBG:GET -> X :  36.3720002
+LOCATIONBG:GET -> Y :  127.3454435
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-70,"iptime":-75,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720002,127.3454435))<=0.0001
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719626
+LOCATIONBG:GET -> Y :  127.3454169
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"iptime":-76,"CNU_Dormitory2":-79,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719626,127.3454169))<=0.0001
+LOCATIONFG:GET -> X :  36.37198548922825
+LOCATIONFG:GET -> Y :  127.34543614089489
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37198548922825,127.34543614089489))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.371946075215526
+LOCATIONFG:GET -> Y :  127.3454076424241
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371946075215526,127.3454076424241))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3716935
+LOCATIONBG:GET -> Y :  127.3452035
+LOCATIONBG:GET -> WifiList :  {"iptime01":-55,"happy":-85,"JINI":-70,"iptime":-73,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716935,127.3452035))<=0.0001
+LOCATIONFG:GET -> X :  36.37204811967314
+LOCATIONFG:GET -> Y :  127.34547168016434
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37204811967314,127.34547168016434))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37168502436689
+LOCATIONFG:GET -> Y :  127.34519843012096
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37168502436689,127.34519843012096))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37194094599323
+LOCATIONFG:GET -> Y :  127.34541334211826
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37194094599323,127.34541334211826))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37192987767027
+LOCATIONFG:GET -> Y :  127.34539423137905
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37192987767027,127.34539423137905))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37206485711109
+LOCATIONFG:GET -> Y :  127.3454824090004
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37206485711109,127.3454824090004))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3720555
+LOCATIONBG:GET -> Y :  127.3454673
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-73,"iptime":-76,"iptime01":-46,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720555,127.3454673))<=0.0001
+LOCATIONBG:GET -> X :  36.3720072
+LOCATIONBG:GET -> Y :  127.3454392
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-70,"iptime":-69,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720072,127.3454392))<=0.0001
+LOCATIONBG:GET -> X :  36.3716886
+LOCATIONBG:GET -> Y :  127.3451991
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-71,"iptime":-73,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716886,127.3451991))<=0.0001
+LOCATIONBG:GET -> X :  36.3718634
+LOCATIONBG:GET -> Y :  127.3453542
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-71,"iptime":-71,"인간":-71,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718634,127.3453542))<=0.0001
+LOCATIONBG:GET -> X :  36.3719233
+LOCATIONBG:GET -> Y :  127.3454061
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-71,"iptime":-66,"인간":-70,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719233,127.3454061))<=0.0001
+LOCATIONBG:GET -> X :  36.3718769
+LOCATIONBG:GET -> Y :  127.345366
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"JINI":-69,"iptime":-70,"인간":-70,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718769,127.345366))<=0.0001
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719535
+LOCATIONBG:GET -> Y :  127.3454219
+LOCATIONBG:GET -> WifiList :  {"iptime01":-55,"JINI":-70,"iptime":-72,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719535,127.3454219))<=0.0001
+LOCATIONBG:GET -> X :  36.3719688
+LOCATIONBG:GET -> Y :  127.3454291
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-71,"iptime01":-55,"JINI":-68,"iptime":-68,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719688,127.3454291))<=0.0001
+LOCATIONBG:GET -> X :  36.3718634
+LOCATIONBG:GET -> Y :  127.3453541
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-72,"iptime01":-55,"JINI":-68,"iptime":-70,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718634,127.3453541))<=0.0001
+LOCATIONBG:GET -> X :  36.3719992
+LOCATIONBG:GET -> Y :  127.3454304
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-72,"iptime01":-52,"JINI":-71,"iptime":-70,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719992,127.3454304))<=0.0001
+LOCATIONBG:GET -> X :  36.3720121
+LOCATIONBG:GET -> Y :  127.3454772
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-69,"iptime":-69,"인간":-70,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720121,127.3454772))<=0.0001
+LOCATIONBG:GET -> X :  36.3719025
+LOCATIONBG:GET -> Y :  127.3453885
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-71,"iptime":-73,"인간":-70,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719025,127.3453885))<=0.0001
+LOCATIONFG:GET -> X :  36.371927987956425
+LOCATIONFG:GET -> Y :  127.34540797770025
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371927987956425,127.34540797770025))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  52
+DOCUMENT:GET :  {"name":"410호","tel":"0423335555","building":"공대5호관","lat":36.3664707,"lng":127.3446532,"category":"CONVENIENCE","extraInfo":"강의실이 넓고 깨끗해요.","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":52}
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.37184861993398
+LOCATIONFG:GET -> Y :  127.34533723443747
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37184861993398,127.34533723443747))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.371915
+LOCATIONBG:GET -> Y :  127.3453993
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-73,"iptime":-69,"인간":-70,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371915,127.3453993))<=0.0001
+LOCATIONBG:GET -> X :  36.3720786
+LOCATIONBG:GET -> Y :  127.3454895
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-71,"iptime":-70,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720786,127.3454895))<=0.0001
+LOCATIONBG:GET -> X :  36.3719025
+LOCATIONBG:GET -> Y :  127.3453912
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-71,"iptime":-65,"인간":-72,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719025,127.3453912))<=0.0001
+LOCATIONBG:GET -> X :  36.3720743
+LOCATIONBG:GET -> Y :  127.3454898
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime01":-48,"JINI":-72,"iptime":-63,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720743,127.3454898))<=0.0001
+LOCATIONBG:GET -> X :  36.3719553
+LOCATIONBG:GET -> Y :  127.3454049
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-72,"iptime":-81,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719553,127.3454049))<=0.0001
+LOCATIONBG:GET -> X :  36.3719101
+LOCATIONBG:GET -> Y :  127.3453954
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"JINI":-71,"iptime":-65,"인간":-72,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719101,127.3453954))<=0.0001
+LOCATIONBG:GET -> X :  36.3720362
+LOCATIONBG:GET -> Y :  127.3454668
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"JINI":-71,"iptime":-71,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720362,127.3454668))<=0.0001
+LOCATIONBG:GET -> X :  36.371888
+LOCATIONBG:GET -> Y :  127.345368
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-71,"iptime":-80,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371888,127.345368))<=0.0001
+LOCATIONBG:GET -> X :  36.3719114
+LOCATIONBG:GET -> Y :  127.3453841
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-71,"iptime":-70,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719114,127.3453841))<=0.0001
+LOCATIONBG:GET -> X :  36.3720704
+LOCATIONBG:GET -> Y :  127.3454873
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-71,"iptime":-71,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720704,127.3454873))<=0.0001
+LOCATIONBG:GET -> X :  36.3720678
+LOCATIONBG:GET -> Y :  127.3454888
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-70,"iptime":-80,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720678,127.3454888))<=0.0001
+LOCATIONBG:GET -> X :  36.3720697
+LOCATIONBG:GET -> Y :  127.3454852
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-72,"iptime":-70,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720697,127.3454852))<=0.0001
+LOCATIONBG:GET -> X :  36.372053
+LOCATIONBG:GET -> Y :  127.3454739
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-72,"iptime01":-54,"JINI":-74,"iptime":-65,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372053,127.3454739))<=0.0001
+LOCATIONBG:GET -> X :  36.3718728
+LOCATIONBG:GET -> Y :  127.345369
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-71,"iptime":-71,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718728,127.345369))<=0.0001
+LOCATIONBG:GET -> X :  36.3720998
+LOCATIONBG:GET -> Y :  127.3455148
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime01":-51,"JINI":-71,"iptime":-65,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720998,127.3455148))<=0.0001
+LOCATIONBG:GET -> X :  36.3720746
+LOCATIONBG:GET -> Y :  127.3454862
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-72,"iptime":-69,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720746,127.3454862))<=0.0001
+LOCATIONBG:GET -> X :  36.3719829
+LOCATIONBG:GET -> Y :  127.3454263
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-72,"iptime":-76,"CNU_Dormitory2":-77,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719829,127.3454263))<=0.0001
+LOCATIONFG:GET -> X :  36.37207430566317
+LOCATIONFG:GET -> Y :  127.34548777341841
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37207430566317,127.34548777341841))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719703
+LOCATIONBG:GET -> Y :  127.3454374
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime":-77,"iptime01":-53,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719703,127.3454374))<=0.0001
+LOCATIONFG:GET -> X :  36.372005196227136
+LOCATIONFG:GET -> Y :  127.34542407095432
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372005196227136,127.34542407095432))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719127
+LOCATIONBG:GET -> Y :  127.3453963
+LOCATIONBG:GET -> WifiList :  {"iptime":-74,"iptime01":-48,"인간":-74,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719127,127.3453963))<=0.0001
+LOCATIONFG:GET -> X :  36.37194094599323
+LOCATIONFG:GET -> Y :  127.34540563076733
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37194094599323,127.34540563076733))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.371760883080206
+LOCATIONFG:GET -> Y :  127.34528962522745
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371760883080206,127.34528962522745))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719748
+LOCATIONBG:GET -> Y :  127.3454342
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-74,"iptime":-79,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719748,127.3454342))<=0.0001
+LOCATIONBG:GET -> X :  36.3718362
+LOCATIONBG:GET -> Y :  127.3453289
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-73,"iptime":-79,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718362,127.3453289))<=0.0001
+LOCATIONFG:GET -> X :  36.372088343509866
+LOCATIONFG:GET -> Y :  127.34550386667253
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372088343509866,127.34550386667253))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37191017065233
+LOCATIONFG:GET -> Y :  127.34539289027452
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37191017065233,127.34539289027452))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.3720721459942
+LOCATIONFG:GET -> Y :  127.34548442065716
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3720721459942,127.34548442065716))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.37198089992641
+LOCATIONFG:GET -> Y :  127.34543580561876
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37198089992641,127.34543580561876))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3716475
+LOCATIONBG:GET -> Y :  127.3451841
+LOCATIONBG:GET -> WifiList :  {"iptime":-67,"iptime01":-47,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716475,127.3451841))<=0.0001
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719335
+LOCATIONBG:GET -> Y :  127.3454085
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-75,"iptime":-77,"iptime01":-53,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719335,127.3454085))<=0.0001
+LOCATIONBG:GET -> X :  36.3720137
+LOCATIONBG:GET -> Y :  127.3454577
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime":-70,"iptime01":-51,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720137,127.3454577))<=0.0001
+LOCATIONFG:GET -> X :  36.371754404047074
+LOCATIONFG:GET -> Y :  127.3452654853463
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  STORE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371754404047074,127.3452654853463))<=0.021799600223674002 AND place_type="STORE"
+LOCATIONFG:GET -> X :  36.371754404047074
+LOCATIONFG:GET -> Y :  127.3452654853463
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371754404047074,127.3452654853463))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3720627
+LOCATIONBG:GET -> Y :  127.3454781
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-74,"iptime01":-53,"JINI":-72,"iptime":-65,"Rookie7":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720627,127.3454781))<=0.0001
+LOCATIONBG:GET -> X :  36.3718857
+LOCATIONBG:GET -> Y :  127.3453733
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-79,"iptime01":-48,"JINI":-73,"iptime":-67,"Rookie7":-45}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718857,127.3453733))<=0.0001
+LOCATIONBG:GET -> X :  36.3720569
+LOCATIONBG:GET -> Y :  127.3454844
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-75,"iptime":-68,"CNU_Dormitory2":-84,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720569,127.3454844))<=0.0001
+LOCATIONBG:GET -> X :  36.3719537
+LOCATIONBG:GET -> Y :  127.3454016
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-79,"iptime01":-43,"JINI":-75,"iptime":-69,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719537,127.3454016))<=0.0001
+LOCATIONBG:GET -> X :  36.3719924
+LOCATIONBG:GET -> Y :  127.3454265
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-72,"iptime":-69,"iptime01":-47,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719924,127.3454265))<=0.0001
+LOCATIONFG:GET -> X :  36.37178086009562
+LOCATIONFG:GET -> Y :  127.34529733657838
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37178086009562,127.34529733657838))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3719471
+LOCATIONBG:GET -> Y :  127.3454147
+LOCATIONBG:GET -> WifiList :  {"WiFiUSB-7F00":-77,"iptime01":-47,"iptime":-70,"CNU_Dormitory2":-79,"Rookie7":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719471,127.3454147))<=0.0001
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  52
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=52 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3665948
+LOCATIONBG:GET -> Y :  127.3441801
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-49,"Eun":-64,"winslab":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665948,127.3441801))<=0.0001
+LOCATIONBG:GET -> X :  36.3665948
+LOCATIONBG:GET -> Y :  127.3441801
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-49,"Eun":-64,"winslab":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665948,127.3441801))<=0.0001
+LOCATIONBG:GET -> X :  36.3665948
+LOCATIONBG:GET -> Y :  127.3441801
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-49,"Eun":-64,"winslab":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665948,127.3441801))<=0.0001
+LOCATIONBG:GET -> X :  36.3665948
+LOCATIONBG:GET -> Y :  127.3441801
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-49,"Eun":-64,"winslab":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665948,127.3441801))<=0.0001
+LOCATIONBG:GET -> X :  36.3665948
+LOCATIONBG:GET -> Y :  127.3441801
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-49,"Eun":-64,"winslab":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665948,127.3441801))<=0.0001
+LOCATIONFG:GET -> X :  36.3666792656498
+LOCATIONFG:GET -> Y :  127.34420835971834
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3666792656498,127.34420835971834))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3666867
+LOCATIONBG:GET -> Y :  127.3442239
+LOCATIONBG:GET -> WifiList :  {"cse-405":-68,"winslab":-67,"CNU WiFi":-49,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666867,127.3442239))<=0.0001
+LOCATIONBG:GET -> X :  36.3665779
+LOCATIONBG:GET -> Y :  127.3442822
+LOCATIONBG:GET -> WifiList :  {"cse-405":-60,"CNU WiFi":-70,"eduroam":-71}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665779,127.3442822))<=0.0001
+LOCATIONBG:GET -> X :  36.366694
+LOCATIONBG:GET -> Y :  127.3442176
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-63,"eduroam":-63}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366694,127.3442176))<=0.0001
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  37.55999991985822
+LOCATIONFG:GET -> Y :  126.96999996900558
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(37.55999991985822,126.96999996900558))<=0.021799600223674002
+LOCATIONFG:GET -> X :  36.366578294060886
+LOCATIONFG:GET -> Y :  127.34421774744987
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366578294060886,127.34421774744987))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONFG:GET -> X :  36.366578294060886
+LOCATIONFG:GET -> Y :  127.34421774744987
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366578294060886,127.34421774744987))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.366581533793045
+LOCATIONFG:GET -> Y :  127.34422646462917
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366581533793045,127.34422646462917))<=0.021799600223674002
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.36610124202798
+LOCATIONFG:GET -> Y :  127.34872922301292
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36610124202798,127.34872922301292))<=0.021799600223674002 AND place_type="RESTAURANT"
+LOCATIONFG:GET -> X :  36.36610124202798
+LOCATIONFG:GET -> Y :  127.34872922301292
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CONVENIENCE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36610124202798,127.34872922301292))<=0.021799600223674002 AND place_type="CONVENIENCE"
+LOCATIONFG:GET -> X :  36.36610124202798
+LOCATIONFG:GET -> Y :  127.34872922301292
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36610124202798,127.34872922301292))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONBG:GET -> X :  36.3667286
+LOCATIONBG:GET -> Y :  127.3442769
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-62,"eduroam":-62}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667286,127.3442769))<=0.0001
+LOCATIONBG:GET -> X :  36.3666184
+LOCATIONBG:GET -> Y :  127.3442226
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-50,"eduroam":-56,"Eun":-64,"MICLAB":-66}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666184,127.3442226))<=0.0001
+LOCATIONBG:GET -> X :  36.3666797
+LOCATIONBG:GET -> Y :  127.3442162
+LOCATIONBG:GET -> WifiList :  {"CSE-507":-68,"CNU WiFi":-51,"eduroam":-54,"MICLAB":-70}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666797,127.3442162))<=0.0001
+LOCATIONBG:GET -> X :  36.3667039
+LOCATIONBG:GET -> Y :  127.3442545
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-49,"eduroam":-56,"winslab":-71,"MICLAB":-70}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667039,127.3442545))<=0.0001
+LOCATIONBG:GET -> X :  36.3667103
+LOCATIONBG:GET -> Y :  127.3442367
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-56,"eduroam":-50,"winslab":-71,"MICLAB":-70}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667103,127.3442367))<=0.0001
+LOCATIONBG:GET -> X :  36.3668062
+LOCATIONBG:GET -> Y :  127.3442776
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-58,"eduroam":-50,"MICLAB":-70,"winslab":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3668062,127.3442776))<=0.0001
+LOCATIONBG:GET -> X :  36.366756
+LOCATIONBG:GET -> Y :  127.3442696
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-71,"eduroam":-71}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366756,127.3442696))<=0.0001
+LOCATIONBG:GET -> X :  36.3667457
+LOCATIONBG:GET -> Y :  127.3442406
+LOCATIONBG:GET -> WifiList :  {"Eun":-58,"CNU WiFi":-53,"eduroam":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667457,127.3442406))<=0.0001
+LOCATIONFG:GET -> X :  36.36671355276382
+LOCATIONFG:GET -> Y :  127.34423853456975
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36671355276382,127.34423853456975))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONBG:GET -> X :  36.3667011
+LOCATIONBG:GET -> Y :  127.3442282
+LOCATIONBG:GET -> WifiList :  {"CSE-507":-73,"Eun":-63,"winslab":-71,"CNU WiFi":-48,"eduroam":-73}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667011,127.3442282))<=0.0001
+LOCATIONFG:GET -> X :  36.366576674194775
+LOCATIONFG:GET -> Y :  127.34424356371164
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366576674194775,127.34424356371164))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3667072
+LOCATIONBG:GET -> Y :  127.3442097
+LOCATIONBG:GET -> WifiList :  {"cse-405":-70,"Eun":-69,"CNU WiFi":-69,"eduroam":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667072,127.3442097))<=0.0001
+LOCATIONBG:GET -> X :  36.366545
+LOCATIONBG:GET -> Y :  127.3442239
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-40,"eduroam":-43,"winslab":-72,"MICLAB":-64,"cse-414":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366545,127.3442239))<=0.0001
+LOCATIONBG:GET -> X :  36.366742
+LOCATIONBG:GET -> Y :  127.3442367
+LOCATIONBG:GET -> WifiList :  {"CSE-507":-71,"CNU WiFi":-59,"Eun":-69,"MICLAB":-72,"winslab":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366742,127.3442367))<=0.0001
+LOCATIONFG:GET -> X :  36.36671328278661
+LOCATIONFG:GET -> Y :  127.3442754149437
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36671328278661,127.3442754149437))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3667175
+LOCATIONBG:GET -> Y :  127.3442308
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-54,"cse-405":-75,"dsl2.4":-75,"Eun":-72,"winslab":-73}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667175,127.3442308))<=0.0001
+LOCATIONBG:GET -> X :  36.366726
+LOCATIONBG:GET -> Y :  127.3442345
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-44,"eduroam":-48,"Eun":-65,"winslab":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366726,127.3442345))<=0.0001
+LOCATIONBG:GET -> X :  36.3665893
+LOCATIONBG:GET -> Y :  127.344208
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-42,"eduroam":-43,"Eun":-67,"MICLAB":-70,"winslab":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665893,127.344208))<=0.0001
+LOCATIONBG:GET -> X :  36.3666928
+LOCATIONBG:GET -> Y :  127.3442208
+LOCATIONBG:GET -> WifiList :  {"cse-415":-61,"CNU WiFi":-45,"eduroam":-49,"winslab":-66}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666928,127.3442208))<=0.0001
+LOCATIONBG:GET -> X :  36.3667777
+LOCATIONBG:GET -> Y :  127.3442734
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-43,"eduroam":-49,"MICLAB":-69,"winslab":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667777,127.3442734))<=0.0001
+LOCATIONBG:GET -> X :  36.3665836
+LOCATIONBG:GET -> Y :  127.3442423
+LOCATIONBG:GET -> WifiList :  {"Eun":-64,"MICLAB":-63,"CNU WiFi":-49,"eduroam":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665836,127.3442423))<=0.0001
+LOCATIONBG:GET -> X :  36.3667075
+LOCATIONBG:GET -> Y :  127.3442341
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-48,"eduroam":-46,"Eun":-65,"winslab":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667075,127.3442341))<=0.0001
+LOCATIONBG:GET -> X :  36.3665671
+LOCATIONBG:GET -> Y :  127.3442354
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-43,"eduroam":-69,"Eun":-64,"MICLAB":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665671,127.3442354))<=0.0001
+LOCATIONBG:GET -> X :  36.3665508
+LOCATIONBG:GET -> Y :  127.3441986
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-50,"eduroam":-46,"MICLAB":-70,"cse-414":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665508,127.3441986))<=0.0001
+LOCATIONBG:GET -> X :  36.366672
+LOCATIONBG:GET -> Y :  127.3442572
+LOCATIONBG:GET -> WifiList :  {"MICLAB":-63,"CNU WiFi":-46,"eduroam":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366672,127.3442572))<=0.0001
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3666962
+LOCATIONBG:GET -> Y :  127.344245
+LOCATIONBG:GET -> WifiList :  {"MICLAB":-66,"CNU WiFi":-49,"eduroam":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666962,127.344245))<=0.0001
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3668183
+LOCATIONBG:GET -> Y :  127.3442844
+LOCATIONBG:GET -> WifiList :  {"Eun":-59,"CNU WiFi":-67,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3668183,127.3442844))<=0.0001
+LOCATIONBG:GET -> X :  36.3667462
+LOCATIONBG:GET -> Y :  127.3442488
+LOCATIONBG:GET -> WifiList :  {"Eun":-66,"winslab":-66,"CNU WiFi":-46,"eduroam":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667462,127.3442488))<=0.0001
+LOCATIONBG:GET -> X :  36.3667536
+LOCATIONBG:GET -> Y :  127.3442597
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-43,"eduroam":-48,"Eun":-65,"MICLAB":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667536,127.3442597))<=0.0001
+LOCATIONBG:GET -> X :  36.3667127
+LOCATIONBG:GET -> Y :  127.3442172
+LOCATIONBG:GET -> WifiList :  {"Eun":-67,"winslab":-67,"CNU WiFi":-48,"eduroam":-43}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667127,127.3442172))<=0.0001
+LOCATIONBG:GET -> X :  36.3667612
+LOCATIONBG:GET -> Y :  127.3442506
+LOCATIONBG:GET -> WifiList :  {"Eun":-65,"CNU WiFi":-49,"eduroam":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667612,127.3442506))<=0.0001
+LOCATIONBG:GET -> X :  36.366708
+LOCATIONBG:GET -> Y :  127.3442376
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-48,"eduroam":-43,"Eun":-66,"winslab":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366708,127.3442376))<=0.0001
+LOCATIONBG:GET -> X :  36.366776
+LOCATIONBG:GET -> Y :  127.3442607
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-47,"eduroam":-41,"Eun":-67,"winslab":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366776,127.3442607))<=0.0001
+LOCATIONBG:GET -> X :  36.3666115
+LOCATIONBG:GET -> Y :  127.3441704
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-41,"eduroam":-75,"MICLAB":-71,"winslab":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666115,127.3441704))<=0.0001
+LOCATIONBG:GET -> X :  36.3667533
+LOCATIONBG:GET -> Y :  127.3442531
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-48,"eduroam":-43,"Eun":-64,"winslab":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667533,127.3442531))<=0.0001
+LOCATIONBG:GET -> X :  36.3668053
+LOCATIONBG:GET -> Y :  127.3442804
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-42,"eduroam":-48,"Eun":-64,"MICLAB":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3668053,127.3442804))<=0.0001
+LOCATIONBG:GET -> X :  36.3667478
+LOCATIONBG:GET -> Y :  127.3442496
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-48,"eduroam":-43,"Eun":-63,"winslab":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667478,127.3442496))<=0.0001
+LOCATIONBG:GET -> X :  36.3667839
+LOCATIONBG:GET -> Y :  127.3442863
+LOCATIONBG:GET -> WifiList :  {"CSE-507":-69,"CNU WiFi":-53,"eduroam":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667839,127.3442863))<=0.0001
+LOCATIONBG:GET -> X :  36.3665955
+LOCATIONBG:GET -> Y :  127.3441808
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-44,"eduroam":-45,"Eun":-61,"MICLAB":-69,"winslab":-63}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665955,127.3441808))<=0.0001
+LOCATIONBG:GET -> X :  36.3666781
+LOCATIONBG:GET -> Y :  127.3442487
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-44,"eduroam":-54,"Eun":-64,"MICLAB":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666781,127.3442487))<=0.0001
+LOCATIONBG:GET -> X :  36.3666122
+LOCATIONBG:GET -> Y :  127.3442358
+LOCATIONBG:GET -> WifiList :  {"cse-405":-68,"Eun":-64,"CNU WiFi":-55,"eduroam":-39}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666122,127.3442358))<=0.0001
+LOCATIONBG:GET -> X :  36.3667207
+LOCATIONBG:GET -> Y :  127.3442539
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-51,"eduroam":-46,"Eun":-60,"MICLAB":-68}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667207,127.3442539))<=0.0001
+LOCATIONBG:GET -> X :  36.3665685
+LOCATIONBG:GET -> Y :  127.3442486
+LOCATIONBG:GET -> WifiList :  {"cse-405":-66,"CNU WiFi":-67,"eduroam":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665685,127.3442486))<=0.0001
+LOCATIONFG:GET -> X :  36.366612311241845
+LOCATIONFG:GET -> Y :  127.34423585236074
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  STORE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366612311241845,127.34423585236074))<=0.021799600223674002 AND place_type="STORE"
+LOCATIONFG:GET -> X :  36.366612311241845
+LOCATIONFG:GET -> Y :  127.34423585236074
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.366612311241845,127.34423585236074))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3665458
+LOCATIONBG:GET -> Y :  127.3442099
+LOCATIONBG:GET -> WifiList :  {"cse-405":-70,"Eun":-66,"CNU WiFi":-69,"eduroam":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665458,127.3442099))<=0.0001
+LOCATIONBG:GET -> X :  36.3666029
+LOCATIONBG:GET -> Y :  127.3442726
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-54,"eduroam":-54,"cse-405":-62,"cse-414":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666029,127.3442726))<=0.0001
+LOCATIONBG:GET -> X :  36.3667116
+LOCATIONBG:GET -> Y :  127.3442594
+LOCATIONBG:GET -> WifiList :  {"cse-405":-63,"CNU WiFi":-53,"eduroam":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667116,127.3442594))<=0.0001
+LOCATIONBG:GET -> X :  36.366776
+LOCATIONBG:GET -> Y :  127.3442663
+LOCATIONBG:GET -> WifiList :  {"Eun":-68,"CNU WiFi":-68,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366776,127.3442663))<=0.0001
+LOCATIONBG:GET -> X :  36.3665894
+LOCATIONBG:GET -> Y :  127.3442304
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-67,"eduroam":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665894,127.3442304))<=0.0001
+LOCATIONBG:GET -> X :  36.3665148
+LOCATIONBG:GET -> Y :  127.3441924
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-64,"cse-414":-56,"eduroam":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665148,127.3441924))<=0.0001
+LOCATIONBG:GET -> X :  36.3667382
+LOCATIONBG:GET -> Y :  127.3442493
+LOCATIONBG:GET -> WifiList :  {"Eun":-67,"CNU WiFi":-48,"eduroam":-66}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667382,127.3442493))<=0.0001
+LOCATIONBG:GET -> X :  36.3665505
+LOCATIONBG:GET -> Y :  127.3442363
+LOCATIONBG:GET -> WifiList :  {"MICLAB":-66,"CNU WiFi":-65,"eduroam":-66}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665505,127.3442363))<=0.0001
+LOCATIONBG:GET -> X :  36.3665786
+LOCATIONBG:GET -> Y :  127.3442475
+LOCATIONBG:GET -> WifiList :  {"CNU WiFi":-66,"eduroam":-64}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665786,127.3442475))<=0.0001
+LOCATIONBG:GET -> X :  36.3666002
+LOCATIONBG:GET -> Y :  127.3442739
+LOCATIONBG:GET -> WifiList :  {"cse-405":-62,"CNU WiFi":-66,"eduroam":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666002,127.3442739))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONBG:GET -> X :  36.3665771
+LOCATIONBG:GET -> Y :  127.3442499
+LOCATIONBG:GET -> WifiList :  {"cse-405":-69,"CNU WiFi":-66,"eduroam":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665771,127.3442499))<=0.0001
+LOCATIONFG:GET -> X :  36.3665904430558
+LOCATIONFG:GET -> Y :  127.34424088150263
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3665904430558,127.34424088150263))<=0.021799600223674002 AND place_type="CAFE"
+LOCATIONBG:GET -> X :  36.366598
+LOCATIONBG:GET -> Y :  127.344206
+LOCATIONBG:GET -> WifiList :  {"IROAD_T9_A33DCD":-72,"Eun":-59,"CNU WiFi":-71,"eduroam":-42}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.366598,127.344206))<=0.0001
+LOCATIONBG:GET -> X :  36.3667672
+LOCATIONBG:GET -> Y :  127.3442508
+LOCATIONBG:GET -> WifiList :  {"Eun":-59,"CNU WiFi":-67,"eduroam":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3667672,127.3442508))<=0.0001
+LOCATIONBG:GET -> X :  36.3665891
+LOCATIONBG:GET -> Y :  127.3441989
+LOCATIONBG:GET -> WifiList :  {"Eun":-60,"CNU WiFi":-67,"eduroam":-67}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3665891,127.3441989))<=0.0001
+LOCATIONBG:GET -> X :  36.3666889
+LOCATIONBG:GET -> Y :  127.3442187
+LOCATIONBG:GET -> WifiList :  {"Eun":-60,"CNU WiFi":-67,"eduroam":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3666889,127.3442187))<=0.0001
+LOCATIONFG:GET -> X :  36.3717446854964
+LOCATIONFG:GET -> Y :  127.345272526145
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3717446854964,127.345272526145))<=0.021799600223674002 AND place_type="RESTAURANT"
+LOCATIONFG:GET -> X :  36.3717446854964
+LOCATIONFG:GET -> Y :  127.345272526145
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  ALL
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3717446854964,127.345272526145))<=0.021799600223674002
+LOCATIONBG:GET -> X :  36.3722789
+LOCATIONBG:GET -> Y :  127.3453416
+LOCATIONBG:GET -> WifiList :  {"iptime123":-66,"CNU_Dormitory2":-70}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3722789,127.3453416))<=0.0001
+LOCATIONBG:GET -> X :  36.3729302
+LOCATIONBG:GET -> Y :  127.3463286
+LOCATIONBG:GET -> WifiList :  {"CNU_Dormitory":-71,"CNU_Dormitory2":-69}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3729302,127.3463286))<=0.0001
+LOCATIONBG:GET -> X :  36.3728185
+LOCATIONBG:GET -> Y :  127.3466018
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-77,"emart24_Free":-61,"emart24pos":-79,"CNU_Dormitory":-73}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3728185,127.3466018))<=0.0001
+LOCATIONBG:GET -> X :  36.3728185
+LOCATIONBG:GET -> Y :  127.3466018
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-77,"emart24_Free":-61,"emart24pos":-79,"CNU_Dormitory":-73}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3728185,127.3466018))<=0.0001
+LOCATIONBG:GET -> X :  36.3728185
+LOCATIONBG:GET -> Y :  127.3466018
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-77,"emart24_Free":-61,"emart24pos":-79,"CNU_Dormitory":-73}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3728185,127.3466018))<=0.0001
+LOCATIONBG:GET -> X :  36.372798
+LOCATIONBG:GET -> Y :  127.3466381
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-72,"emart24_Free":-49,"emart24sv":-62,"emart24pos":-62,"CNU_Dormitory":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372798,127.3466381))<=0.0001
+LOCATIONBG:GET -> X :  36.372798
+LOCATIONBG:GET -> Y :  127.3466381
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-72,"emart24_Free":-49,"emart24sv":-62,"emart24pos":-62,"CNU_Dormitory":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372798,127.3466381))<=0.0001
+LOCATIONBG:GET -> X :  36.372798
+LOCATIONBG:GET -> Y :  127.3466381
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-72,"emart24_Free":-49,"emart24sv":-62,"emart24pos":-62,"CNU_Dormitory":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372798,127.3466381))<=0.0001
+LOCATIONBG:GET -> X :  36.372798
+LOCATIONBG:GET -> Y :  127.3466381
+LOCATIONBG:GET -> WifiList :  {"TP-Link_911C":-72,"emart24_Free":-49,"emart24sv":-62,"emart24pos":-62,"CNU_Dormitory":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372798,127.3466381))<=0.0001
+LOCATIONFG:GET -> X :  36.36891950532676
+LOCATIONFG:GET -> Y :  127.33855225145815
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36891950532676,127.33855225145815))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3720941
+LOCATIONBG:GET -> Y :  127.3454896
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"iptime":-77,"CNU_Dormitory2":-85,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720941,127.3454896))<=0.0001
+LOCATIONBG:GET -> X :  36.3720856
+LOCATIONBG:GET -> Y :  127.3454823
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"iptime":-79,"CNU_Dormitory2":-85,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720856,127.3454823))<=0.0001
+LOCATIONBG:GET -> X :  36.3720414
+LOCATIONBG:GET -> Y :  127.3454542
+LOCATIONBG:GET -> WifiList :  {"iptime01":-42,"iptime":-70,"CNU_Dormitory2":-81,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720414,127.3454542))<=0.0001
+LOCATIONFG:GET -> X :  36.37198332955684
+LOCATIONFG:GET -> Y :  127.34542675316334
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37198332955684,127.34542675316334))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  37.55999991985822
+LOCATIONFG:GET -> Y :  126.96999996900558
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(37.55999991985822,126.96999996900558))<=0.021799600223674002 AND place_type="RESTAURANT"
+LOCATIONFG:GET -> X :  36.371955523782034
+LOCATIONFG:GET -> Y :  127.34539825469254
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371955523782034,127.34539825469254))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37169339312536
+LOCATIONFG:GET -> Y :  127.34520412981512
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37169339312536,127.34520412981512))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.371992508159934
+LOCATIONFG:GET -> Y :  127.34542541205884
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371992508159934,127.34542541205884))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37198009004961
+LOCATIONFG:GET -> Y :  127.34542541205884
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37198009004961,127.34542541205884))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.372033541901686
+LOCATIONFG:GET -> Y :  127.34545793384314
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372033541901686,127.34545793384314))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3720653
+LOCATIONBG:GET -> Y :  127.3454916
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-73,"iptime":-75,"Rookie7":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720653,127.3454916))<=0.0001
+LOCATIONBG:GET -> X :  36.371891
+LOCATIONBG:GET -> Y :  127.3453545
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-75,"iptime":-85,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371891,127.3453545))<=0.0001
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3718071
+LOCATIONBG:GET -> Y :  127.345293
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-76,"iptime":-83,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718071,127.345293))<=0.0001
+LOCATIONBG:GET -> X :  36.3717806
+LOCATIONBG:GET -> Y :  127.3452645
+LOCATIONBG:GET -> WifiList :  {"iptime01":-59,"JINI":-75,"iptime":-85,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717806,127.3452645))<=0.0001
+LOCATIONFG:GET -> X :  36.372035161654196
+LOCATIONFG:GET -> Y :  127.34546229243279
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372035161654196,127.34546229243279))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.371982519680046
+LOCATIONFG:GET -> Y :  127.3454227298498
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371982519680046,127.3454227298498))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3719349
+LOCATIONBG:GET -> Y :  127.3453895
+LOCATIONBG:GET -> WifiList :  {"iptime01":-59,"JINI":-77,"iptime":-83,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719349,127.3453895))<=0.0001
+LOCATIONBG:GET -> X :  36.3716856
+LOCATIONBG:GET -> Y :  127.3451935
+LOCATIONBG:GET -> WifiList :  {"iptime":-74,"iptime01":-58,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716856,127.3451935))<=0.0001
+LOCATIONFG:GET -> X :  36.372146384579885
+LOCATIONFG:GET -> Y :  127.34552197158337
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372146384579885,127.34552197158337))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.36139400984625
+LOCATIONFG:GET -> Y :  127.34957344830036
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36139400984625,127.34957344830036))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3614054
+LOCATIONBG:GET -> Y :  127.3495933
+LOCATIONBG:GET -> WifiList :  {"SAMSUNG":-81,"unicornblue":-40,"iptime1111":-78,"ejms":-82,"dream08":-76}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614054,127.3495933))<=0.0001
+LOCATIONFG:GET -> X :  36.371837821557314
+LOCATIONFG:GET -> Y :  127.34532181173563
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371837821557314,127.34532181173563))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3716853
+LOCATIONBG:GET -> Y :  127.3451965
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-75,"iptime":-73,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716853,127.3451965))<=0.0001
+LOCATIONBG:GET -> X :  36.3719255
+LOCATIONBG:GET -> Y :  127.3453831
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-76,"iptime":-86,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719255,127.3453831))<=0.0001
+LOCATIONFG:GET -> X :  36.371844570542905
+LOCATIONFG:GET -> Y :  127.34532348811625
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371844570542905,127.34532348811625))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.371836
+LOCATIONBG:GET -> Y :  127.3453186
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-75,"iptime":-71,"CNU_Dormitory2":-86,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371836,127.3453186))<=0.0001
+LOCATIONFG:GET -> X :  36.371810285690025
+LOCATIONFG:GET -> Y :  127.3452839255333
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371810285690025,127.3452839255333))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3718821
+LOCATIONBG:GET -> Y :  127.3453445
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"happy":-88,"iptime":-70,"CNU_Dormitory2":-89,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718821,127.3453445))<=0.0001
+LOCATIONBG:GET -> X :  36.3716841
+LOCATIONBG:GET -> Y :  127.3451945
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-74,"iptime":-70,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716841,127.3451945))<=0.0001
+LOCATIONBG:GET -> X :  36.3717565
+LOCATIONBG:GET -> Y :  127.3452564
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-76,"iptime":-67,"CNU_Dormitory2":-84,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717565,127.3452564))<=0.0001
+LOCATIONBG:GET -> X :  36.3716841
+LOCATIONBG:GET -> Y :  127.3451938
+LOCATIONBG:GET -> WifiList :  {"iptime":-89,"iptime01":-47,"singi":-87,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716841,127.3451938))<=0.0001
+LOCATIONBG:GET -> X :  36.3716469
+LOCATIONBG:GET -> Y :  127.345184
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-74,"iptime":-85,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716469,127.345184))<=0.0001
+LOCATIONBG:GET -> X :  36.3718304
+LOCATIONBG:GET -> Y :  127.3453077
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-76,"iptime":-85,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718304,127.3453077))<=0.0001
+LOCATIONBG:GET -> X :  36.3718293
+LOCATIONBG:GET -> Y :  127.3452964
+LOCATIONBG:GET -> WifiList :  {"iptime01":-88,"JINI":-79,"iptime":-86,"Rookie7":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718293,127.3452964))<=0.0001
+LOCATIONBG:GET -> X :  36.3717358
+LOCATIONBG:GET -> Y :  127.3452466
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-75,"iptime":-66,"CNU_Dormitory2":-83,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717358,127.3452466))<=0.0001
+LOCATIONFG:GET -> X :  36.361403189698585
+LOCATIONFG:GET -> Y :  127.34959792345762
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.361403189698585,127.34959792345762))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3717465
+LOCATIONBG:GET -> Y :  127.3452196
+LOCATIONBG:GET -> WifiList :  {"iptime01":-61,"iptime":-85,"CNU_Dormitory2":-88,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717465,127.3452196))<=0.0001
+PERMISSION:GET -> DeviceId :  cb9f3894d90abbe2
+PERMISSION:GET -> PlaceId :  58
+LOCATIONBG:GET -> X :  36.3719977
+LOCATIONBG:GET -> Y :  127.3454358
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"JINI":-82,"iptime":-78,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719977,127.3454358))<=0.0001
+LOCATIONBG:GET -> X :  36.3721201
+LOCATIONBG:GET -> Y :  127.3455101
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"iptime":-80,"CNU_Dormitory2":-80,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3721201,127.3455101))<=0.0001
+LOCATIONBG:GET -> X :  36.3716784
+LOCATIONBG:GET -> Y :  127.3451945
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-85,"iptime":-70,"인간":-85,"Rookie7":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716784,127.3451945))<=0.0001
+LOCATIONBG:GET -> X :  36.3716513
+LOCATIONBG:GET -> Y :  127.3451791
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-83,"iptime":-85,"Rookie7":-58}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716513,127.3451791))<=0.0001
+LOCATIONBG:GET -> X :  36.3719792
+LOCATIONBG:GET -> Y :  127.3454467
+LOCATIONBG:GET -> WifiList :  {"iptime":-79,"iptime01":-41,"happy":-80,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719792,127.3454467))<=0.0001
+LOCATIONBG:GET -> X :  36.3720334
+LOCATIONBG:GET -> Y :  127.3454671
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"iptime":-69,"CNU_Dormitory2":-83,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720334,127.3454671))<=0.0001
+LOCATIONBG:GET -> X :  36.3720141
+LOCATIONBG:GET -> Y :  127.3454458
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"JINI":-78,"iptime":-73,"Rookie7":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720141,127.3454458))<=0.0001
+LOCATIONBG:GET -> X :  36.371888
+LOCATIONBG:GET -> Y :  127.3453751
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"JINI":-78,"iptime":-80,"Rookie7":-56}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371888,127.3453751))<=0.0001
+LOCATIONBG:GET -> X :  36.3719858
+LOCATIONBG:GET -> Y :  127.3454557
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"JINI":-78,"iptime":-58,"CNU_Dormitory2":-80,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719858,127.3454557))<=0.0001
+LOCATIONBG:GET -> X :  36.3718148
+LOCATIONBG:GET -> Y :  127.3453061
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"singi":-87,"iptime":-67,"CNU_Dormitory2":-86,"Rookie7":-62}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718148,127.3453061))<=0.0001
+LOCATIONBG:GET -> X :  36.3720466
+LOCATIONBG:GET -> Y :  127.3454812
+LOCATIONBG:GET -> WifiList :  {"iptime01":-40,"iptime":-76,"CNU_Dormitory2":-81,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720466,127.3454812))<=0.0001
+LOCATIONBG:GET -> X :  36.3718625
+LOCATIONBG:GET -> Y :  127.3453515
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"iptime":-86,"CNU_Dormitory2":-87,"Rookie7":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718625,127.3453515))<=0.0001
+LOCATIONBG:GET -> X :  36.3716631
+LOCATIONBG:GET -> Y :  127.3451982
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-76,"iptime":-84,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716631,127.3451982))<=0.0001
+LOCATIONBG:GET -> X :  36.3716565
+LOCATIONBG:GET -> Y :  127.3451917
+LOCATIONBG:GET -> WifiList :  {"iptime01":-46,"JINI":-77,"iptime":-82,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716565,127.3451917))<=0.0001
+LOCATIONBG:GET -> X :  36.371923
+LOCATIONBG:GET -> Y :  127.3454101
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"JINI":-77,"iptime":-72,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371923,127.3454101))<=0.0001
+LOCATIONBG:GET -> X :  36.3719147
+LOCATIONBG:GET -> Y :  127.3453979
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-71,"iptime":-78,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719147,127.3453979))<=0.0001
+LOCATIONBG:GET -> X :  36.3720829
+LOCATIONBG:GET -> Y :  127.345497
+LOCATIONBG:GET -> WifiList :  {"iptime01":-57,"iptime":-85,"CNU_Dormitory2":-84,"Rookie7":-60}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720829,127.345497))<=0.0001
+LOCATIONBG:GET -> X :  36.3719799
+LOCATIONBG:GET -> Y :  127.3454232
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-84,"iptime":-85,"Rookie7":-61}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719799,127.3454232))<=0.0001
+LOCATIONBG:GET -> X :  36.371963
+LOCATIONBG:GET -> Y :  127.3454053
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"iptime":-77,"CNU_Dormitory2":-78,"Rookie7":-66}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371963,127.3454053))<=0.0001
+LOCATIONBG:GET -> X :  36.3716566
+LOCATIONBG:GET -> Y :  127.3451917
+LOCATIONBG:GET -> WifiList :  {"iptime01":-42,"JINI":-75,"iptime":-57,"인간":-81,"Rookie7":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716566,127.3451917))<=0.0001
+LOCATIONFG:GET -> X :  36.36140210971601
+LOCATIONFG:GET -> Y :  127.34955064952374
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36140210971601,127.34955064952374))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3717636
+LOCATIONBG:GET -> Y :  127.34528
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-82,"iptime":-67,"CNU_Dormitory2":-82,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717636,127.34528))<=0.0001
+LOCATIONBG:GET -> X :  36.3716798
+LOCATIONBG:GET -> Y :  127.3451955
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-77,"iptime":-68,"CNU_Dormitory2":-88,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716798,127.3451955))<=0.0001
+LOCATIONBG:GET -> X :  36.3614028
+LOCATIONBG:GET -> Y :  127.3495955
+LOCATIONBG:GET -> WifiList :  {"Dongeun":-81,"dream305":-74,"SAMSUNG":-80,"unicornblue":-41,"Tenda9588":-79}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614028,127.3495955))<=0.0001
+LOCATIONBG:GET -> X :  36.3716528
+LOCATIONBG:GET -> Y :  127.3451895
+LOCATIONBG:GET -> WifiList :  {"iptime01":-57,"JINI":-76,"iptime":-66,"Rookie7":-45}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716528,127.3451895))<=0.0001
+LOCATIONFG:GET -> X :  36.36139400984625
+LOCATIONFG:GET -> Y :  127.34957713633776
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.36139400984625,127.34957713633776))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3719165
+LOCATIONBG:GET -> Y :  127.3453997
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-80,"iptime":-67,"Rookie7":-44}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719165,127.3453997))<=0.0001
+LOCATIONFG:GET -> X :  36.361409399598074
+LOCATIONFG:GET -> Y :  127.34958585351704
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.361409399598074,127.34958585351704))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3719047
+LOCATIONBG:GET -> Y :  127.3453974
+LOCATIONBG:GET -> WifiList :  {"iptime":-85,"iptime01":-47,"인간":-84,"Rookie7":-41}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719047,127.3453974))<=0.0001
+LOCATIONBG:GET -> X :  36.361405
+LOCATIONBG:GET -> Y :  127.3495937
+LOCATIONBG:GET -> WifiList :  {"dream305":-72,"SAMSUNG":-82,"unicornblue":-41,"iptime1111":-69,"Tenda9588":-82}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.361405,127.3495937))<=0.0001
+LOCATIONBG:GET -> X :  36.3720038
+LOCATIONBG:GET -> Y :  127.3454569
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-74,"iptime":-72,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720038,127.3454569))<=0.0001
+LOCATIONBG:GET -> X :  36.3614039
+LOCATIONBG:GET -> Y :  127.3495934
+LOCATIONBG:GET -> WifiList :  {"dayoung":-80,"dream305":-73,"unicornblue":-43,"iptime1111":-69,"ejms":-79}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3614039,127.3495934))<=0.0001
+LOCATIONBG:GET -> X :  36.3719918
+LOCATIONBG:GET -> Y :  127.3454212
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"iptime":-65,"CNU_Dormitory2":-81,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719918,127.3454212))<=0.0001
+LOCATIONFG:GET -> X :  36.361405079668046
+LOCATIONFG:GET -> Y :  127.34959255903959
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.361405079668046,127.34959255903959))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONFG:GET -> X :  36.37207430566317
+LOCATIONFG:GET -> Y :  127.34548777341841
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37207430566317,127.34548777341841))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3719761
+LOCATIONBG:GET -> Y :  127.345435
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-74,"iptime":-72,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719761,127.345435))<=0.0001
+LOCATIONBG:GET -> X :  36.3719316
+LOCATIONBG:GET -> Y :  127.3454015
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-70,"iptime":-69,"CNU_Dormitory2":-78,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719316,127.3454015))<=0.0001
+LOCATIONBG:GET -> X :  36.3720212
+LOCATIONBG:GET -> Y :  127.3454675
+LOCATIONBG:GET -> WifiList :  {"iptime01":-46,"iptime":-72,"CNU_Dormitory2":-78,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720212,127.3454675))<=0.0001
+LOCATIONBG:GET -> X :  36.3720827
+LOCATIONBG:GET -> Y :  127.3454906
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-71,"iptime":-71,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720827,127.3454906))<=0.0001
+LOCATIONBG:GET -> X :  36.3720228
+LOCATIONBG:GET -> Y :  127.3454615
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-73,"iptime":-70,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720228,127.3454615))<=0.0001
+LOCATIONBG:GET -> X :  36.3720435
+LOCATIONBG:GET -> Y :  127.3454685
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-70,"iptime":-62,"CNU_Dormitory2":-78,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720435,127.3454685))<=0.0001
+LOCATIONBG:GET -> X :  36.3719618
+LOCATIONBG:GET -> Y :  127.3454278
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-71,"iptime":-72,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719618,127.3454278))<=0.0001
+LOCATIONBG:GET -> X :  36.3719539
+LOCATIONBG:GET -> Y :  127.3454223
+LOCATIONBG:GET -> WifiList :  {"iptime01":-46,"JINI":-71,"iptime":-70,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719539,127.3454223))<=0.0001
+LOCATIONBG:GET -> X :  36.3720086
+LOCATIONBG:GET -> Y :  127.3454519
+LOCATIONBG:GET -> WifiList :  {"iptime01":-42,"JINI":-71,"iptime":-71,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720086,127.3454519))<=0.0001
+LOCATIONBG:GET -> X :  36.3719845
+LOCATIONBG:GET -> Y :  127.3454392
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-71,"iptime":-63,"CNU_Dormitory2":-78,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719845,127.3454392))<=0.0001
+LOCATIONFG:GET -> X :  36.37179570787399
+LOCATIONFG:GET -> Y :  127.34530035406351
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37179570787399,127.34530035406351))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3718973
+LOCATIONBG:GET -> Y :  127.3453788
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-73,"iptime":-69,"CNU_Dormitory2":-82,"Rookie7":-58}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718973,127.3453788))<=0.0001
+LOCATIONBG:GET -> X :  36.3719989
+LOCATIONBG:GET -> Y :  127.3454439
+LOCATIONBG:GET -> WifiList :  {"iptime01":-47,"JINI":-70,"iptime":-70,"Rookie7":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719989,127.3454439))<=0.0001
+LOCATIONBG:GET -> X :  36.3718625
+LOCATIONBG:GET -> Y :  127.3453652
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-78,"iptime":-85,"Rookie7":-45}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718625,127.3453652))<=0.0001
+LOCATIONBG:GET -> X :  36.3716536
+LOCATIONBG:GET -> Y :  127.3451891
+LOCATIONBG:GET -> WifiList :  {"iptime01":-45,"JINI":-78,"iptime":-87,"Rookie7":-46}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716536,127.3451891))<=0.0001
+LOCATIONBG:GET -> X :  36.3719909
+LOCATIONBG:GET -> Y :  127.3454338
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"iptime":-85,"CNU_Dormitory2":-80,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719909,127.3454338))<=0.0001
+LOCATIONBG:GET -> X :  36.3721679
+LOCATIONBG:GET -> Y :  127.345553
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"iptime":-83,"CNU_Dormitory2":-78,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3721679,127.345553))<=0.0001
+LOCATIONBG:GET -> X :  36.3718434
+LOCATIONBG:GET -> Y :  127.3453499
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-71,"iptime":-62,"CNU_Dormitory2":-83,"Rookie7":-57}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718434,127.3453499))<=0.0001
+LOCATIONFG:GET -> X :  36.37184673021815
+LOCATIONFG:GET -> Y :  127.34534762799741
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37184673021815,127.34534762799741))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3719465
+LOCATIONBG:GET -> Y :  127.3454247
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-79,"iptime":-68,"CNU_Dormitory2":-80,"Rookie7":-45}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719465,127.3454247))<=0.0001
+LOCATIONBG:GET -> X :  36.3718983
+LOCATIONBG:GET -> Y :  127.3453713
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"JINI":-76,"iptime":-71,"CNU_Dormitory2":-81,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718983,127.3453713))<=0.0001
+LOCATIONBG:GET -> X :  36.3718802
+LOCATIONBG:GET -> Y :  127.345368
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-78,"iptime":-72,"CNU_Dormitory2":-81,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718802,127.345368))<=0.0001
+LOCATIONBG:GET -> X :  36.3718334
+LOCATIONBG:GET -> Y :  127.3453428
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"JINI":-79,"iptime":-62,"CNU_Dormitory2":-82,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718334,127.3453428))<=0.0001
+LOCATIONBG:GET -> X :  36.3719571
+LOCATIONBG:GET -> Y :  127.3454272
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"JINI":-77,"iptime":-71,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719571,127.3454272))<=0.0001
+LOCATIONBG:GET -> X :  36.3719381
+LOCATIONBG:GET -> Y :  127.3453997
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"iptime":-85,"CNU_Dormitory2":-75,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719381,127.3453997))<=0.0001
+LOCATIONBG:GET -> X :  36.3716774
+LOCATIONBG:GET -> Y :  127.3451975
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"iptime":-70,"CNU_Dormitory2":-83,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716774,127.3451975))<=0.0001
+LOCATIONBG:GET -> X :  36.3717434
+LOCATIONBG:GET -> Y :  127.3452537
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"iptime":-79,"인간":-88,"CNU_Dormitory2":-84,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717434,127.3452537))<=0.0001
+LOCATIONBG:GET -> X :  36.3716979
+LOCATIONBG:GET -> Y :  127.3452149
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"iptime":-77,"인간":-89,"CNU_Dormitory2":-82,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716979,127.3452149))<=0.0001
+LOCATIONBG:GET -> X :  36.3719908
+LOCATIONBG:GET -> Y :  127.3454434
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-81,"iptime":-73,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719908,127.3454434))<=0.0001
+LOCATIONBG:GET -> X :  36.3718874
+LOCATIONBG:GET -> Y :  127.3453697
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-81,"iptime":-69,"CNU_Dormitory2":-81,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718874,127.3453697))<=0.0001
+LOCATIONBG:GET -> X :  36.372023
+LOCATIONBG:GET -> Y :  127.345452
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-79,"iptime":-71,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.372023,127.345452))<=0.0001
+LOCATIONBG:GET -> X :  36.3718198
+LOCATIONBG:GET -> Y :  127.3453211
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-79,"iptime":-69,"CNU_Dormitory2":-82,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718198,127.3453211))<=0.0001
+LOCATIONBG:GET -> X :  36.3717417
+LOCATIONBG:GET -> Y :  127.3452561
+LOCATIONBG:GET -> WifiList :  {"iptime01":-49,"JINI":-87,"iptime":-71,"CNU_Dormitory2":-84,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717417,127.3452561))<=0.0001
+LOCATIONBG:GET -> X :  36.3716735
+LOCATIONBG:GET -> Y :  127.3451911
+LOCATIONBG:GET -> WifiList :  {"iptime":-88,"iptime01":-52,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716735,127.3451911))<=0.0001
+LOCATIONBG:GET -> X :  36.3718885
+LOCATIONBG:GET -> Y :  127.3453647
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"iptime":-86,"CNU_Dormitory2":-79,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718885,127.3453647))<=0.0001
+LOCATIONBG:GET -> X :  36.3717697
+LOCATIONBG:GET -> Y :  127.3452795
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-86,"iptime":-72,"CNU_Dormitory2":-83,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717697,127.3452795))<=0.0001
+LOCATIONFG:GET -> X :  36.3719171895908
+LOCATIONFG:GET -> Y :  127.34539557248354
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.3719171895908,127.34539557248354))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3718162
+LOCATIONBG:GET -> Y :  127.3453152
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"iptime":-89,"CNU_Dormitory2":-81,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718162,127.3453152))<=0.0001
+LOCATIONFG:GET -> X :  36.372086183841304
+LOCATIONFG:GET -> Y :  127.3454951494932
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.372086183841304,127.3454951494932))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3717644
+LOCATIONBG:GET -> Y :  127.3452691
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"iptime":-69,"인간":-90,"CNU_Dormitory2":-83,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717644,127.3452691))<=0.0001
+LOCATIONFG:GET -> X :  36.37173037762787
+LOCATIONFG:GET -> Y :  127.34523463994265
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37173037762787,127.34523463994265))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3717234
+LOCATIONBG:GET -> Y :  127.3452307
+LOCATIONBG:GET -> WifiList :  {"iptime01":-59,"JINI":-86,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717234,127.3452307))<=0.0001
+LOCATIONBG:GET -> X :  36.3716924
+LOCATIONBG:GET -> Y :  127.3452044
+LOCATIONBG:GET -> WifiList :  {"iptime01":-57,"iptime":-71,"CNU_Dormitory2":-82,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716924,127.3452044))<=0.0001
+LOCATIONBG:GET -> X :  36.3717046
+LOCATIONBG:GET -> Y :  127.3452148
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-77,"iptime":-72,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717046,127.3452148))<=0.0001
+LOCATIONBG:GET -> X :  36.3717462
+LOCATIONBG:GET -> Y :  127.3452484
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"JINI":-82,"iptime":-69,"CNU_Dormitory2":-81,"Rookie7":-47}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717462,127.3452484))<=0.0001
+LOCATIONBG:GET -> X :  36.3722424
+LOCATIONBG:GET -> Y :  127.3456566
+LOCATIONBG:GET -> WifiList :  {"iptime01":-58,"iptime":-74,"CNU_Dormitory2":-84,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3722424,127.3456566))<=0.0001
+LOCATIONBG:GET -> X :  36.3716918
+LOCATIONBG:GET -> Y :  127.3452042
+LOCATIONBG:GET -> WifiList :  {"iptime":-68,"iptime01":-50,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716918,127.3452042))<=0.0001
+LOCATIONFG:GET -> X :  36.37196821185527
+LOCATIONFG:GET -> Y :  127.34543379396199
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37196821185527,127.34543379396199))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3716663
+LOCATIONBG:GET -> Y :  127.3451898
+LOCATIONBG:GET -> WifiList :  {"iptime":-75,"iptime01":-50,"인간":-87,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716663,127.3451898))<=0.0001
+LOCATIONBG:GET -> X :  36.3718358
+LOCATIONBG:GET -> Y :  127.3453343
+LOCATIONBG:GET -> WifiList :  {"iptime01":-48,"iptime":-86,"CNU_Dormitory2":-84,"Rookie7":-58}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718358,127.3453343))<=0.0001
+LOCATIONBG:GET -> X :  36.3718217
+LOCATIONBG:GET -> Y :  127.3453208
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"JINI":-84,"iptime":-85,"Rookie7":-48}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718217,127.3453208))<=0.0001
+LOCATIONBG:GET -> X :  36.3718476
+LOCATIONBG:GET -> Y :  127.3453419
+LOCATIONBG:GET -> WifiList :  {"iptime01":-57,"JINI":-82,"iptime":-78,"CNU_Dormitory2":-84,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718476,127.3453419))<=0.0001
+LOCATIONBG:GET -> X :  36.3719243
+LOCATIONBG:GET -> Y :  127.3453629
+LOCATIONBG:GET -> WifiList :  {"iptime01":-62,"iptime":-87,"CNU_Dormitory2":-82,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3719243,127.3453629))<=0.0001
+LOCATIONBG:GET -> X :  36.3717418
+LOCATIONBG:GET -> Y :  127.345255
+LOCATIONBG:GET -> WifiList :  {"iptime01":-56,"JINI":-84,"iptime":-77,"CNU_Dormitory2":-85,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717418,127.345255))<=0.0001
+LOCATIONBG:GET -> X :  36.3717134
+LOCATIONBG:GET -> Y :  127.3452165
+LOCATIONBG:GET -> WifiList :  {"iptime01":-62,"JINI":-82,"iptime":-74,"인간":-87,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717134,127.3452165))<=0.0001
+LOCATIONBG:GET -> X :  36.3716966
+LOCATIONBG:GET -> Y :  127.3452072
+LOCATIONBG:GET -> WifiList :  {"iptime01":-59,"iptime":-81,"CNU_Dormitory2":-83,"Rookie7":-50}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716966,127.3452072))<=0.0001
+LOCATIONFG:GET -> X :  36.371760883080206
+LOCATIONFG:GET -> Y :  127.34522726386786
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371760883080206,127.34522726386786))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3721577
+LOCATIONBG:GET -> Y :  127.3455273
+LOCATIONBG:GET -> WifiList :  {"iptime":-78,"iptime01":-58,"Rookie7":-49}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3721577,127.3455273))<=0.0001
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.371772761306204
+LOCATIONFG:GET -> Y :  127.34527453780176
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371772761306204,127.34527453780176))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3718958
+LOCATIONBG:GET -> Y :  127.3453794
+LOCATIONBG:GET -> WifiList :  {"iptime01":-57,"iptime":-88,"CNU_Dormitory2":-84,"Rookie7":-53}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718958,127.3453794))<=0.0001
+LOCATIONFG:GET -> X :  36.37188074509567
+LOCATIONFG:GET -> Y :  127.34534092247486
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37188074509567,127.34534092247486))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONFG:GET -> X :  36.37179300827813
+LOCATIONFG:GET -> Y :  127.34529197216033
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  RESTAURANT
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37179300827813,127.34529197216033))<=0.021799600223674002 AND place_type="RESTAURANT"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+REVIEW:GET -> PlaceId :  58
+REVIEW:GET -> index_start :  0
+REVIEW:GET -> index_end :  4
+DB_SQL :  select * from Review where place_id=58 ORDER BY timestamp
+LOCATIONBG:GET -> X :  36.3720255
+LOCATIONBG:GET -> Y :  127.3454654
+LOCATIONBG:GET -> WifiList :  {"iptime01":-42,"iptime":-78,"CNU_Dormitory2":-85,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3720255,127.3454654))<=0.0001
+LOCATIONBG:GET -> X :  36.3718291
+LOCATIONBG:GET -> Y :  127.3453302
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"iptime":-85,"CNU_Dormitory2":-86,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3718291,127.3453302))<=0.0001
+LOCATIONBG:GET -> X :  36.3716796
+LOCATIONBG:GET -> Y :  127.3451958
+LOCATIONBG:GET -> WifiList :  {"iptime01":-52,"iptime":-75,"CNU_Dormitory2":-85,"Rookie7":-51}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716796,127.3451958))<=0.0001
+LOCATIONFG:GET -> X :  36.371982519680046
+LOCATIONFG:GET -> Y :  127.34544184058906
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.371982519680046,127.34544184058906))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3717571
+LOCATIONBG:GET -> Y :  127.3452617
+LOCATIONBG:GET -> WifiList :  {"iptime01":-50,"iptime":-77,"인간":-87,"CNU_Dormitory2":-87,"Rookie7":-54}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717571,127.3452617))<=0.0001
+LOCATIONBG:GET -> X :  36.371796
+LOCATIONBG:GET -> Y :  127.345299
+LOCATIONBG:GET -> WifiList :  {"iptime01":-51,"JINI":-85,"iptime":-78,"CNU_Dormitory2":-86,"Rookie7":-52}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.371796,127.345299))<=0.0001
+LOCATIONFG:GET -> X :  36.37201383490998
+LOCATIONFG:GET -> Y :  127.3454599454999
+LOCATIONFG:GET -> WifiList :  undefined
+LOCATIONFG:GET -> Category :  CAFE
+LOCATIONFG:GET -> Radius :  0.021799600223674002
+LOCATIONFG:GET -> Auth :  undefined
+DB_SQL :  select * from Location where ST_DISTANCE(location, POINT(36.37201383490998,127.3454599454999))<=0.021799600223674002 AND place_type="CAFE"
+DOCUMENT:GET -> PLACE_ID :  58
+DOCUMENT:GET :  {"name":"장소","tel":"0423335555","building":"학생생활관","lat":36.371945,"lng":127.345406,"category":"RESTAURANT","menu":[{"name":"아메리카노","price":3000},{"name":"카푸치노","price":3500},{"name":"밥","price":2580}],"extraInfo":"자고싶다","화장실":true,"휴지 유무":true,"남녀공용":false,"주차 공간":true,"유료":true,"_id":58}
+LOCATIONBG:GET -> X :  36.3716757
+LOCATIONBG:GET -> Y :  127.3451935
+LOCATIONBG:GET -> WifiList :  {"iptime01":-54,"JINI":-84,"iptime":-78,"인간":-88,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3716757,127.3451935))<=0.0001
+LOCATIONBG:GET -> X :  36.3717369
+LOCATIONBG:GET -> Y :  127.3452541
+LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-84,"iptime":-79,"CNU_Dormitory2":-84,"Rookie7":-55}
+LOCATIONBG:GET -> Category :  ALL
+LOCATIONBG:GET -> Radius :  0.0001
+DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717369,127.3452541))<=0.0001

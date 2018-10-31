@@ -60,7 +60,7 @@ router.put('/:PlaceId',function(req,res,next) {
             });
         }
         else{
-            res.send(doc);
+            res.send([doc,]);
         }
     });
 });
@@ -80,7 +80,6 @@ router.delete('/:PlaceId',function(req,res,next){
         }
         else{
             res.send([{"result":"OK"}]);
-        }
-    });
+        }    });
 });
 module.exports = router;
