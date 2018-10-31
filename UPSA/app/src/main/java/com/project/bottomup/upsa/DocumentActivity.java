@@ -2,6 +2,7 @@ package com.project.bottomup.upsa;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Network;
 import android.os.Bundle;
 import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
@@ -31,6 +32,7 @@ import org.json.JSONObject;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.xml.sax.Parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -57,10 +59,10 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
     private String extraInfo;
     private boolean[] toilet = new boolean[3];
     private boolean[] parking = new boolean[2];
-    private String menu;
+    private String menu = "undefined";
 
     private String deviceID="";
-    private String permission="";
+    private int permission=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState){
@@ -104,9 +106,8 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
             if(placeCategory.equals("CAFE") || placeCategory.equals("RESTAURANT")){
                 menu = root.getJSONArray("menu").toString();
-            }else{
-                menu = "undefined";
             }
+
         }catch(JSONException e){
             e.printStackTrace();
         }
@@ -216,25 +217,59 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
 
         switch(id){
             case R.id.menu4 :     // 문서 수정
-//              returnPermission();//퍼미션 받아오기
-                permission="1";//지금은 1단계로 설정
-                Log.i(TAG,permission);
+              returnPermission(); //퍼미션 받아오기
 
-                Intent intent=new Intent(getApplicationContext(),EditActivity.class);
-                intent.putExtra("placeLat",currentlat);
-                intent.putExtra("placeLng", currentlng);
-                intent.putExtra("placeName",placeName);
-                intent.putExtra("placeBuilding",placeBuilding);
-                intent.putExtra("placeTel",placeTel);
-                intent.putExtra("extraInfo",extraInfo);
-                intent.putExtra("toilet",toilet);
-                intent.putExtra("parking", parking);
-                intent.putExtra("menu", menu);
-                startActivity(intent);//EditActivity실행
+                while(true){ // thread 작업이 끝날 때까지 대기
+                    if(NetworkManager.isEnd){
+                        break;
+                    }
+                    Log.d(TAG, "아직 작업 안끝남.");
+                }
+
+                Log.i(TAG,"문서 수정 permission - "+permission);
+                //3등급 이상 가능!
+                if(permission >=3){
+                    Intent intent=new Intent(getApplicationContext(),EditActivity.class);
+                    intent.putExtra("placeLat",currentlat);
+                    intent.putExtra("placeLng", currentlng);
+                    intent.putExtra("placeName",placeName);
+                    intent.putExtra("placeBuilding",placeBuilding);
+                    intent.putExtra("placeTel",placeTel);
+                    intent.putExtra("extraInfo",extraInfo);
+                    intent.putExtra("toilet",toilet);
+                    intent.putExtra("parking", parking);
+                    intent.putExtra("menu", menu);
+                    intent.putExtra("_id",placeId);
+                    intent.putExtra("placeCategory",placeCategory);
+
+                    startActivity(intent);//EditActivity실행
+                }else{
+                    Toast.makeText(this, "해당 장소 3등급 이상만 가능합니다.", Toast.LENGTH_LONG).show();
+                }
+                finish();
                 break;
 
             case R.id.menu5 :  // 문서 삭제
+                returnPermission(); //퍼미션 받아오기
 
+                while(true){ // thread 작업이 끝날 때까지 대기
+                    if(NetworkManager.isEnd){
+                        break;
+                    }
+                    Log.d(TAG, "아직 작업 안끝남.");
+                }
+
+                Log.i(TAG,"문서 삭제 permission - "+permission);
+                //5등급만 가능!
+                if(permission == 5){
+                    //location의 정보 삭제
+                    NetworkManager nm = new NetworkManager();
+                    String document_site = "/document/"+placeId;
+                    nm.postInfo(document_site,"DELETE"); //받은 placeId에 따른 장소 세부 정보
+                }else{
+                    Toast.makeText(this, "해당 장소 5등급만 가능합니다.", Toast.LENGTH_LONG).show();
+                }
+                finish();
                 break;
         }
         return super.onOptionsItemSelected(item);
@@ -242,6 +277,7 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
 
     public void returnPermission(){//서버에서 퍼미션(신뢰도 단계)을 받아 리턴
         try{
+            NetworkManager.isEnd = false;
             NetworkManager.add(new Runnable() {
                 @Override
                 public void run() {
@@ -250,7 +286,7 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                         site += "?DeviceId=" + deviceID + "&PlaceId=" + placeId;
                         URL url = new URL(site);
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();//URL 연결한 객체 생성
-                        if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {//연결이 되면{
+                        if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {//연결이 되면
                             Log.i(TAG, "서버와 연결됨");
                             Log.i(TAG, site);
                         }
@@ -272,14 +308,16 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                         String rec_data = buf.toString();
                         Log.i(TAG, "서버에서 받아온 DATA = " + rec_data);
                         if (rec_data.equals("")) {
-                            permission = "";
+                            permission = 0;
                         } else {
                             // 객체를 추출한다.(장소하나의 정보)
                             JSONArray root = new JSONArray(rec_data);
-                            JSONObject obj1 = root.getJSONObject(4);//퍼미션 위치
-                            permission = obj1.getString("permission");
+                            JSONObject obj1 = root.getJSONObject(0);//퍼미션 위치
+                            permission = obj1.getInt("permission");
                             Log.i(TAG, "추출 결과 permission: " + permission);
                         }
+                        NetworkManager.isEnd = true;
+
                     } catch (MalformedURLException e) {// for URL
                         e.printStackTrace();
                     } catch (IOException e) {// for URLConnection

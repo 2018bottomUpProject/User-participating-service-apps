@@ -475,7 +475,7 @@ public class BackgroundService extends Service {
                                 else{//현재 위치에 계속 머무르는 중이라면
                                     toServer+="&new"+0;
                                 }
-                                nm.postInfo(toServer);
+                                nm.postInfo(toServer,"POST");
                             }
                             else{//위치가 바뀌었다면
                                 prev=location;//prev 값을 현재 location 값으로 변경
@@ -505,7 +505,7 @@ public class BackgroundService extends Service {
                                 else{//현재 위치에 계속 머무르는 중이라면
                                     toServer+="&new"+0;
                                 }
-                                nm.postInfo(toServer);
+                                nm.postInfo(toServer,"POST");
                             }
                             else{//위치가 바뀌었다면
                                 prev=location;//prev 값을 현재 location 값으로 변경
@@ -535,7 +535,7 @@ public class BackgroundService extends Service {
                                 else{//현재 위치에 계속 머무르는 중이라면
                                     toServer+="&new"+0;
                                 }
-                                nm.postInfo(toServer);
+                                nm.postInfo(toServer,"POST");
                             }
                             else{//위치가 바뀌었다면
                                 prev=location;//prev 값을 현재 location 값으로 변경z
