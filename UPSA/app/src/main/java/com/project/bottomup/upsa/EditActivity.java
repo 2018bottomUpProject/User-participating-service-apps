@@ -362,9 +362,15 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
 
                     //location 수정된 정보 전송
                     NetworkManager nm = new NetworkManager();
+
+                    String location_site = "/locationfg?" + "PlaceId=" + placeId +
+                            "&BuildingName=" + placeBuilding+"&PlaceName=" + placeName;
+                    nm.postInfo(location_site,"PUT"); //기본 정보 전송
+
                     String document_site = "/document/"+placeId+"?Article="+document.toString();
                     Log.i(TAG, document.toString());
                     nm.postInfo(document_site,"PUT"); //받은 placeId에 따른 장소 세부 정보
+
                     finish();
                 }catch (Exception e){
                     e.printStackTrace();
