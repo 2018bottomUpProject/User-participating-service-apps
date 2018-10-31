@@ -12,6 +12,9 @@ router.get('/', function(req, res, next) {
             console.error(err);
         }
         console.log("PERMISSION:GET -> result : ",result);
+        if(result[0]!== undefined){
+            console.log(result);
+        }
         res.send(result);
     });
 });
