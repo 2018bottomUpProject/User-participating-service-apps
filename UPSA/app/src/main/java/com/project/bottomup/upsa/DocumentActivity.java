@@ -14,8 +14,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -29,10 +27,6 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.xml.sax.Parser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -41,8 +35,10 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import org.xml.sax.Parser;
 
-public class DocumentActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable{
+
+public class DocumentActivity extends AppCompatActivity implements OnMapReadyCallback,FragmentReplacable {
     private static final String TAG = "DocumentActivity";
     //툴바 생성
     Toolbar toolbar;
@@ -65,35 +61,35 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
     private int permission=0;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState){
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_document);
         Log.d(TAG, "onCreate()");
 
-        Intent intent=getIntent();
-        placeId = intent.getIntExtra("_id",0);
+        Intent intent = getIntent();
+        placeId = intent.getIntExtra("_id", 0);
         String data = intent.getStringExtra("data");
 
         //디바이스 아이디 받아오기
-        Context mContext=getApplicationContext();
-        deviceID  = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
+        Context mContext = getApplicationContext();
+        deviceID = Settings.Secure.getString(mContext.getContentResolver(), Settings.Secure.ANDROID_ID);
 
-        try{
+        try {
             // JSON 데이터 분석
             // 객체를 추출한다.(장소하나의 정보)
             JSONObject root = new JSONObject(data);
 
             // 위도 경도 추출
-            currentlat=root.getDouble("lat");
-            currentlng=root.getDouble("lng");
+            currentlat = root.getDouble("lat");
+            currentlng = root.getDouble("lng");
             // 장소 이름 추출 및 전송
-            placeName =root.getString("name");
+            placeName = root.getString("name");
             // 빌딩 이름 추출 및 전송
-            placeBuilding=root.getString("building");
+            placeBuilding = root.getString("building");
             // 전화번호 추출 및 전송
-            placeTel=root.getString("tel");
+            placeTel = root.getString("tel");
             //카테고리 추출 및 전송
-            placeCategory=root.getString("category");
+            placeCategory = root.getString("category");
             // 부가 정보 추출 및 전송
             extraInfo = root.getString("extraInfo");
             // 화장실에 대한 정보 추출 및 전송
@@ -104,11 +100,11 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             parking[0] = root.getBoolean("주차 공간");
             parking[1] = root.getBoolean("유료");
             // 메뉴 정보 추출 및 전송(카테고리가 카페, 레스토랑일 때만)
-            if(placeCategory.equals("CAFE") || placeCategory.equals("RESTAURANT")){
+            if (placeCategory.equals("CAFE") || placeCategory.equals("RESTAURANT")) {
                 menu = root.getJSONArray("menu").toString();
             }
 
-        }catch(JSONException e){
+        }catch (JSONException e) {
             e.printStackTrace();
         }
 
@@ -119,15 +115,16 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
 
         // 툴바 세팅
         toolbar = (Toolbar) findViewById(R.id.add_toolbar);
-        toolbar.setTitle(placeName+"의 정보");
+        toolbar.setTitle(placeName + "의 정보");
         setSupportActionBar(toolbar);
 
         // 장소 기본 정보 세팅
-        TextView nameGet = (TextView)findViewById(R.id.getname);
-        TextView buildingGet = (TextView)findViewById(R.id.getbuilding);
-        TextView telGet = (TextView)findViewById(R.id.gettel);
-        nameGet.setText("장소 이름:      \" "+placeName+"\""); buildingGet.setText("빌딩 이름:      \" "+placeBuilding+" \"");
-        telGet.setText("전화번호:       \" "+placeTel+" \"");
+        TextView nameGet = (TextView) findViewById(R.id.getname);
+        TextView buildingGet = (TextView) findViewById(R.id.getbuilding);
+        TextView telGet = (TextView) findViewById(R.id.gettel);
+        nameGet.setText("장소 이름:      \" " + placeName + "\"");
+        buildingGet.setText("빌딩 이름:      \" " + placeBuilding + " \"");
+        telGet.setText("전화번호:       \" " + placeTel + " \"");
 
         setDefaultFragment();
     }
@@ -156,9 +153,9 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
 
     //프래그먼트 변경하는 메서드
     @Override
-    public void replaceFragment(String fragmentId){
+    public void replaceFragment(String fragmentId) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        if( fragmentId == "placeInfo" ) {
+        if (fragmentId == "placeInfo") {
             PlaceInfoFragment fragment = new PlaceInfoFragment();
             Bundle bundle = new Bundle();
             bundle.putString("extraInfo", extraInfo);
@@ -166,16 +163,14 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
             bundle.putBooleanArray("parking", parking);
             fragment.setArguments(bundle);
             transaction.replace(R.id.placeChild_fragment, fragment);
-        }
-        else if( fragmentId == "placeMenu" ) {
+        } else if (fragmentId == "placeMenu") {
             PlaceMenuFragment fragment = new PlaceMenuFragment();
             Bundle bundle = new Bundle();
             bundle.putString("placeName", placeName);
             bundle.putString("menu", menu);
             fragment.setArguments(bundle);
             transaction.replace(R.id.placeChild_fragment, fragment);
-        }
-        else if( fragmentId == "placeReview" ) {
+        } else if (fragmentId == "placeReview") {
             PlaceReviewFragment fragment = new PlaceReviewFragment();
             Bundle bundle = new Bundle();
             bundle.putInt("_id", placeId);
@@ -186,9 +181,10 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
 
         transaction.commit();
     }
+
     // 버튼을 클릭했을 때 이벤트 처리 메서드
     public void onClick(View view) {
-        switch(view.getId()){
+        switch (view.getId()) {
             case R.id.buttonPlaceInfo:
                 replaceFragment("placeInfo");
                 break;
@@ -322,13 +318,13 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                         e.printStackTrace();
                     } catch (IOException e) {// for URLConnection
                         e.printStackTrace();
-                    }catch (JSONException e) {// for mapToJson()
-                            e.printStackTrace();
+                    } catch (JSONException e) {// for mapToJson()
+                        e.printStackTrace();
                     }
                 }
             });
-            }catch(Exception e){
-                e.printStackTrace();
-            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+    }
 }

@@ -257,7 +257,6 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
 
         startActivity(intent);
     }
-
     public final int MY_PERMISSIONS_REQUEST_READ_CONTACTS = 1;
 
     //권한 승인여부 확인

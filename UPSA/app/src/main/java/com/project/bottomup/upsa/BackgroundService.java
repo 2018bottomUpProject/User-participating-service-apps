@@ -138,7 +138,9 @@ public class BackgroundService extends Service {
             }
             prevThree.add(max);//찾은 최댓값 저장
             prev.remove(max);//최댓값 중복 피하기 위해 삭제
-            max=prev.get(0);//max 초기화
+            if(prev.get(0)!=null){
+                max=prev.get(0);//max 초기화
+            }
         }
         //current 상위 3개 찾기
         max=current.get(0);
@@ -150,7 +152,9 @@ public class BackgroundService extends Service {
             }
             currentThree.add(max);//찾은 최댓값 저장
             current.remove(max);//최댓값 중복 피하기 위해 삭제
-            max=current.get(0);//max 초기화
+            if(current.size()!=0&&current.get(0)!=null){
+                max=current.get(0);//max 초기화
+            }
         }
         //최댓값 3개 삭제했던 것 글로벌 변수에 다시 복구
         for (int i=0;i<3;i++){
@@ -283,8 +287,8 @@ public class BackgroundService extends Service {
         NotificationCompat.Builder mBuilder=
                 new NotificationCompat.Builder(this)
                         .setSmallIcon(R.drawable.alarm) // 아이콘 임의로 아무거나 설정>>수정
-                        .setContentTitle("정보 등록 가능")
-                        .setContentText("1분 동안 위치 변경X -> 정보등록 가능합니다")
+                        .setContentTitle("새로운 장소 발견")
+                        .setContentText("장소를 등록해주세요! ٩(͡◕_͡◕ ")
                         .setAutoCancel(true); // 클릭 시 지우기
         Intent resultIntent=new Intent(getApplicationContext(),MainActivity.class);
         //MainActivity에 경도,위도 전송
@@ -362,7 +366,7 @@ public class BackgroundService extends Service {
                     Log.i(TAG,"pushInfo() "+deviceID+" "+gpsListener.latitude+" "+gpsListener.longitude+" "+map.get("CNU WiFi"));
                     String site = NetworkManager.url + "/locationbg";
                     try {
-                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude+"&Radius=0.0001&Category=ALL"+"&WifiList="+mapToJson(map);//36.3628449 127.350014200000032 +mapToJson(map)
+                        site+="?X="+gpsListener.latitude+"&Y="+gpsListener.longitude+"&Radius=0.001&Category=ALL"+"&WifiList="+mapToJson(map);//36.3628449 127.350014200000032 +mapToJson(map)
                         URL url=new URL(site);
                         HttpURLConnection conn = (HttpURLConnection) url.openConnection();//URL 연결한 객체 생성
                         if (conn.getResponseCode() == HttpURLConnection.HTTP_OK) {//연결이 되면{
@@ -392,9 +396,8 @@ public class BackgroundService extends Service {
                             // 객체를 추출한다.(장소하나의 정보)
                             JSONArray root=new JSONArray(rec_data);
                             JSONObject obj1=root.getJSONObject(0);
-                            JSONObject obj2=root.getJSONObject(1);
                             category=obj1.getString("place_type");
-                            placeID=obj2.getString("place_id");
+                            placeID=obj1.getString("_id");
                             Log.i(TAG,"추출 결과 place_type: "+category);
                             Log.i(TAG,"추출 결과 place_ID: "+placeID);
                         }
@@ -470,10 +473,10 @@ public class BackgroundService extends Service {
                                 // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기'
                                 String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
                                 if(minute==5){//여기 처음 방문한다면
-                                    toServer+="&new"+1;
+                                    toServer+="&new="+1;
                                 }
                                 else{//현재 위치에 계속 머무르는 중이라면
-                                    toServer+="&new"+0;
+                                    toServer+="&new="+0;
                                 }
                                 nm.postInfo(toServer,"POST");
                             }
@@ -500,10 +503,10 @@ public class BackgroundService extends Service {
                                 // 30분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
                                 String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
                                 if(minute==30){//여기 처음 방문한다면
-                                    toServer+="&new"+1;
+                                    toServer+="&new="+1;
                                 }
                                 else{//현재 위치에 계속 머무르는 중이라면
-                                    toServer+="&new"+0;
+                                    toServer+="&new="+0;
                                 }
                                 nm.postInfo(toServer,"POST");
                             }
@@ -518,7 +521,7 @@ public class BackgroundService extends Service {
                             Log.i(TAG,minute+"분");
                         }
                     }
-                    if(category.equals("TOILET")){//편의점라면 5분 동안 있는 지 체크
+                    if(category.equals("RESTROOM")){//화장실이라면 5분 동안 있는 지 체크
                         if(minute>=1){//1분이 지났으면
                             distance=prev.distanceTo(location);
                             if(distance<=10){//이전 위치와 거리 차가 10m 내이면 같은 위치에 있다고 판별
@@ -530,10 +533,10 @@ public class BackgroundService extends Service {
                                 // 5분 이상 같은 위치에 머무르고 있으므로 서버에게 디바이스아이디와 머무른 시간 알려주기
                                 String toServer="/locationbg?DeviceId="+deviceID+"&minute="+minute+"&PlaceId="+placeID;
                                 if(minute==1){//여기 처음 방문한다면
-                                    toServer+="&new"+1;
+                                    toServer+="&new="+1;
                                 }
                                 else{//현재 위치에 계속 머무르는 중이라면
-                                    toServer+="&new"+0;
+                                    toServer+="&new="+0;
                                 }
                                 nm.postInfo(toServer,"POST");
                             }
