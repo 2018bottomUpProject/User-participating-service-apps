@@ -156,7 +156,7 @@ let updPermission = function(place_id, user_id, stay_time, visit, callback){
     query_function(sql, function(){query_function("SELECT LAST_UPDATE_ID() as _id;",callback)});
 };
 let newPermission = function(place_id, user_id, stay_time, visit, callback){
-    let sql = "insert into Permission values(" + user_id+","+place_id+","+stay_time+"," + visit + ")";
+    let sql = "insert into Permission values(" + user_id+","+place_id+","+stay_time+"," + visit + ", 1)";
     query_function(sql, function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
 let getUser = function(device_id, password, callback){
