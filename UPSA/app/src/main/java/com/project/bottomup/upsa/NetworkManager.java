@@ -62,7 +62,7 @@ public class NetworkManager {
         }
     }
 
-    public void postInfo(final String str){
+    public void postInfo(final String str, final String method){
         isEnd = false;
         try{
             add(new Runnable() {
@@ -77,7 +77,7 @@ public class NetworkManager {
 
                         if(connection != null){
                             //전달방식 -> POST
-                            connection.setRequestMethod("POST");
+                            connection.setRequestMethod(method);
                             connection.setConnectTimeout(2000);
                             //서버로부터 메시지를 받을 수 있도록 함.
                             connection.setDoInput(true);

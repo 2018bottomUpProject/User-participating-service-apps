@@ -58,6 +58,12 @@ public class PlaceInfoFragment extends Fragment {
                     checkbox_toilet[i-1].setChecked(false);
                 }
             }
+        }else if(toilet[0] == false) {
+            text_toilet.setText("화장실이 없어요.");
+            for (int i = 1; i < toilet.length; i++) {
+                checkbox_toilet[i - 1].setVisibility(View.GONE);
+                checkbox_toilet[i - 1].setChecked(false);
+            }
         }
 
         //주차 공간에 대한 세부 정보 체크
@@ -69,6 +75,10 @@ public class PlaceInfoFragment extends Fragment {
             }else{
                 cb2_1.setChecked(false);
             }
+        }else if(parking[0] == false){
+            text_parking.setText("주차공간이 없어요.");
+            cb2_1.setChecked(false);
+            cb2_1.setVisibility(View.GONE);
         }
 
         return rootView;

@@ -20,6 +20,7 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,8 +41,12 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
     Toolbar toolbar;
     //지도 관리
     protected GoogleMap map;
+    //서버 관리
+    protected JSONObject document = new JSONObject();
     // 정보 관리
+    private int placeId;
     private double placeLat, placeLng;
+    private String placeCategory;
     private String placeName, placeBuilding, placeTel, extraInfo, menu;
     private JSONArray menuArr;
     private ArrayList<String> menuPrint = new ArrayList<String>();
@@ -54,6 +59,9 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
     private CheckBox cb2; //주차 공간
     private CheckBox cb2_1; //유료? 무료?
 
+    private CheckBox[] checkbox_toilet;
+    private CheckBox[] checkbox_parking;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,6 +73,8 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
             if (intent == null) {
                 throw new Exception();
             }
+            placeId = intent.getIntExtra("_id",0);
+            placeCategory = intent.getStringExtra("placeCategory");
             placeLat = intent.getDoubleExtra("placeLat", 37.56);
             placeLng = intent.getDoubleExtra("placeLng", 126.97);
             placeName = intent.getStringExtra("placeName");
@@ -107,8 +117,8 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
         cb1_2 = (CheckBox) findViewById(R.id.editToilet_2);
         cb2 = (CheckBox) findViewById(R.id.editParking);
         cb2_1 = (CheckBox) findViewById(R.id.editParking_1);
-        final CheckBox[] checkbox_toilet = {cb1, cb1_1, cb1_2};
-        final CheckBox[] checkbox_parking = {cb2,cb2_1};
+        checkbox_toilet = new CheckBox[]{cb1, cb1_1, cb1_2};
+        checkbox_parking = new CheckBox[]{cb2, cb2_1};
 
         if(toilet[0] == true){
             checkbox_toilet[0].setChecked(true);
@@ -160,7 +170,7 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
 
         // 메뉴에 대한 정보 초기세팅
         try{
-            if(!menu.equals("undefined")){ // 메뉴가 있을 때
+            if(placeCategory == "CAFE" || placeCategory == "RESTAURANT"){ // 메뉴가 있는 카테고리인 경우
                 // 메뉴 정보를 출력할 수 있도록 ArrayList에 담기
                 menuArr = new JSONArray(menu);
                 for(int i=0; i< menuArr.length(); i++){
@@ -240,6 +250,16 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
                         }
                     }
                 });
+            }else{ // 카페, 식당이 아닌 경우
+                // 메뉴 정보를 출력할 수 있도록 ArrayList에 담기
+                ArrayList<String> noMenu = new ArrayList<String>();
+                noMenu.add("    이 장소는 \""+placeCategory+"\"이므로 ");
+                noMenu.add("    메뉴 정보가 없습니다.");
+                // ArrayAdapter 생성.
+                final ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1,noMenu);
+                // listView 생성 및 adapter 지정
+                final ListView listview = findViewById(R.id.editContainer_menu) ;
+                listview.setAdapter(adapter);
             }
         }catch(JSONException e){
             e.printStackTrace();
@@ -274,9 +294,81 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
 
             case R.id.menu3:  // 수정한 정보 등록
 
-                //수정한 정보를 등록하는 코드 작성
+                try {
+                    //장소 이름, 전화번호, 빌딩이름, 추가정보 가져오기
+                    EditText namePut = (EditText) findViewById(R.id.editName);
+                    EditText telPut = (EditText) findViewById(R.id.editTel);
+                    EditText buildingPut = (EditText) findViewById(R.id.editBuilding);
+                    EditText extraPut = (EditText) findViewById(R.id.editExtraText);
 
-                finish();
+                    if (namePut.getText().length() > 0) {
+                        placeName = namePut.getText().toString();
+                        document.put("name", placeName);
+                    } else {
+                        Toast.makeText(this, "이름을 등록해주세요.", Toast.LENGTH_LONG).show();
+                        throw new Exception();
+                    }
+                    if (telPut.getText().length() > 0) {
+                        placeTel = telPut.getText().toString();
+                        document.put("tel", placeTel);
+                    } else {
+                        Toast.makeText(this, "전화번호를 등록해주세요.", Toast.LENGTH_LONG).show();
+                        throw new Exception();
+                    }
+                    //필수사항 아님
+                    if (buildingPut.getText().length() > 0) {
+                        placeBuilding = buildingPut.getText().toString();
+                        document.put("building", placeBuilding);
+                    } else {
+                        document.put("building", null);
+                    }
+
+                    document.put("lat", placeLat);
+                    document.put("lng", placeLng);
+                    document.put("category", placeCategory);
+                    document.put("menu", menuArr);
+
+                    if (extraPut.getText().length() > 0) {
+                        document.put("extraInfo", extraPut.getText());
+                    } else {
+                        Toast.makeText(this, "세부 정보를 등록해주세요.", Toast.LENGTH_LONG).show();
+                        throw new Exception();
+                    }
+
+                    if (checkbox_toilet != null && checkbox_parking != null) {
+                        for (int i = 0; i < checkbox_toilet.length; i++) {
+                            document.put(checkbox_toilet[i].getText().toString(), checkbox_toilet[i].isChecked());
+                        }
+                        for (int i = 0; i < checkbox_parking.length; i++) {
+                            document.put(checkbox_parking[i].getText().toString(), checkbox_parking[i].isChecked());
+                        }
+                    } else {
+                        Toast.makeText(this, "checkBox error", Toast.LENGTH_LONG).show();
+                        throw new Exception();
+                    }
+
+                    Log.i(TAG, "카테고리 push " + placeCategory);
+                    Log.i(TAG, "이름 push " + placeName);
+                    Log.i(TAG, "빌딩 push " + placeBuilding);
+                    Log.i(TAG, "전화번호 push " + placeTel);
+                    Log.i(TAG, "세부정보 push " + extraPut.getText());
+                    Log.i(TAG, "lat, lng push " + placeLat + "/" + placeLng);
+                    for (int i = 0; i < checkbox_toilet.length; i++) {
+                        Log.i(TAG, "화장실" + i + " push " + checkbox_toilet[i].getText().toString() + "/" + checkbox_toilet[i].isChecked());
+                    }
+                    for (int i = 0; i < checkbox_parking.length; i++) {
+                        Log.i(TAG, "주차" + i + " push " + checkbox_parking[i].getText().toString() + "/" + checkbox_parking[i].isChecked());
+                    }
+
+                    //location 수정된 정보 전송
+                    NetworkManager nm = new NetworkManager();
+                    String document_site = "/document/"+placeId+"?Article="+document.toString();
+                    Log.i(TAG, document.toString());
+                    nm.postInfo(document_site,"PUT"); //받은 placeId에 따른 장소 세부 정보
+                    finish();
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
                 break;
         }
         return super.onOptionsItemSelected(item);
