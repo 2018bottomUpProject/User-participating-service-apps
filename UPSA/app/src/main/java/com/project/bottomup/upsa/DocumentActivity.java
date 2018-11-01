@@ -215,16 +215,18 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
         // id 추출
         int id = item.getItemId();
 
+        permission = 5; // 권한 임의설정
+
         switch(id){
             case R.id.menu4 :     // 문서 수정
-              returnPermission(); //퍼미션 받아오기
-
-                while(true){ // thread 작업이 끝날 때까지 대기
-                    if(NetworkManager.isEnd){
-                        break;
-                    }
-                    Log.d(TAG, "아직 작업 안끝남.");
-                }
+//              returnPermission(); //퍼미션 받아오기
+//
+//                while(true){ // thread 작업이 끝날 때까지 대기
+//                    if(NetworkManager.isEnd){
+//                        break;
+//                    }
+//                    Log.d(TAG, "아직 작업 안끝남.");
+//                }
 
                 Log.i(TAG,"문서 수정 permission - "+permission);
                 //3등급 이상 가능!
@@ -250,14 +252,14 @@ public class DocumentActivity extends AppCompatActivity implements OnMapReadyCal
                 break;
 
             case R.id.menu5 :  // 문서 삭제
-                returnPermission(); //퍼미션 받아오기
-
-                while(true){ // thread 작업이 끝날 때까지 대기
-                    if(NetworkManager.isEnd){
-                        break;
-                    }
-                    Log.d(TAG, "아직 작업 안끝남.");
-                }
+//                returnPermission(); //퍼미션 받아오기
+//
+//                while(true){ // thread 작업이 끝날 때까지 대기
+//                    if(NetworkManager.isEnd){
+//                        break;
+//                    }
+//                    Log.d(TAG, "아직 작업 안끝남.");
+//                }
 
                 Log.i(TAG,"문서 삭제 permission - "+permission);
                 //5등급만 가능!

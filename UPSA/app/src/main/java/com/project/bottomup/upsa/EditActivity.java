@@ -170,7 +170,7 @@ public class EditActivity extends AppCompatActivity  implements OnMapReadyCallba
 
         // 메뉴에 대한 정보 초기세팅
         try{
-            if(placeCategory == "CAFE" || placeCategory == "RESTAURANT"){ // 메뉴가 있는 카테고리인 경우
+            if(placeCategory.equals("CAFE") || placeCategory.equals("RESTAURANT")){ // 메뉴가 있는 카테고리인 경우
                 // 메뉴 정보를 출력할 수 있도록 ArrayList에 담기
                 menuArr = new JSONArray(menu);
                 for(int i=0; i< menuArr.length(); i++){
