@@ -44,7 +44,17 @@ router.post('/', function(req, res, next){//해당 위치를 임시 등록(글 �
         }
     });
 });
-router.delete('/', function(req, res, next){
-    res.send('test(post)');
+router.put('/', function(req, res, next){
+    console.log("LOCATIONFG:DELETE -> PlaceId : ",req.query.PlaceId);
+    console.log("LOCATIONFG:DELETE -> BuildingName : ",req.query.BuildingName);
+    console.log("LOCATIONFG:DELETE -> PlaceName : ",req.query.PlaceName);
+    sql.editLocation(req.query.PlaceId, req.query.BuildingName, req.query.PlaceName, function(err, result){
+        if(err){
+            console.error(err);
+            res.send(err);
+            return;
+        }
+        res.send([{"result":"OK"}]);
+    });
 });
 module.exports = router;

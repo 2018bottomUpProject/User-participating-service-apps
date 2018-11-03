@@ -67,6 +67,7 @@ router.put('/:PlaceId',function(req,res,next) {
 router.delete('/:PlaceId',function(req,res,next){
     console.log("DOCUMENT:DELETE -> PLACE_ID : ",req.params.PlaceId);
     sql.delDocument(req.params.PlaceId, function(err){
+
         if(err){
             console.error("DOCUMENT : DELETE FAILED : ", err);
             res.render('error.hbs', {
@@ -77,9 +78,25 @@ router.delete('/:PlaceId',function(req,res,next){
                     shortstack:err
                 }
             });
+            return;
         }
-        else{
-            res.send([{"result":"OK"}]);
-        }    });
+        sql.delLocation(req.params.PlaceId, function(err){
+            if(err){
+                console.error("DOCUMENT : DELETE FAILED : ", err);
+                res.render('error.hbs', {
+                    message: "delete document failed(no such document)",
+                    error:{
+                        status:404,
+                        stack:err,
+                        shortstack:err
+                    }
+                });
+            }
+            else{
+                res.send([{"result":"OK"}]);
+            }
+
+        });
+    });
 });
 module.exports = router;

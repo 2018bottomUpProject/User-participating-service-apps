@@ -53,6 +53,14 @@ let newLocation = function(X,Y,WifiList,BuildingName,PlaceName,PlaceType, callba
     sql = sql1+sql2+sql3;
     query_function(sql, function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
+let editLocation = function(place_id, building_name, place_name, callback){
+    let sql = "update Location set building_name=\""+building_name+"\", place_name=\""+place_name+"\" where _id="+place_id;
+    query_function(sql,callback);
+};
+let delLocation = function(place_id, callback){
+    let sql = "delete from Location where _id="+place_id;
+    query_function(sql, callback);
+};
 let newDocument = function(place_id, article, callback){
     try {
         fs.mkdirSync('Documents/' + place_id);
@@ -148,23 +156,25 @@ let getLog = function(){
 
 };
 let getPermission = function(place_id, user_id, callback){
-    let sql = "select * from Permission where place_id="+place_id+" AND user_id='"+user_id+"'";//n개의 리뷰만을 가져오도록 수정해야 함.
+    let sql = "select * from Permission where place_id="+place_id+" AND user_id=\""+user_id+"\"";//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let updPermission = function(place_id, user_id, stay_time, visit, callback){
-    let sql = "update Permission set stay_time=stay_time+"+stay_time+" visited=visited+"+visit+" where user_id="+user_id+" AND place_id="+place_id;
-    query_function(sql, function(){query_function("SELECT LAST_UPDATE_ID() as _id;",callback)});
+
+    let sql = "update Permission set stay_time=stay_time+"+stay_time+", visited=visited+"+visit+", permission=(stay_time+visited+"+stay_time+"+"+visit+")/30%5+1" +" where user_id=\""+user_id+"\" AND place_id="+place_id;
+    query_function(sql, callback);
 };
 let newPermission = function(place_id, user_id, stay_time, visit, callback){
-    let sql = "insert into Permission values(" + user_id+","+place_id+","+stay_time+"," + visit + ", 1)";
+    let sql = "insert into Permission values(\"" + user_id+"\","+place_id+","+stay_time+"," + visit + ", "+(stay_time+visit)/30%5+")";
     query_function(sql, function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
-let getUser = function(device_id, password, callback){
-    let sql = "select * from User where device_id=\""+device_id+"\"";//n개의 리뷰만을 가져오도록 수정해야 함.
+let getUser = function(device_id, password, callback){//password는 상관 안함
+    let sql = "select * from User where _id=\""+device_id+"\"";//n개의 리뷰만을 가져오도록 수정해야 함.
     query_function(sql,callback);
 };
 let newUser = function(device_id, password, callback){
-    let sql = "insert into User values(\""+device_id+"\", \""+ password+"\")";
+    let sql = "insert into User values(\""+device_id+"\", "+ (password===undefined?"NULL":"\""+password+"\"")+")";
+
     query_function(sql,function(){query_function("SELECT LAST_INSERT_ID() as _id;",callback)});
 };
 let delUser = function(){
@@ -176,6 +186,8 @@ module.exports = function () {
         testselect: testselect,
         getLocation:getLocation,
         newLocation:newLocation,
+        editLocation:editLocation,
+        delLocation:delLocation,
         newDocument:newDocument,
         editDocument:editDocument,
         getDocument:getDocument,
