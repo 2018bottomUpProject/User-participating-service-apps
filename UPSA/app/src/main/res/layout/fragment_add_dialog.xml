@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp" >
+
+    <TextView
+        android:id="@+id/register_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:text="아직 등록되지 않은 장소입니다."
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/ask_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/register_textview"
+        android:layout_centerHorizontal="true"
+        android:text="등록하시겠습니까?"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ask_textview"
+        android:layout_marginBottom="20dp"
+        >
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/OKbutton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="네" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/NObutton"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="아니오" />
+    </LinearLayout>
+</RelativeLayout>

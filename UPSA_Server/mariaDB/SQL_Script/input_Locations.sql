@@ -1,0 +1,16 @@
+insert into Location values(0,POINT(36.3628449, 127.35001420000003),"{}",NULL, "에이플러스","CAFE");
+insert into Location values(0,POINT(36.3621688, 127.35180930000001),"{}",NULL, "바리스타빈","CAFE");
+insert into Location values(0,POINT(36.3623087, 127.34854330000007),"{}",NULL, "카이로스","CAFE");
+insert into Location values(0,POINT(36.3628499, 127.35078079999994),"{}",NULL, "카페옥상","CAFE");
+insert into Location values(0,POINT(36.3631022, 127.34845419999999),"{}",NULL, "자매당","CAFE");
+insert into Location values(0,POINT(36.3628457, 127.34983480000005),"{}",NULL, "별리달리","RESTAURANT");
+insert into Location values(0,POINT(36.3619378, 127.35299439999994),"{}",NULL, "누오보나폴리","RESTAURANT");
+insert into Location values(0,POINT(36.3623076, 127.34899459999997),"{}",NULL, "오늘은파스타","RESTAURANT");
+insert into Location values(0,POINT(36.3622897, 127.35000650000006),"{}",NULL, "멜로우멜로디","RESTAURANT");
+insert into Location values(0,POINT(36.3607458, 127.34999930000003),"{}",NULL, "팬텀팬피그 궁동점","RESTAURANT");
+insert into Location values(0,POINT(36.360382, 127.35637810000003),"{}",NULL, "유림공원","PARK");
+insert into Location values(0,POINT(36.3476903, 127.39843480000002),"{}",NULL, "남선공원","PARK");
+insert into Location values(0,POINT(36.3781133, 127.38430670000002),"{}",NULL, "엑스포 과학공원","PARK");
+insert into Location values(0,POINT(36.3188477, 127.42226830000004),"{}",NULL, "테미공원","PARK");
+insert into Location values(0,POINT(36.2846772, 127.3879978),"{}",NULL, "뿌리공원","PARK");
+insert into Location values(0,POINT(37.4362233,127.01405810000006),"{}",NULL, "서울대공원","PARK");
