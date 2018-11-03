@@ -17,5 +17,6 @@ router.get('/', function(req, res, next) {
         }
         res.send(result);
     });
+    //res.send([{"user_id":"7856599c2aeb876f","place_id":6,"stay_time":23,"visited":10,"permission":5}]);
 });
 module.exports = router;

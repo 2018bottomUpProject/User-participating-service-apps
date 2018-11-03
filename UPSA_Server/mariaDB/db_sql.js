@@ -161,7 +161,7 @@ let getPermission = function(place_id, user_id, callback){
 };
 let updPermission = function(place_id, user_id, stay_time, visit, callback){
 
-    let sql = "update Permission set stay_time=stay_time+"+stay_time+", visited=visited+"+visit+", permission=(stay_time+visited+"+stay_time+"+"+visit+")/30%5" +" where user_id=\""+user_id+"\" AND place_id="+place_id;
+    let sql = "update Permission set stay_time=stay_time+"+stay_time+", visited=visited+"+visit+", permission=(stay_time+visited+"+stay_time+"+"+visit+")/30%5+1" +" where user_id=\""+user_id+"\" AND place_id="+place_id;
     query_function(sql, callback);
 };
 let newPermission = function(place_id, user_id, stay_time, visit, callback){
