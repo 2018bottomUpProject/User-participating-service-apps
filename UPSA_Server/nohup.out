@@ -2810,3 +2810,4 @@ LOCATIONBG:GET -> WifiList :  {"iptime01":-53,"JINI":-84,"iptime":-79,"CNU_Dormi
 LOCATIONBG:GET -> Category :  ALL
 LOCATIONBG:GET -> Radius :  0.0001
 DB_SQL :  select place_type, place_id from Location where ST_DISTANCE(location, POINT(36.3717369,127.3452541))<=0.0001
+sql starts on 2018-11-02T07:53:47.886Z

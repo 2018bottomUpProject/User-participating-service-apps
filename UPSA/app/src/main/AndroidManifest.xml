@@ -27,10 +27,12 @@
     <!-- WiFi 접근 및 변경 허용 -->
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <!-- 안드로이드 폰에서 디바이스 ID 가져오기 -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/wemap"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:screenOrientation="portrait"
@@ -45,6 +47,7 @@
         </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".AddActivity" />
+        <activity android:name=".DocumentActivity" />
 
         <!-- 구글 지도 사용을 위한 API key -->
         <meta-data
@@ -71,6 +74,7 @@
             </intent-filter>
         </receiver>
 
+        <activity android:name=".EditActivity"></activity>
     </application>
 
 </manifest>

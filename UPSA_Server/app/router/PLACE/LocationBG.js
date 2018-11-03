@@ -37,7 +37,7 @@ let userSet = function(DeviceId, callback){
 };
 router.post('/', function(req, res, next) {//해당 위치에 일정 시간 이상 머물렀을 경우
     console.log("LOCATIONBG:POST -> DeviceId : ",req.query.DeviceId);
-    console.log("LOCATIONBG:POST -> PlaceId : ",req.query.PlaceId);
+    console.log("LOCATIONBG:POST -> PlaceId : ",req.query.PlacId);
     console.log("LOCATIONBG:POST -> new : ",req.query.new);
     console.log("LOCATIONBG:POST -> minute : ", req.query.minute);
     //그냥 위치에 맞는 시설 중 첫 번째를 보냄
